@@ -9,6 +9,6 @@
 
 int main(int ac, char **av)
 {
-    std::cout << "Antonin is a fion." << std::endl;
+    std::cout << "lorentz is a fion." << std::endl;
     return (0);
 }
