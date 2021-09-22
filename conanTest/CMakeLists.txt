@@ -18,7 +18,7 @@ add_executable (mainDemo src/main.cpp)
 # find_package(Qt5Gui CONFIG REQUIRED)
 find_package(Opus REQUIRED)
 find_package(portaudio REQUIRED)
-# find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt5 COMPONENTS Core REQUIRED)
 
 message("------ --- --- -- - -NOOOOOOOOOOOOOOOON- -- --  --- -- --- --\n\n\n")
 
@@ -26,7 +26,6 @@ message("------ --- --- -- - -NOOOOOOOOOOOOOOOON- -- --  --- -- --- --\n\n\n")
 # target_link_libraries(mainDemo opus)
 # target_link_libraries(mainDemo portaudio)
 # target_link_libraries(mainDemo Qt5::Widgets Qt5::Network Qt5::Core Qt5::Gui)
-
 
 include_directories(${CONAN_OPUS_ROOT})
 include_directories(${CONAN_PORTAUDIO_ROOT})
@@ -42,7 +41,7 @@ if(OPUS_FOUND)
 message("opus\t\tFound :)")
 endif()
 if(Qt5_FOUND)
-message("QT5 found :)\n\n")
+message("QT5\t\tfound :)\n\n")
 endif()
 
 target_include_directories(mainDemo PUBLIC ${CONAN_INCLUDE_DIRS})
