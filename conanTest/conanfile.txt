@@ -8,6 +8,6 @@ qt/5.15.2
 qt:shared=True
 
 [generators]
+cmake
 cmake_paths
 cmake_find_package
-cmake
