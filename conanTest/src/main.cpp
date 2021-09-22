@@ -6,6 +6,9 @@
 */
 
 #include <iostream>
+#include <portaudio.h>
+#include <opus.h>
+#include <QApplication>
 
 int main(int ac, char **av)
 {
