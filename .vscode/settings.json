@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/QT"
+    "cmake.sourceDirectory": "${workspaceFolder}/QT",
+    "files.associations": {
+        "qapplication": "cpp",
+        "qmainwindow": "cpp"
+    }
 }
