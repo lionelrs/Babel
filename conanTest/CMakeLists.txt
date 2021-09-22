@@ -7,7 +7,8 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 conan_basic_setup(KEEP_RPATH)
 
-include_directories(${CMAKE_INCLUDE_PATH})
+include_directories(${CONAN_INCLUDE_PATH})
+link_directories(CONAN_LIBRARY_DIRS)
 
 
 add_executable (mainDemo src/main.cpp)
