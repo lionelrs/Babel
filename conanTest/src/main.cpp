@@ -1,17 +1,19 @@
-/*
-** EPITECH PROJECT, 2021
-** 
-** File description:
-** 
-*/
+#include <stdio.h>
+#include <math.h>
+#include "portaudio.h"
 
-#include <iostream>
-#include <portaudio.h>
-#include <opus.h>
-#include <QApplication>
-
-int main(int ac, char **av)
+int main(void)
 {
-    std::cout << "coucou je compile" << std::endl;
+    PaError err = Pa_Initialize();
+    if (err != paNoError) {
+        printf( "PortAudio error: %s\n", Pa_GetErrorText(err));
+        return (84);
+    }
+
+    err = Pa_Terminate();
+    if (err != paNoError) {
+        printf("PortAudio error: %s\n", Pa_GetErrorText(err));
+        return (84);
+    }
     return (0);
 }
