@@ -1,1 +1,0 @@
-gcc main.c libportaudio.a -lrt -lm -lasound -ljack -pthread -o YOUR_BINARY
