@@ -5,7 +5,10 @@
             "includePath": [
                 "${default}",
                 "/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
-                "/usr/include/x86_64-linux-gnu/qt5"
+                "/usr/include/x86_64-linux-gnu/qt5",
+                "/usr/include/opus",
+                "/usr/include/portaudio"
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
