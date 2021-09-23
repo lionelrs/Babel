@@ -6,12 +6,9 @@
 */
 
 #include "portaudio.h"
-#include "stdio.h"
 
 int main(void)
 {
-    PaError err = Pa_Initialize();
-    if (err != paNoError)
-        printf("PortAudio error: %s\n", Pa_GetErrorText(err));
+    Pa_GetHostApiCount();
     return (0);
 }
