@@ -18,7 +18,7 @@ int main(int ac, char **av)
     window.resize(320, 240);
     window.show();
     window.setWindowTitle(
-        QApplication::translate("toplevel", "Top-level widget"));
+        QApplication::translate("fiak", "Top-level widget"));
     return app.exec();
 	// PaError err = Pa_Initialize();
 	// if (err != paNoError) {
