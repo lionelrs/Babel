@@ -8,6 +8,9 @@ libffi/3.3
 *:shared=True
 qt:shared=True
 
+[imports]
+lib, *.so* -> lib
+
 [generators]
 cmake
 cmake_paths
