@@ -17,6 +17,6 @@ int main(int ac, char **av)
 	}
 	err = Pa_Terminate();
 	std::cout << opus_encoder_get_size(1) << std::endl;
-    	std::cout << "coucou je compile" << std::endl;
+    std::cout << "coucou je compile" << std::endl;
     	return (0);
 }
