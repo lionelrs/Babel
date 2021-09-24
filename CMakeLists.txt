@@ -28,7 +28,7 @@ add_executable (
 #find_package(portaudio REQUIRED)
 #find_package(Opus REQUIRED)
 
-target_link_libraries(babel_server PUBLIC "-pthread")
+target_link_libraries(babel_server PUBLIC "-pthread ")
 target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
 
 target_link_libraries(babel_client PUBLIC ${CONAN_LIBS})
