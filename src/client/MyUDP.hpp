@@ -14,24 +14,24 @@
 
 class MyUDP : public QObject
 {
-    Q_OBJECT
-public:
-    explicit MyUDP(QObject *parent = 0);
-    ~MyUDP();
+        Q_OBJECT
+    public:
+        explicit MyUDP(QObject *parent = 0);
+        ~MyUDP();
 
-    void sendData();
-signals:
-public slots:
-    void readyRead();
-private:
-    QUdpSocket *_readSocket;
-    QUdpSocket *_writeSocket;
+    signals:
+    public slots:
+        void sendData();
+        void readData();
+    private:
+        QUdpSocket *_readSocket;
+        QUdpSocket *_writeSocket;
 
-    std::string _readIp;
-    std::string _writeIp;
+        std::string _readIp;
+        std::string _writeIp;
 
-    int _readPort;
-    int _writePort;
+        int _readPort;
+        int _writePort;
 };
 
 #endif /* !MYUDP_HPP_ */
