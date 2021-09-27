@@ -17,7 +17,7 @@ class MyUDP : public QObject
 {
         Q_OBJECT
     public:
-        explicit MyUDP(QObject *parent = 0);
+        explicit MyUDP(std::string ip, int port, QObject *parent = 0);
         ~MyUDP();
 
         QUdpSocket *getSocket() const;
@@ -26,17 +26,12 @@ class MyUDP : public QObject
 
     signals:
     public slots:
-        void sendData();
+        void writeData(Message msg);
         void readData();
     private:
-        QUdpSocket *_readSocket;
-        QUdpSocket *_writeSocket;
-
-        std::string _readIp;
-        std::string _writeIp;
-
-        int _readPort;
-        int _writePort;
+        QUdpSocket *_socket;
+        std::string _ip;
+        int _port;
 };
 
 #endif /* !MYUDP_HPP_ */

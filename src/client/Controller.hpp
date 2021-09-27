@@ -8,13 +8,25 @@
 #ifndef CONTROLLER_HPP_
 #define CONTROLLER_HPP_
 
-class Controller {
+#include "MyUDP.hpp"
+#include "Window.hpp"
+
+class Controller : public QObject {
+        Q_OBJECT
     public:
-        Controller();
+        Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp);
         ~Controller();
+
+    public slots:
+        void sendData();
+        void listenData();
 
     protected:
     private:
+        MyUDP *_readUdp;
+        MyUDP *_writeUdp;
+        Window *_w;
+
 };
 
 #endif /* !CONTROLLER_HPP_ */

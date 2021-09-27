@@ -7,56 +7,33 @@
 
 #include "MyUDP.hpp"
 
-MyUDP::MyUDP(QObject *parent) : QObject(parent)
+MyUDP::MyUDP(std::string ip, int port, QObject *parent) : _ip(ip), _port(port), QObject(parent)
 {
-    // create a QUDP socket
-    // _readSocket = new QUdpSocket(this);
-    _writeSocket = new QUdpSocket(this);
-
-    // _readIp = "10.16.253.70";
-    _writeIp = "10.16.253.70";
-
-    // _readPort = 1234;
-    _writePort = 1234;
-
-    // The most common way to use QUdpSocket class is
-    // to bind to an address and port using bind()
-    // bool QAbstractSocket::bind(const QHostAddress & address,
-    //     quint16 port = 0, BindMode mode = DefaultForPlatform)
-    _writeSocket->bind(QHostAddress(_writeIp.c_str()), _writePort);
-    // _readSocket->bind(QHostAddress(_readIp.c_str()), _readPort);
-
-    // connect(_readSocket, SIGNAL(messageSent()), _w, SLOT(sendData()));
+    _socket = new QUdpSocket(this);
+    _socket->bind(QHostAddress(_ip.c_str()), _port);
 }
 
 MyUDP::~MyUDP()
 {
 }
 
-void MyUDP::sendData()
+void MyUDP::writeData(Message msg)
 {
     QByteArray writeData;
-    writeData.append("Lorentz");
-    _writeSocket->writeDatagram(writeData, QHostAddress(_writeIp.c_str()), _writePort);
+    writeData.append(msg.body().toLocal8Bit());
+    _socket->writeDatagram(writeData, QHostAddress(_ip.c_str()), _port);
     writeData.clear();
 }
 
 void MyUDP::readData()
 {
-    // when data comes in
     QByteArray readBuffer;
-    readBuffer.resize(_readSocket->pendingDatagramSize());
+    readBuffer.resize(_socket->pendingDatagramSize());
 
     QHostAddress sender;
     quint16 senderPort;
 
-    // qint64 QUdpSocket::readDatagram(char * data, qint64 maxSize,
-    //                 QHostAddress * address = 0, quint16 * port = 0)
-    // Receives a datagram no larger than maxSize bytes and stores it in data.
-    // The sender's host address and port is stored in *address and *port
-    // (unless the pointers are 0).
-
-    _readSocket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
+    _socket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
 
     qDebug() << "Message from: " << sender.toString();
     qDebug() << "Message port: " << senderPort;
@@ -65,15 +42,15 @@ void MyUDP::readData()
 
 QUdpSocket *MyUDP::getSocket() const
 {
-    return (_writeSocket);
+    return (_socket);
 }
 
 int MyUDP::getPort() const
 {
-    return (_writePort);
+    return (_port);
 }
 
 std::string MyUDP::getIp() const
 {
-    return (_writeIp);
+    return (_ip);
 }
