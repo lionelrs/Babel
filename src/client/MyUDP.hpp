@@ -10,6 +10,7 @@
 
 #include <QObject>
 #include <QUdpSocket>
+#include <iostream>
 
 class MyUDP : public QObject
 {
@@ -17,12 +18,18 @@ class MyUDP : public QObject
 public:
     explicit MyUDP(QObject *parent = 0);
     ~MyUDP();
-    void HelloUDP();
 signals:
 public slots:
     void readyRead();
 private:
-    QUdpSocket *socket;
+    QUdpSocket *_readSocket;
+    QUdpSocket *_writeSocket;
+
+    std::string _readIp;
+    std::string _writeIp;
+
+    int _readPort;
+    int _writePort;
 };
 
 #endif /* !MYUDP_HPP_ */
