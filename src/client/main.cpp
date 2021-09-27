@@ -325,7 +325,7 @@
 
 int main(int ac, char **av)
 {
-    Babel::PortAudio audio;
+    Babel::IAudio *audio = new Babel::PortAudio();
 	// QApplication app(ac, av);
     // QWidget window;
     // window.resize(320, 240);
