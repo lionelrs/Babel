@@ -11,6 +11,7 @@
 #include <QObject>
 #include <QUdpSocket>
 #include <iostream>
+#include "Message.hpp"
 
 class MyUDP : public QObject
 {
@@ -18,6 +19,10 @@ class MyUDP : public QObject
     public:
         explicit MyUDP(QObject *parent = 0);
         ~MyUDP();
+
+        QUdpSocket *getSocket() const;
+        std::string getIp() const;
+        int getPort() const;
 
     signals:
     public slots:

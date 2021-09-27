@@ -6,13 +6,15 @@
 */
 
 #include "Window.hpp"
+#include <iostream>
 
-Window::Window()
+Window::Window(MyUDP *udp) : _udp(udp)
 {
     editor = new QTextEdit();
     QPushButton *sendButton = new QPushButton(tr("&Send message"));
 
     connect(sendButton, SIGNAL(clicked()), this, SLOT(sendMessage()));
+    // connect(_udp->getSocket(), SIGNAL(messageSent()), this, SLOT(setMessage()));
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addStretch();
@@ -33,6 +35,10 @@ Window::~Window()
 void Window::sendMessage()
 {
     thisMessage = Message(editor->toPlainText(), thisMessage.headers());
+    QByteArray writeData;
+    writeData.append(thisMessage.body().toLocal8Bit());
+    _udp->getSocket()->writeDatagram(writeData, QHostAddress(_udp->getIp().c_str()), _udp->getPort());
+    writeData.clear();
     emit messageSent(thisMessage);
 }
 

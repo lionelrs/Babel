@@ -14,12 +14,14 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 
+#include "MyUDP.hpp"
+
 #include "Message.hpp"
 
 class Window : public QWidget {
     Q_OBJECT
     public:
-        Window();
+        Window(MyUDP *udp);
         ~Window();
 
     signals:
@@ -34,6 +36,7 @@ class Window : public QWidget {
     private:
         Message thisMessage;
         QTextEdit *editor;
+        MyUDP *_udp;
 };
 
 #endif /* !WINDOW_HPP_ */
