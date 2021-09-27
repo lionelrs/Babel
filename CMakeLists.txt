@@ -2,6 +2,13 @@ cmake_minimum_required( VERSION 3.10 )
 
 project (mainDemo)
 
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Gui REQUIRED)
+find_package(Qt5OpenGL REQUIRED)
+find_package(Qt5Xml REQUIRED)
+set(CMAKE_AUTOMOC ON)
+
 include(build/conanbuildinfo.cmake)
 include(build/conan_paths.cmake)
 conan_basic_setup(KEEP_RPATHS)
@@ -18,8 +25,10 @@ file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp" "src/audio/*.cpp" "src/audio/*hpp")
 
-add_executable (babel_client ${CLIENT_SRC} ${COMMON})
+SET(Q_Object "src/client/MyUDP.hpp")
+QT5_WRAP_CPP(Q_OBJECT_MOC ${Q_Object})
 
+add_executable (babel_client ${Q_OBJECT_MOC} ${CLIENT_SRC} ${COMMON})
 
 target_include_directories(babel_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/audio)
 target_link_libraries(babel_client PUBLIC ${CONAN_LIBS})
@@ -32,6 +41,7 @@ target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
 #find_package(Opus REQUIRED)
 add_executable (babel_server ${SERVER_SRC} ${COMMON})
 
+target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
 target_include_directories(babel_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/audio)
 target_link_libraries(babel_server PUBLIC ${CONAN_LIBS})
 target_link_libraries(babel_server PUBLIC "-pthread")
