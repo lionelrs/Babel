@@ -6,20 +6,23 @@
 */
 
 #include <iostream>
-#include <portaudio.h>
-#include <opus.h>
 #include <QApplication>
 #include <QtWidgets>
-#include "../audio/PortAudio.hpp"
 #include <QCoreApplication>
+#include "MyUDP.hpp"
 
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
+
     QWidget window;
     window.resize(320, 240);
     window.show();
     window.setWindowTitle(
         QApplication::translate("fiak", "Top-level widget"));
-    return (0);
+    
+    MyUDP client;
+    client.HelloUDP();
+
+    return app.exec();
 }

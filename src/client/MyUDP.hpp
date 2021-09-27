@@ -13,10 +13,9 @@
 
 class MyUDP : public QObject
 {
-    Q_OBJECT
 public:
     explicit MyUDP(QObject *parent = 0);
-    //~MyUDP();
+    ~MyUDP();
     void HelloUDP();
 signals:
 public slots:
