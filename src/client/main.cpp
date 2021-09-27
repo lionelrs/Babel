@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
         QApplication::translate("fiak", "Top-level widget"));
 
     MyUDP client;
+	client.sendData();
 
     return app.exec();
 }
