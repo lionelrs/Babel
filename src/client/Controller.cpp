@@ -7,17 +7,23 @@
 
 #include "Controller.hpp"
 
-Controller::Controller(Window *w, MyUDP *udp) : _w(w), _udp(udp)
+Controller::Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp) : _w(w), _writeUdp(writeUdp), _readUdp(readUdp)
 {
-    connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(communicate()));
+    connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
+    connect(_readUdp->getSocket(), SIGNAL(readyRead()), _readUdp, SLOT(listenData()));
 }
 
 Controller::~Controller()
 {
 }
 
-void Controller::communicate()
+void Controller::sendData()
 {
     Message msg = _w->setAndGetThisMessage();
-    _udp->sendData(msg);
+    _writeUdp->writeData(msg);
+}
+
+void Controller::listenData()
+{
+    _readUdp->readData();
 }

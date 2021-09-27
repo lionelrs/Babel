@@ -14,16 +14,17 @@
 class Controller : public QObject {
         Q_OBJECT
     public:
-        Controller(Window *w, MyUDP *udp);
+        Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp);
         ~Controller();
 
     public slots:
-        void communicate();
+        void sendData();
+        void listenData();
 
     protected:
     private:
-
-        MyUDP *_udp;
+        MyUDP *_readUdp;
+        MyUDP *_writeUdp;
         Window *_w;
 
 };
