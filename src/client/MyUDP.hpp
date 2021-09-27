@@ -18,6 +18,8 @@ class MyUDP : public QObject
 public:
     explicit MyUDP(QObject *parent = 0);
     ~MyUDP();
+
+    void sendData();
 signals:
 public slots:
     void readyRead();
