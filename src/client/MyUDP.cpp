@@ -26,8 +26,8 @@ MyUDP::MyUDP(QObject *parent) : QObject(parent)
     _writeSocket->bind(QHostAddress(_writeIp.c_str()), _writePort);
     _readSocket->bind(QHostAddress(_readIp.c_str()), _readPort);
 
-    connect(_writeSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    connect(_readSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect(_writeSocket, SIGNAL(clicked()), this, SLOT(sendData()));
+    connect(_readSocket, SIGNAL(readyRead()), this, SLOT(readData()));
 }
 
 MyUDP::~MyUDP()
@@ -37,14 +37,12 @@ MyUDP::~MyUDP()
 void MyUDP::sendData()
 {
     QByteArray writeData;
-    while (1) {
-        writeData.append("Lorentz");
-        _writeSocket->writeDatagram(writeData, QHostAddress(_writeIp.c_str()), _writePort);
-        writeData.clear();
-    }
+    writeData.append("Lorentz");
+    _writeSocket->writeDatagram(writeData, QHostAddress(_writeIp.c_str()), _writePort);
+    writeData.clear();
 }
 
-void MyUDP::readyRead()
+void MyUDP::readData()
 {
     // when data comes in
     QByteArray readBuffer;
