@@ -29,6 +29,18 @@ Babel::PortAudio::PortAudio()
         initData();
         setInputDevice("default");
         record();
+        FILE  *fid;
+        fid = fopen("recorded.raw", "wb");
+        if( fid == NULL )
+        {
+            printf("Could not open file.");
+        }
+        else
+        {
+            fwrite(&_data.recordedSamples, NUM_CHANNELS * sizeof(SAMPLE), _totalFrames, fid );
+            fclose( fid );
+            printf("Wrote data to 'recorded.raw'\n");
+        }
         _data.frameIndex = 0;
         setOutputDevice("default");
         play();

@@ -14,6 +14,7 @@
 #include <vector>
 #include "PortAudioException.hpp"
 #include "IAudio.hpp"
+#include <cstdio>
 
 #define SAMPLE_RATE  (44100)
 #define FRAMES_PER_BUFFER (512)
