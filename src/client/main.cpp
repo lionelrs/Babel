@@ -20,9 +20,8 @@ int main(int argc, char *argv[])
     window.show();
     window.setWindowTitle(
         QApplication::translate("fiak", "Top-level widget"));
-    
+
     MyUDP client;
-    client.HelloUDP();
 
     return app.exec();
 }
