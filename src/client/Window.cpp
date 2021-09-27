@@ -6,17 +6,19 @@
 */
 
 #include "Window.hpp"
+#include <iostream>
 
 Window::Window()
 {
     editor = new QTextEdit();
-    QPushButton *sendButton = new QPushButton(tr("&Send message"));
+    _button = new QPushButton(tr("&Send message"));
 
-    connect(sendButton, SIGNAL(clicked()), this, SLOT(sendMessage()));
+
+    // connect(_udp->getSocket(), SIGNAL(messageSent()), this, SLOT(setMessage()));
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addStretch();
-    buttonLayout->addWidget(sendButton);
+    buttonLayout->addWidget(_button);
     buttonLayout->addStretch();
 
     QVBoxLayout *layout = new QVBoxLayout(this);
@@ -32,12 +34,23 @@ Window::~Window()
 
 void Window::sendMessage()
 {
-    thisMessage = Message(editor->toPlainText(), thisMessage.headers());
-    emit messageSent(thisMessage);
+    _message = Message(editor->toPlainText(), _message.headers());
+    emit messageSent(_message);
+}
+
+Message Window::setAndGetThisMessage()
+{
+    _message = Message(editor->toPlainText(), _message.headers());
+    return (this->_message);
 }
 
 void Window::setMessage(const Message &message)
 {
-    thisMessage = message;
-    editor->setPlainText(thisMessage.body());
+    _message = message;
+    editor->setPlainText(_message.body());
+}
+
+QPushButton *Window::getButton() const
+{
+    return (this->_button);
 }

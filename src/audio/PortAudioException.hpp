@@ -13,7 +13,7 @@
 namespace Babel {
     class PortAudioException : public BabelException {
         public:
-            PortAudioException(const std::string &what, const std::string &where) :BabelException(what, where) {};
+            PortAudioException(const std::string &what) :BabelException(what) {};
     };
 };
 
