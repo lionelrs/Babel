@@ -7,10 +7,17 @@
 
 #include "Controller.hpp"
 
-Controller::Controller()
+Controller::Controller(Window *w, MyUDP *udp) : _w(w), _udp(udp)
 {
+    connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(communicate()));
 }
 
 Controller::~Controller()
 {
+}
+
+void Controller::communicate()
+{
+    Message msg = _w->setAndGetThisMessage();
+    _udp->sendData(msg);
 }

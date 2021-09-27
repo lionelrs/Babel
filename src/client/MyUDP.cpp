@@ -33,10 +33,10 @@ MyUDP::~MyUDP()
 {
 }
 
-void MyUDP::sendData()
+void MyUDP::sendData(Message msg)
 {
     QByteArray writeData;
-    writeData.append("Lorentz");
+    writeData.append(msg.body().toLocal8Bit());
     _writeSocket->writeDatagram(writeData, QHostAddress(_writeIp.c_str()), _writePort);
     writeData.clear();
 }

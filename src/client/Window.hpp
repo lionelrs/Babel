@@ -21,8 +21,11 @@
 class Window : public QWidget {
     Q_OBJECT
     public:
-        Window(MyUDP *udp);
+        Window();
         ~Window();
+
+        Message setAndGetThisMessage();
+        QPushButton *getButton() const;
 
     signals:
         void messageSent(const Message &message);
@@ -34,9 +37,9 @@ class Window : public QWidget {
         void sendMessage();
 
     private:
-        Message thisMessage;
+        Message _message;
         QTextEdit *editor;
-        MyUDP *_udp;
+        QPushButton *_button;
 };
 
 #endif /* !WINDOW_HPP_ */

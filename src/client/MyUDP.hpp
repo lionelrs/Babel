@@ -26,7 +26,7 @@ class MyUDP : public QObject
 
     signals:
     public slots:
-        void sendData();
+        void sendData(Message msg);
         void readData();
     private:
         QUdpSocket *_readSocket;

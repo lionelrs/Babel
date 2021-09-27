@@ -25,10 +25,10 @@ file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
 file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp" "src/audio/*.cpp" "src/audio/*hpp")
 
-SET(Q_Object "src/client/MyUDP.hpp")
-QT5_WRAP_CPP(Q_OBJECT_MOC ${Q_Object})
+# SET(Q_Object "src/client/MyUDP.hpp")
+# QT5_WRAP_CPP(Q_OBJECT_MOC ${Q_Object})
 
-add_executable (babel_client ${Q_OBJECT_MOC} ${CLIENT_SRC} ${COMMON})
+add_executable (babel_client ${CLIENT_SRC} ${COMMON})
 
 target_include_directories(babel_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/audio)
 target_link_libraries(babel_client PUBLIC ${CONAN_LIBS})
