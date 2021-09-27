@@ -21,7 +21,7 @@ MyUDP::MyUDP(QObject *parent) : QObject(parent)
     connect(socket, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
-//MyUDP::~MyUDP() {}
+MyUDP::~MyUDP() {}
 
 void MyUDP::HelloUDP()
 {
