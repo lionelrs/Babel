@@ -1,0 +1,49 @@
+/*
+** EPITECH PROJECT, 2021
+** B-CPP-500-NCE-5-1-babel-lionel.da-rocha-da-silva
+** File description:
+** Buffer
+*/
+
+#include "Buffer.hpp"
+
+Babel::Buffer::Buffer()
+{
+    _frameIndex = 0;
+    _maxFrameIndex = NUM_SECONDS * SAMPLE_RATE;
+    int numSamples = NUM_SECONDS * SAMPLE_RATE * NUM_CHANNELS;
+    _sampleBuffer = new SAMPLE[numSamples];
+    for (size_t i = 0; i < numSamples; i++) {
+        _sampleBuffer[i] = 0;
+    }
+    
+}
+
+Babel::Buffer::~Buffer()
+{
+}
+
+Babel::SAMPLE *Babel::Buffer::getBuffer() const
+{
+    return _sampleBuffer;
+}
+
+int Babel::Buffer::getFrameIndex() const
+{
+    return _frameIndex;
+}
+
+int Babel::Buffer::getMaxFrameIndex() const
+{
+    return _maxFrameIndex;
+}
+
+void Babel::Buffer::setFrameIndex(int idx)
+{
+    _frameIndex = idx;
+}
+
+void Babel::Buffer::setMaxFrameIndex(int idx)
+{
+    _maxFrameIndex = idx;
+}

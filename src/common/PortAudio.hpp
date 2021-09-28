@@ -15,11 +15,9 @@
 #include "PortAudioException.hpp"
 #include "IAudio.hpp"
 #include <cstdio>
+#include "Buffer.hpp"
 
-#define SAMPLE_RATE  (44100)
 #define FRAMES_PER_BUFFER (512)
-#define NUM_SECONDS     (5)
-#define NUM_CHANNELS    (2)
 /* #define DITHER_FLAG     (paDitherOff) */
 #define DITHER_FLAG     (0) 
 
@@ -48,13 +46,6 @@ typedef unsigned char SAMPLE;
 #define PRINTF_S_FORMAT "%d"
 #endif
 
-typedef struct
-{
-    int frameIndex;
-    int maxFrameIndex;
-    std::vector<SAMPLE> recordedSamples;
-} paTestData;
-
 namespace Babel {
     class PortAudio : virtual public IAudio {
         public:
@@ -73,9 +64,9 @@ namespace Babel {
             int getMaxOutputChannels() const;
             void setInputDevice(std::string deviceName);
             void setOutputDevice(std::string deviceName);
+            Buffer &getBuffer();
             
         private:
-            void initData();
             static int recordCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
             static int playCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
             PaStream *_stream;
@@ -91,8 +82,8 @@ namespace Babel {
             PaStreamParameters _outputParams;
 	        const PaDeviceInfo *_inputDevice;
 	        const PaDeviceInfo *_outputDevice;
-            paTestData _data;
             bool _isInit;
+            Buffer _data;
     };
 };
 
