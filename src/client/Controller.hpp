@@ -20,6 +20,7 @@ class Controller : public QObject {
     public slots:
         void sendData();
         void listenData();
+        void loginToServ();
 
     protected:
     private:

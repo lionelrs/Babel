@@ -10,7 +10,8 @@
 Controller::Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp) : _w(w), _writeUdp(writeUdp), _readUdp(readUdp)
 {
     connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
-    connect(_readUdp->getSocket(), SIGNAL(readyRead()), _readUdp, SLOT(listenData()));
+    connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenData()));
+
 }
 
 Controller::~Controller()
@@ -26,4 +27,9 @@ void Controller::sendData()
 void Controller::listenData()
 {
     _readUdp->readData();
+}
+
+void Controller::loginToServ()
+{
+
 }
