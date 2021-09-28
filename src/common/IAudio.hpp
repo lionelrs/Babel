@@ -9,6 +9,7 @@
 #define IAUDIO_HPP_
 
 #include <string>
+#include "Buffer.hpp"
 
 namespace Babel {
     class IAudio {
@@ -27,6 +28,7 @@ namespace Babel {
             virtual int getMaxOutputChannels() const = 0;
             virtual void setInputDevice(std::string deviceName) = 0;
             virtual void setOutputDevice(std::string deviceName) = 0;
+            virtual Buffer &getBuffer() = 0;
         private:
     };
 }

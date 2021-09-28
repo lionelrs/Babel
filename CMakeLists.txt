@@ -23,7 +23,7 @@ file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp")
 
 file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
 
-file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp" "src/audio/*.cpp" "src/audio/*hpp")
+file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
 
 # SET(Q_Object "src/client/MyUDP.hpp")
 # QT5_WRAP_CPP(Q_OBJECT_MOC ${Q_Object})

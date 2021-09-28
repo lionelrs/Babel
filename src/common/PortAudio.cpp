@@ -10,35 +10,11 @@
 Babel::PortAudio::PortAudio()
 {
     _isInit = false;
-    initData();
-    init();
-    std::cout << getDeviceCount() << std::endl;
-    std::cout << getDefaultInputDevice() << std::endl;
-    std::cout << getDefaultOutputDevice() << std::endl;
-    _deviceNb = getDeviceCount();
-	if (_deviceNb < 0) {
-        terminate();
-	    throw PortAudioException(std::string("Failed to get devices"));
-	}
-    else if (_deviceNb == 0) {
-        terminate();
-	    throw PortAudioException(std::string("No devices found"));
-    }
-    else {
-        std::cout << _deviceNb << std::endl;
-        initData();
-        setInputDevice("default");
-        record();
-        _data.frameIndex = 0;
-        setOutputDevice("default");
-        play();
-
-    }
-    terminate();
 }
 
 Babel::PortAudio::~PortAudio()
 {
+    terminate();
 }
 
 void Babel::PortAudio::init()
@@ -51,6 +27,8 @@ void Babel::PortAudio::init()
         }
     }
     _isInit = true;
+    setInputDevice("default");
+    setOutputDevice("default");
 }
 
 void Babel::PortAudio::terminate()
@@ -68,7 +46,7 @@ void Babel::PortAudio::terminate()
 
 void Babel::PortAudio::record()
 {
-    err = Pa_OpenStream(&_stream, &_inputParams, NULL, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, recordCallback, &_data);
+    err = Pa_OpenStream(&_stream, &_inputParams, NULL, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, recordCallback, this);
     if (err != paNoError) {
         terminate();
         throw PortAudioException(std::string("Failed to open stream") + Pa_GetErrorText(err));
@@ -81,7 +59,7 @@ void Babel::PortAudio::record()
     std::cout << "\n=;== Now recording!! Please speak into the microphone. ===\n";
     while ((err = Pa_IsStreamActive(_stream)) == 1) {
         Pa_Sleep(1000);
-        printf("index = %d\n", _data.frameIndex ); fflush(stdout);
+        printf("index = %d\n", _data.getFrameIndex() ); fflush(stdout);
     }
     if (err < 0) {
         terminate();
@@ -92,13 +70,25 @@ void Babel::PortAudio::record()
         terminate();
         throw PortAudioException(std::string("Failed to close stream") + Pa_GetErrorText(err));
     }
+    FILE  *fid;
+    fid = fopen("recorded.raw", "wb");
+    if( fid == NULL )
+    {
+        printf("Could not open file.");
+    }
+    else
+    {
+        fwrite(_data.getBuffer(), NUM_CHANNELS * sizeof(SAMPLE), _totalFrames, fid );
+        fclose( fid );
+        printf("Wrote data to 'recorded.raw'\n");
+    }
 }
 
 void Babel::PortAudio::play()
 {
-    _data.frameIndex = 0;
+    _data.setFrameIndex(0);
     std::cout << "\n=== Now playing back. ===\n";
-    err = Pa_OpenStream(&_stream, NULL, &_outputParams, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, playCallback, &_data);
+    err = Pa_OpenStream(&_stream, NULL, &_outputParams, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, playCallback, this);
     if  (err != paNoError) {
         terminate();
         throw PortAudioException(std::string("Failed to open stream") + Pa_GetErrorText(err));
@@ -210,17 +200,9 @@ void Babel::PortAudio::setOutputDevice(std::string deviceName)
     _outputParams.hostApiSpecificStreamInfo = NULL;
 }
 
-void Babel::PortAudio::initData()
+Babel::Buffer &Babel::PortAudio::getBuffer()
 {
-    _data.maxFrameIndex = _totalFrames = NUM_SECONDS * SAMPLE_RATE; /* Record for a few seconds. */
-    _data.frameIndex = 0;
-    _numSamples = _totalFrames * NUM_CHANNELS;
-
-    for (size_t i = 0; i < _numSamples; i++) {
-        SAMPLE tmp = 0;
-        _data.recordedSamples.push_back(tmp);
-    }
-    
+    return _data;
 }
 
 int Babel::PortAudio::recordCallback(const void *inputBuffer, void *outputBuffer,
@@ -229,13 +211,13 @@ int Babel::PortAudio::recordCallback(const void *inputBuffer, void *outputBuffer
                                PaStreamCallbackFlags statusFlags,
                                void *userData)
 {
-    paTestData *data = static_cast<paTestData*>(userData);
+    PortAudio *data = static_cast<PortAudio*>(userData);
     const SAMPLE *rptr = (const SAMPLE *)inputBuffer;
-    SAMPLE *wptr = &data->recordedSamples[data->frameIndex * NUM_CHANNELS];
+    SAMPLE *wptr = &data->_data.getBuffer()[data->_data.getFrameIndex() * NUM_CHANNELS];
     long framesToCalc;
     long i;
     int finished;
-    unsigned long framesLeft = data->maxFrameIndex - data->frameIndex;
+    unsigned long framesLeft = data->_data.getMaxFrameIndex() - data->_data.getFrameIndex();
     (void)outputBuffer;
     (void)timeInfo;
     (void)statusFlags;
@@ -260,7 +242,7 @@ int Babel::PortAudio::recordCallback(const void *inputBuffer, void *outputBuffer
             if (NUM_CHANNELS == 2) *wptr++ = *rptr++;  /* right */
         }
     }
-    data->frameIndex += framesToCalc;
+    data->_data.setFrameIndex(data->_data.getFrameIndex() + framesToCalc);
     return finished;
 }
 
@@ -270,12 +252,12 @@ int Babel::PortAudio::playCallback(const void *inputBuffer, void *outputBuffer,
                           PaStreamCallbackFlags statusFlags,
                           void *userData)
 {
-    paTestData *data = static_cast<paTestData *>(userData);
-    SAMPLE *rptr = &data->recordedSamples[data->frameIndex * NUM_CHANNELS];
+    PortAudio *data = static_cast<PortAudio*>(userData);
+    SAMPLE *rptr = &data->_data.getBuffer()[data->_data.getFrameIndex() * NUM_CHANNELS];
     SAMPLE *wptr = (SAMPLE*)outputBuffer;
     unsigned int i;
     int finished;
-    unsigned int framesLeft = data->maxFrameIndex - data->frameIndex;
+    unsigned int framesLeft = data->_data.getMaxFrameIndex() - data->_data.getFrameIndex();
     (void)inputBuffer;
     (void)timeInfo;
     (void)statusFlags;
@@ -289,7 +271,7 @@ int Babel::PortAudio::playCallback(const void *inputBuffer, void *outputBuffer,
             *wptr++ = 0;  /* left */
             if (NUM_CHANNELS == 2) *wptr++ = 0;  /* right */
         }
-        data->frameIndex += framesLeft;
+        data->_data.setFrameIndex(data->_data.getFrameIndex() + framesLeft);
         finished = paComplete;
     }
     else {
@@ -297,7 +279,7 @@ int Babel::PortAudio::playCallback(const void *inputBuffer, void *outputBuffer,
             *wptr++ = *rptr++;  /* left */
             if (NUM_CHANNELS == 2) *wptr++ = *rptr++;  /* right */
         }
-        data->frameIndex += framesPerBuffer;
+        data->_data.setFrameIndex(data->_data.getFrameIndex() + framesPerBuffer);
         finished = paContinue;
     }
     return finished;

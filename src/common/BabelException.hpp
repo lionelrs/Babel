@@ -14,6 +14,7 @@
 #define WHERE (std::string(__FILE__) + " " + std::to_string(__LINE__))
 
 namespace Babel {
+    using SAMPLE = float;
     class BabelException : public std::exception {
         public:
             BabelException(const std::string &what): _what(what) {};
