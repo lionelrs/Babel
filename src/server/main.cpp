@@ -5,11 +5,18 @@
 ** ASIO serv main
 */
 
-#include <cstdlib>
-#include <iostream>
-#include "asio.hpp"
+#include "AsioTcpServ.hpp"
 
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-  return 0;
+    asio::io_context io_context;
+
+    AsioTcpServ server(io_context, std::atoi(av[1]));
+
+  
+    server.start_accept();
+
+    io_context.run();
+
+    return (0);
 }
