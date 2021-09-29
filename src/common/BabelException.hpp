@@ -14,19 +14,16 @@
 #define WHERE (std::string(__FILE__) + " " + std::to_string(__LINE__))
 
 namespace Babel {
+    using SAMPLE = float;
     class BabelException : public std::exception {
         public:
-            BabelException(const std::string &what, const std::string &where): _what(what), _where(where) {};
+            BabelException(const std::string &what): _what(what) {};
             ~BabelException() override = default;
             const char *what() const noexcept override {
                 return _what.c_str();
             }
-            const char *where() const noexcept {
-                return _where.c_str();
-            }
         private:
             std::string _what;
-            std::string _where;
     };
 };
 
