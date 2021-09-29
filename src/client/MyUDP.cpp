@@ -7,20 +7,24 @@
 
 #include "MyUDP.hpp"
 
-MyUDP::MyUDP(std::string ip, int port, QObject *parent) : _ip(ip), _port(port), QObject(parent)
+MyUDP::MyUDP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
-    _socket = new QUdpSocket(this);
-    _socket->bind(QHostAddress(_ip.c_str()), _port);
 }
 
 MyUDP::~MyUDP()
 {
 }
 
-void MyUDP::writeData(Message msg)
+void MyUDP::openConnection()
+{
+    _socket = new QUdpSocket();
+    _socket->bind(QHostAddress(_ip.c_str()), _port);
+}
+
+void MyUDP::writeData(Message data)
 {
     QByteArray writeData;
-    writeData.append(msg.body().toLocal8Bit());
+    writeData.append(data.getBody().toLocal8Bit());
     _socket->writeDatagram(writeData, QHostAddress(_ip.c_str()), _port);
     writeData.clear();
 }
@@ -42,15 +46,5 @@ void MyUDP::readData()
 
 QUdpSocket *MyUDP::getSocket() const
 {
-    return (_socket);
-}
-
-int MyUDP::getPort() const
-{
-    return (_port);
-}
-
-std::string MyUDP::getIp() const
-{
-    return (_ip);
+    return _socket;
 }

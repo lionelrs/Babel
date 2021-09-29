@@ -7,10 +7,18 @@
 
 #include "Controller.hpp"
 
-Controller::Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp) : _w(w), _writeUdp(writeUdp), _readUdp(readUdp)
+Controller::Controller()
 {
-    connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
-    connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenData()));
+    _window = new QMainWindow();
+    _window->setWindowTitle("Babel Voice Client");
+    _window->resize(QSize(600, 300));
+    _loginWidget = new LoginWidget();
+    _tcp = new MyTCP("10.16.253.42", 4242);
+
+    //MyUDP writeUdp("10.16.253.70", 1234);
+    //MyUDP readUdp("10.16.252.186", 4321);
+    //connect(_window->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
+    //connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(readData()));
 
 }
 
@@ -18,10 +26,16 @@ Controller::~Controller()
 {
 }
 
-void Controller::sendData()
+void Controller::sendUdpData()
 {
-    Message msg = _w->setAndGetThisMessage();
-    _writeUdp->writeData(msg);
+    Message data("Body", "Header");
+    _writeUdp->writeData(data);
+}
+
+void Controller::sendTcpLoginForm()
+{
+    std::cout << _loginWidget->getLoginForm().getHeader().toStdString() << " " << _loginWidget->getLoginForm().getBody().toStdString() << std::endl;
+    _tcp->writeData(_loginWidget->getLoginForm());
 }
 
 void Controller::listenData()
@@ -29,7 +43,10 @@ void Controller::listenData()
     _readUdp->readData();
 }
 
-void Controller::loginToServ()
+void Controller::startBabel()
 {
-
+    _window->setCentralWidget(_loginWidget);
+    _tcp->openConnection();
+    connect(_loginWidget->getButton(), SIGNAL(clicked()), this,  SLOT(sendTcpLoginForm()));
+    _window->show();
 }

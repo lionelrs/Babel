@@ -8,30 +8,27 @@
 #ifndef MYUDP_HPP_
 #define MYUDP_HPP_
 
-#include <QObject>
 #include <QUdpSocket>
-#include <iostream>
-#include "Message.hpp"
 
-class MyUDP : public QObject
+#include "Socket.hpp"
+
+class MyUDP : public Socket
 {
-        Q_OBJECT
     public:
-        explicit MyUDP(std::string ip, int port, QObject *parent = 0);
+        explicit MyUDP(const std::string ip, const int port, QObject *parent = 0);
         ~MyUDP();
 
         QUdpSocket *getSocket() const;
-        std::string getIp() const;
-        int getPort() const;
+
+        void openConnection();
+        void writeData(Message msg);
 
     signals:
     public slots:
-        void writeData(Message msg);
         void readData();
+
     private:
         QUdpSocket *_socket;
-        std::string _ip;
-        int _port;
 };
 
 #endif /* !MYUDP_HPP_ */

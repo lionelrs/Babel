@@ -7,45 +7,41 @@
 
 #include "MyTCP.hpp"
 
-MyTCP::MyTCP(std::string ip, int port, QObject *parent) : _ip(ip), _port(port), QObject(parent)
+MyTCP::MyTCP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
-    _socket = new QTcpSocket(this);
-    _socket->bind(QHostAddress(_ip.c_str()), _port);
-    this->connectToServ();
-    connect(_socket, SIGNAL(readyRead()), this, SLOT(listenData()));
 }
 
 MyTCP::~MyTCP()
 {
 }
 
-void MyTCP::connectToServ()
+void MyTCP::openConnection()
 {
-    std::cout << "Trying to establish connection..." << std::endl;
+    _socket = new QTcpSocket();
+    _socket->connectToHost(QHostAddress(_ip.c_str()), _port);
+    connect(_socket, SIGNAL(readyRead()), this, SLOT(listenData()));
+}
+
+void MyTCP::writeData(Message data)
+{
     QByteArray writeData;
-    writeData.append("200\r\n");
+    writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit());
     _socket->write(writeData);
+    _socket->waitForBytesWritten();
+    std::cout << "Writting to server" << std::endl;
     writeData.clear();
 }
 
-void MyTCP::listenData()
+void MyTCP::readData()
 {
     QByteArray readBuffer;
     readBuffer.resize(_socket->bytesAvailable());
 
     readBuffer = _socket->read(_socket->bytesAvailable());
-    qDebug() << "Message: " << readBuffer;
+    qDebug() << "Server response: " << readBuffer;
 }
 
 QTcpSocket *MyTCP::getSocket() const
 {
-    return (_socket);
-}
-std::string MyTCP::getIp() const
-{
-    return (_ip);
-}
-int MyTCP::getPort() const
-{
-    return (_port);
+    return _socket;
 }
