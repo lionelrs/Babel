@@ -8,4 +8,16 @@
 #ifndef SEPCOMMANDS_HPP_
 #define SEPCOMMANDS_HPP_
 
+#include "ISEPCommand.hpp"
+#include <iostream>
+
+struct SEPCommands
+{
+    int             code;
+    std::string     arg1;
+    std::string     arg2;
+    std::string     arg3;
+};
+
+
 #endif /* !SEPCOMMANDS_HPP_ */

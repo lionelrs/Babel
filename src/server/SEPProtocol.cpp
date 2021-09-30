@@ -45,5 +45,4 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
 
 ISEPCommand* SEPProtocol::whosThatComand(int code) const
 {
-    return NULL;
 }

@@ -25,7 +25,7 @@ public:
     }
     asio::ip::tcp::socket&  getSocket();
 
-    void                    sendMessage();
+    void                    startComunication();
 
 protected:
 private:
