@@ -17,22 +17,22 @@ Message::~Message()
 
 Message::Message(const Message &other)
 {
-    m_body = other.m_body;
-    m_headers = other.m_headers;
+    _body = other._body;
+    _header = other._header;
 }
 
-Message::Message(const QString &body, const QStringList &headers)
+Message::Message(const QString &body, const QString &header)
 {
-    m_body = body;
-    m_headers = headers;
+    _body = body;
+    _header = header;
 }
 
-QString Message::body() const
+QString Message::getBody() const
 {
-    return m_body;
+    return _body;
 }
 
-QStringList Message::headers() const
+QString Message::getHeader() const
 {
-    return m_headers;
+    return _header;
 }

@@ -19,5 +19,4 @@ struct SEPCommands
     std::string     arg3;
 };
 
-
 #endif /* !SEPCOMMANDS_HPP_ */

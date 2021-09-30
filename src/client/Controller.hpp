@@ -8,25 +8,32 @@
 #ifndef CONTROLLER_HPP_
 #define CONTROLLER_HPP_
 
+#include <QMainWindow>
+
 #include "MyUDP.hpp"
-#include "Window.hpp"
+#include "MyTCP.hpp"
+#include "LoginWidget.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
     public:
-        Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp);
+        Controller();
         ~Controller();
 
+        void startBabel();
+
     public slots:
-        void sendData();
+        void sendUdpData();
         void listenData();
-        void loginToServ();
+        void sendTcpLoginForm();
 
     protected:
     private:
+        QMainWindow *_window;
+        LoginWidget *_loginWidget;
         MyUDP *_readUdp;
         MyUDP *_writeUdp;
-        Window *_w;
+        MyTCP *_tcp;
 
 };
 
