@@ -7,7 +7,7 @@
 
 #include "Socket.hpp"
 
-Socket::Socket(const std::string ip, const int port, QObject *parent) : QObject(parent)
+Socket::Socket(const std::string ip, const int port, QObject *parent) : _ip(ip), _port(port), QObject(parent)
 {
 }
 

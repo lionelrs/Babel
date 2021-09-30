@@ -19,13 +19,13 @@ void MyTCP::openConnection()
 {
     _socket = new QTcpSocket();
     _socket->connectToHost(QHostAddress(_ip.c_str()), _port);
-    connect(_socket, SIGNAL(readyRead()), this, SLOT(listenData()));
+    connect(_socket, SIGNAL(readyRead()), this, SLOT(readData()));
 }
 
 void MyTCP::writeData(Message data)
 {
     QByteArray writeData;
-    writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit());
+    writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit() + "/");
     _socket->write(writeData);
     _socket->waitForBytesWritten();
     std::cout << "Writting to server" << std::endl;
