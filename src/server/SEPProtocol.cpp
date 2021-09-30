@@ -21,7 +21,7 @@ std::string SEPProtocol::processCommand(const std::string &cliInput)
     return "";
 }
 
-std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const 
+std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
 {
     std::vector<std::string> arr;
     std::size_t pos = 0;
