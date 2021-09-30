@@ -32,7 +32,7 @@ void AsioTcpServ::handle_connexion(TcpConnection::pointer new_connection,
     std::cout << "client accepter" << std::endl;
     if (!error)
     {
-        new_connection->sendMessage();
+        new_connection->startComunication();
     }
 
     start_accept();

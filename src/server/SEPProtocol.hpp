@@ -11,7 +11,8 @@
 #include <map>
 #include <vector>
 
-#include "ISEPCommand.hpp"
+#include "../common/SEPCommands.hpp"
+#include "../common/Serializer.hpp"
 
 class SEPProtocol {
 public:
@@ -27,7 +28,7 @@ private:
     std::vector<std::string>    getInfosCommand(std::string command) const;
     ISEPCommand*                whosThatComand(int code) const;
 
-    std::map<int, factoryF>     allCommands;
+    std::map<int, factoryF>     _allCommands;
 };
 
 #endif /* !SEPProtocole */
