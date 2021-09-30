@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "qpushbutton": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "string": "cpp"
     }
 }

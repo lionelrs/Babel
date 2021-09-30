@@ -11,7 +11,7 @@
 #include <exception>
 #include <string>
 
-#define WHERE (std::string(__FILE__) + " " + std::to_string(__LINE__))
+#define WHERE ("exception at : \n\t" + std::string(__FILE__) + " l:" + std::to_string(__LINE__))
 
 namespace Babel {
     using SAMPLE = float;
