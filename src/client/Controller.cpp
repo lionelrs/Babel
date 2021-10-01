@@ -7,13 +7,13 @@
 
 #include "Controller.hpp"
 
-Controller::Controller()
+Controller::Controller(int port, char *ip) : _port(port), _ip(ip)
 {
     _window = new QMainWindow();
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
     _loginWidget = new LoginWidget();
-    _tcp = new MyTCP("10.16.253.42", 4242);
+    _tcp = new MyTCP(_ip, _port);
 
     //MyUDP writeUdp("10.16.253.70", 1234);
     //MyUDP readUdp("10.16.252.186", 4321);

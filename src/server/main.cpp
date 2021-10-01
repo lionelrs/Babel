@@ -13,7 +13,7 @@ int main(int ac, char **av)
     try {
         asio::io_context io_context;
         if (ac < 2 || std::atoi(av[1]) < 1025 || std::atoi(av[1]) > 65535)
-            throw Babel::BabelException(WHERE + "\n\t" + "Please provide a valid port (1025 to 65535)");
+            throw Babel::BabelException("Please provide a valid port (1025 to 65535)");
         AsioTcpServ server(io_context, std::atoi(av[1]));
         server.start_accept();
         io_context.run();
@@ -21,7 +21,7 @@ int main(int ac, char **av)
     }
     catch(const Babel::BabelException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << WHERE << std::endl << "\t" << e.what() << std::endl;
         return (84);
     }
     return (0);

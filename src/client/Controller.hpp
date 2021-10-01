@@ -17,7 +17,7 @@
 class Controller : public QObject {
         Q_OBJECT
     public:
-        Controller();
+        Controller(int port, char *ip);
         ~Controller();
 
         void startBabel();
@@ -34,6 +34,9 @@ class Controller : public QObject {
         MyUDP *_readUdp;
         MyUDP *_writeUdp;
         MyTCP *_tcp;
+
+        int _port;
+        std::string _ip;
 
 };
 
