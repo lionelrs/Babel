@@ -25,7 +25,7 @@ void MyTCP::openConnection()
 void MyTCP::writeData(Message data)
 {
     QByteArray writeData;
-    writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit() + "/");
+    writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit() + "\r\n");
     _socket->write(writeData);
     _socket->waitForBytesWritten();
     std::cout << "Writting to server" << std::endl;
@@ -38,7 +38,16 @@ void MyTCP::readData()
     readBuffer.resize(_socket->bytesAvailable());
 
     readBuffer = _socket->read(_socket->bytesAvailable());
-    qDebug() << "Server response: " << readBuffer;
+    qDebug() << "Server response serialized: " << readBuffer;
+    std::string ass = readBuffer.toStdString();
+    char * ass_hole = new char[readBuffer.size() + 1];
+    std::copy(ass.begin(), ass.end(), ass_hole);
+    ass_hole[readBuffer.size()] = '\0';
+    SEPCommands *data = Serializer::unSerialize(ass_hole);
+
+    delete[] ass_hole;
+    std::cout << "Server response unserialized: " << data->code << std::endl;
+
 }
 
 QTcpSocket *MyTCP::getSocket() const

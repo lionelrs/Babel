@@ -28,7 +28,9 @@ public:
     {
         void *command = NULL;
         command = buff;
-        return static_cast<SEPCommands*>(command);
+        SEPCommands *test = static_cast<SEPCommands *>(command);
+        std::cout << "In unSerialize function: " << test->code << std::endl;
+        return (test);
     }
 
 protected:

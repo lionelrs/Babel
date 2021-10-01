@@ -12,6 +12,8 @@
 #include <QTcpSocket>
 
 #include "Socket.hpp"
+#include "../common/Serializer.hpp"
+#include "../common/SEPCommands.hpp"
 
 class MyTCP : public Socket {
     public:
