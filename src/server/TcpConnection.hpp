@@ -35,7 +35,7 @@ private:
     void    handleRead(const asio::error_code& error, size_t size);
 
     asio::ip::tcp::socket   _socket;
-    std::string             _message;
+    asio::streambuf         _message;
     std::string             _finalMessage;
 };
 

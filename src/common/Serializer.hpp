@@ -15,14 +15,20 @@
 #include <cstdint>
 #include <cstring>
 
+#include "asio.hpp"
+
 
 class Serializer {
 public:
-    static char*            serialize(const SEPCommands &command)
+    static asio::mutable_buffers_1 serialize(const SEPCommands &command)
     {
-        char *buff = new char(sizeof(command));
+        char buff[sizeof(command)];
+
         std::memcpy(buff, &command, sizeof(buff));
-        return buff;
+
+        std::cout << buff << std::endl;
+
+        return asio::buffer(buff);
     }
     static SEPCommands      *unSerialize(char * buff)
     {
