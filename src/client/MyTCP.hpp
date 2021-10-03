@@ -20,6 +20,7 @@
 #include "../common/SEPCommands.hpp"
 
 class MyTCP : public Socket {
+        Q_OBJECT
     public:
         MyTCP(const std::string ip, const int port, QObject *parent = 0);
         ~MyTCP();

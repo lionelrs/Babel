@@ -22,6 +22,7 @@ class Controller : public QObject {
 
         void startBabel();
 
+    signals:
     public slots:
         void sendUdpData();
         void listenData();

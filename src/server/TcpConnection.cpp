@@ -50,18 +50,13 @@ void TcpConnection::startComunication()
     test.code = 200;
     std::memset(test.ip, '\0', 5);
     std::strcpy(test.ip, "10.0.127.85");
-    char buff[sizeof(test) + 1];
-    std::memset(buff, '\0', sizeof(test) + 1);
 
-    std::memcpy(buff, &test, sizeof(test));
-
-    std::cout << ((SEPCommands *)buff)->ip << std::endl;
     asio::async_read_until(_socket, _message, "\r\n",
                             std::bind(&TcpConnection::handleRead, shared_from_this(),
                                 std::placeholders::_1,
                                 std::placeholders::_2));
 
-    asio::async_write(_socket, asio::buffer(buff),
+    asio::async_write(_socket, asio::buffer(Serializer::serialize(test)),
                         std::bind(&TcpConnection::handleWrite, shared_from_this(),
                             std::placeholders::_1,
                             std::placeholders::_2));
