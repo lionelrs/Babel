@@ -13,13 +13,7 @@ Controller::Controller(int port, char *ip) : _port(port), _ip(ip)
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
     _loginWidget = new LoginWidget();
-    _tcp = new MyTCP(_ip, _port);
-
-    //MyUDP writeUdp("10.16.253.70", 1234);
-    //MyUDP readUdp("10.16.252.186", 4321);
-    //connect(_window->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
-    //connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(readData()));
-
+    _tcp = new MyTCP(ip, port);
 }
 
 Controller::~Controller()

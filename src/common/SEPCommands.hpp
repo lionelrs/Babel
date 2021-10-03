@@ -13,10 +13,10 @@
 
 struct SEPCommands
 {
-    int             code;
-    std::string     arg1;
-    std::string     arg2;
-    std::string     arg3;
+    short port;
+    int code;
+    char ip[1024];
 };
+
 
 #endif /* !SEPCOMMANDS_HPP_ */

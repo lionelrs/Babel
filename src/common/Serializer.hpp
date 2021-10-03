@@ -20,22 +20,18 @@
 
 class Serializer {
 public:
-    static asio::mutable_buffers_1 serialize(const SEPCommands &command)
+    static asio::mutable_buffer serialize(const SEPCommands &command)
     {
         char buff[sizeof(command)];
 
         std::memcpy(buff, &command, sizeof(buff));
 
         std::cout << buff << std::endl;
-
         return asio::buffer(buff);
     }
     static SEPCommands      *unSerialize(char * buff)
     {
-        void *command = NULL;
-        command = buff;
-        SEPCommands *test = static_cast<SEPCommands *>(command);
-        std::cout << "In unSerialize function: " << test->code << std::endl;
+        SEPCommands *test = (SEPCommands *)buff;
         return (test);
     }
 

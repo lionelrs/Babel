@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     {
         arg_check(argc, argv);
         QApplication app(argc, argv);
-        Controller controller(argc, argv[2]);
+        Controller controller(std::atoi(argv[2]), argv[1]);
         controller.startBabel();
         return app.exec();
     }

@@ -9,6 +9,7 @@
 
 MyTCP::MyTCP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
+    _command = NULL;
 }
 
 MyTCP::~MyTCP()
@@ -32,22 +33,19 @@ void MyTCP::writeData(Message data)
     writeData.clear();
 }
 
+SEPCommands *MyTCP::getSEPCommand() const
+{
+    return (_command);
+}
+
 void MyTCP::readData()
 {
-    QByteArray readBuffer;
+    QByteArray readBuffer = {0};
     readBuffer.resize(_socket->bytesAvailable());
-
     readBuffer = _socket->read(_socket->bytesAvailable());
-    qDebug() << "Server response serialized: " << readBuffer;
-    std::string ass = readBuffer.toStdString();
-    char * ass_hole = new char[readBuffer.size() + 1];
-    std::copy(ass.begin(), ass.end(), ass_hole);
-    ass_hole[readBuffer.size()] = '\0';
-    SEPCommands *data = Serializer::unSerialize(ass_hole);
-
-    delete[] ass_hole;
-    std::cout << "Server response unserialized: " << data->code << std::endl;
-
+    SEPCommands *data = Serializer::unSerialize(readBuffer.data());
+    _command = data;
+    std::cout << "SEP Command recieved !" << std::endl;
 }
 
 QTcpSocket *MyTCP::getSocket() const

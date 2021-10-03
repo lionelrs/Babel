@@ -11,6 +11,10 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
+#include <ctime>
+#include <string>
+#include <cstdint>
+#include <cstring>
 #include "Socket.hpp"
 #include "../common/Serializer.hpp"
 #include "../common/SEPCommands.hpp"
@@ -25,11 +29,14 @@ class MyTCP : public Socket {
         void writeData(Message msg);
         void openConnection();
 
+        SEPCommands *getSEPCommand() const;
+
     signals:
     public slots:
         void readData();
 
     private:
+        SEPCommands *_command;
         QTcpSocket *_socket;
 };
 
