@@ -30,9 +30,9 @@ file(GLOB COMMON "src/common/*.cpp" "src/common/*.hpp")
 
 add_executable (babel_client ${CLIENT_SRC} ${COMMON})
 
-target_include_directories(babel_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/audio)
+target_include_directories(babel_client PUBLIC ${CONAN_INCLUDE_DIRS} /src/common)
 target_link_libraries(babel_client PUBLIC ${CONAN_LIBS})
-target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
+target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack -g3")
 #find_package(Qt5Widgets CONFIG REQUIRED)
 #find_package(Qt5Network CONFIG REQUIRED)
 #find_package(Qt5Core CONFIG REQUIRED)
@@ -42,7 +42,7 @@ target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
 add_executable (babel_server ${SERVER_SRC} ${COMMON})
 
 target_link_libraries(babel_client PUBLIC "-lrt -lm -lasound -ljack")
-target_include_directories(babel_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common /src/audio)
+target_include_directories(babel_server PUBLIC ${CONAN_INCLUDE_DIRS} /src/common)
 target_link_libraries(babel_server PUBLIC ${CONAN_LIBS})
 target_link_libraries(babel_server PUBLIC "-pthread")
 
