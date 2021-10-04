@@ -7,23 +7,40 @@
 
 #include "Controller.hpp"
 
-Controller::Controller(Window *w, MyUDP *writeUdp, MyUDP *readUdp) : _w(w), _writeUdp(writeUdp), _readUdp(readUdp)
+Controller::Controller(int port, char *ip) : _port(port), _ip(ip)
 {
-    connect(_w->getButton(), SIGNAL(clicked()), this, SLOT(sendData()));
-    connect(_readUdp->getSocket(), SIGNAL(readyRead()), _readUdp, SLOT(listenData()));
+    _window = new QMainWindow();
+    _window->setWindowTitle("Babel Voice Client");
+    _window->resize(QSize(600, 300));
+    _loginWidget = new LoginWidget();
+    _tcp = new MyTCP(ip, port);
 }
 
 Controller::~Controller()
 {
 }
 
-void Controller::sendData()
+void Controller::sendUdpData()
 {
-    Message msg = _w->setAndGetThisMessage();
-    _writeUdp->writeData(msg);
+    Message data("Body", "Header");
+    _writeUdp->writeData(data);
+}
+
+void Controller::sendTcpLoginForm()
+{
+    std::cout << _loginWidget->getLoginForm().getHeader().toStdString() << " " << _loginWidget->getLoginForm().getBody().toStdString() << std::endl;
+    _tcp->writeData(_loginWidget->getLoginForm());
 }
 
 void Controller::listenData()
 {
     _readUdp->readData();
+}
+
+void Controller::startBabel()
+{
+    _window->setCentralWidget(_loginWidget);
+    _tcp->openConnection();
+    connect(_loginWidget->getButton(), SIGNAL(clicked()), this,  SLOT(sendTcpLoginForm()));
+    _window->show();
 }

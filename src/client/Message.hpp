@@ -9,23 +9,22 @@
 #define MESSAGE_HPP_
 
 #include <QMetaType>
-#include <QStringList>
+#include <QString>
 
 class Message
 {
     public:
         Message();
         Message(const Message &other);
+        Message(const QString &body, const QString &header);
         ~Message();
 
-        Message(const QString &body, const QStringList &headers);
-
-        QString body() const;
-        QStringList headers() const;
+        QString getBody() const;
+        QString getHeader() const;
 
     private:
-        QString m_body;
-        QStringList m_headers;
+        QString _body;
+        QString _header;
 };
 
 Q_DECLARE_METATYPE(Message);

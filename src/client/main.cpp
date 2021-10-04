@@ -5,31 +5,31 @@
 ** main
 */
 
-#include <iostream>
-#include <unistd.h>
 #include <QApplication>
-
-#include "Message.hpp"
-#include "Window.hpp"
+#include "../common/BabelException.hpp"
 #include "Controller.hpp"
-#include "MyUDP.hpp"
+
+int arg_check(int ac, char *argv[])
+{
+    if (ac < 3) throw Babel::BabelException("./babel_server ip port");
+    if (std::atoi(argv[2]) < 1025 || std::atoi(argv[2]) > 65535)
+        throw Babel::BabelException("Please provide a valid port (1025 to 65535)");
+    return (0);
+}
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
-
-    Window window;
-    MyUDP writeUdp("10.16.253.70", 1234);
-    MyUDP readUdp("10.16.252.186", 4321);
-    Controller controller(&window, &writeUdp, &readUdp);
-
-    QStringList headers;
-    headers << "Babel";
-    QString body = "This is a test.\r\n";
-
-    Message message(body, headers);
-    window.setMessage(message);
-    window.show();
-
-    return app.exec();
+    try
+    {
+        arg_check(argc, argv);
+        QApplication app(argc, argv);
+        Controller controller(std::atoi(argv[2]), argv[1]);
+        controller.startBabel();
+        return app.exec();
+    }
+    catch(const Babel::BabelException& e)
+    {
+        std::cerr << WHERE << std::endl << "\t" << e.what() << std::endl;
+        return (84);
+    }
 }
