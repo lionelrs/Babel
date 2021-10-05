@@ -209,7 +209,7 @@ int Babel::PortAudio::recordCallback(const void *inputBuffer, void *outputBuffer
 {
     Buffer *data = static_cast<Buffer *>(userData);
     const SAMPLE *rptr = (const SAMPLE*)inputBuffer;
-    SAMPLE *wptr = &data->getBuffer()[data->getFrameIndex() * NUM_CHANNELS];
+    SAMPLE *wptr = &data->data()[data->getFrameIndex() * NUM_CHANNELS];
     long framesToCalc;
     long i;
     int finished;
@@ -249,7 +249,7 @@ int Babel::PortAudio::playCallback(const void *inputBuffer, void *outputBuffer,
                           void *userData)
 {
     Buffer *data = static_cast<Buffer *>(userData);
-    SAMPLE *rptr = &data->getBuffer()[data->getFrameIndex() * NUM_CHANNELS];
+    SAMPLE *rptr = &data->data()[data->getFrameIndex() * NUM_CHANNELS];
     SAMPLE *wptr = (SAMPLE*)outputBuffer;
     unsigned int i;
     int finished;
