@@ -20,22 +20,16 @@
 
 class Serializer {
 public:
-    static asio::mutable_buffer serialize(SEPCommands command)
+    static std::string serialize(SEPCommands command)
     {
-        // char buff[sizeof(command)];
-
-        // std::memcpy(buff, &command, sizeof(buff));
-
-        // std::cout << buff << std::endl;
-        // return asio::buffer(buff);
         char buff[sizeof(command) + 1];
         std::memset(buff, '\0', sizeof(command) + 1);
 
         std::memcpy(buff, &command, sizeof(command));
 
-        return (asio::buffer(buff));
+        return (std::string(buff));
     }
-    static SEPCommands      *unSerialize(char * buff)
+    static SEPCommands      *unSerialize(const char * buff)
     {
         SEPCommands *test = (SEPCommands *)buff;
         return (test);

@@ -44,19 +44,12 @@ void testFunc()
 
 void TcpConnection::startComunication()
 {
-
-    SEPCommands test= {0};
-    test.port = 8888;
-    test.code = 200;
-    std::memset(test.ip, '\0', 5);
-    std::strcpy(test.ip, "10.0.127.85");
-
     asio::async_read_until(_socket, _message, "\r\n",
                             std::bind(&TcpConnection::handleRead, shared_from_this(),
                                 std::placeholders::_1,
                                 std::placeholders::_2));
 
-    asio::async_write(_socket, asio::buffer(Serializer::serialize(test)),
+    asio::async_write(_socket, asio::buffer("Welcome !\r\n"),
                         std::bind(&TcpConnection::handleWrite, shared_from_this(),
                             std::placeholders::_1,
                             std::placeholders::_2));
@@ -64,8 +57,6 @@ void TcpConnection::startComunication()
 
 void TcpConnection::handleWrite(const asio::error_code &error, size_t size)
 {
-    std::cout << "le SERVEUR et pret pour parler" << std::endl;
-
     asio::async_read_until(_socket, _message, "\r\n",
                             std::bind(&TcpConnection::handleRead, shared_from_this(),
                                     std::placeholders::_1,
@@ -73,22 +64,32 @@ void TcpConnection::handleWrite(const asio::error_code &error, size_t size)
 
 }
 
+void TcpConnection::checkCode(std::string &data)
+{
+    int len = data.length();
+    char local_data[len + 1];
+    char *token = NULL;
+    std::strcpy(local_data, data.c_str());
+    token = std::strtok(local_data, " \r\n");
+
+    while (token != NULL) {
+        token = std::strtok(NULL, " \r\n");
+        std::cout << token << std::endl;
+    }
+}
+
 void TcpConnection::handleRead(const asio::error_code &error, size_t size)
 {
-    if (!error) {
-        std::istream is(&_message);
-        std::string line;
-        std::getline(is, line);
-        std::cout << line << std::endl << std::endl;
+    std::istream is(&_message);
+    std::string line;
+    std::getline(is, line);
+    if (line != "") {
+        checkCode(line);
     }
     std::string sendMessage = "j'ai lue\r\n";
-    // std::cout << "le clilci a parler: \"";
-    // std::cout << _message << "\""
-    //         << " de taille=" << size << std::endl
-    //         << std::endl;
 
     asio::async_write(_socket, asio::buffer(sendMessage),
-                        std::bind(&TcpConnection::handleWrite, shared_from_this(),
-                            std::placeholders::_1,
-                            std::placeholders::_2));
+                      std::bind(&TcpConnection::handleWrite, shared_from_this(),
+                                std::placeholders::_1,
+                                std::placeholders::_2));
 }

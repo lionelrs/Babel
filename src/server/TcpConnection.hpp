@@ -33,6 +33,7 @@ private:
 
     void    handleWrite(const asio::error_code& err, size_t size);
     void    handleRead(const asio::error_code& error, size_t size);
+    void    checkCode(std::string &data);
 
     asio::ip::tcp::socket   _socket;
     asio::streambuf         _message;
