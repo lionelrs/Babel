@@ -28,6 +28,18 @@ void Controller::sendUdpData()
 
 void Controller::sendTcpLoginForm()
 {
+    SEPCommands data;
+
+    data.code = 100;
+    data.port = _port;
+    std::memset(data.ip, '\0', 1024);
+    std::strcat(data.ip, _ip.c_str());
+    std::strcat(data.ip, ";");
+    std::strcat(data.ip, _loginWidget->getLoginForm().getHeader().toStdString().c_str());
+    std::strcat(data.ip, ";");
+    std::strcat(data.ip, _loginWidget->getLoginForm().getBody().toStdString().c_str());
+    std::strcat(data.ip, "\r\n");
+    Serializer::serialize(data);
     std::cout << _loginWidget->getLoginForm().getHeader().toStdString() << " " << _loginWidget->getLoginForm().getBody().toStdString() << std::endl;
     _tcp->writeData(_loginWidget->getLoginForm());
 }
