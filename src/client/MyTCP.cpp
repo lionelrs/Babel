@@ -43,12 +43,7 @@ void MyTCP::readData()
     QByteArray readBuffer = {0};
     readBuffer.resize(_socket->bytesAvailable());
     readBuffer = _socket->read(_socket->bytesAvailable());
-    SEPCommands *data = Serializer::unSerialize(readBuffer.data());
-    _command = data;
-    std::cout << "SEP Command recieved !" << std::endl;
-    std::cout << "code: " <<_command->code << std::endl;
-    std::cout << "port: " <<_command->port << std::endl;
-    std::cout << "ip: " <<_command->ip << std::endl;
+    std::cout << "Data recieved: " << readBuffer.data() << std::endl;
 }
 
 QTcpSocket *MyTCP::getSocket() const

@@ -11,7 +11,7 @@ Babel::Buffer::Buffer()
 {
     _frameIndex = 0;
     _maxFrameIndex = NUM_SECONDS * SAMPLE_RATE;
-    int numSamples = NUM_SECONDS * SAMPLE_RATE * NUM_CHANNELS;
+    numSamples = NUM_SECONDS * SAMPLE_RATE * NUM_CHANNELS;
     _sampleBuffer = new SAMPLE[numSamples];
     for (size_t i = 0; i < numSamples; i++) {
         _sampleBuffer[i] = 0;
@@ -23,7 +23,7 @@ Babel::Buffer::~Buffer()
 {
 }
 
-Babel::SAMPLE *Babel::Buffer::getBuffer() const
+Babel::SAMPLE *Babel::Buffer::data() const
 {
     return _sampleBuffer;
 }
@@ -46,4 +46,24 @@ void Babel::Buffer::setFrameIndex(int idx)
 void Babel::Buffer::setMaxFrameIndex(int idx)
 {
     _maxFrameIndex = idx;
+}
+
+void Babel::Buffer::setBuffer(SAMPLE *buffer)
+{
+    
+    std::cout << numSamples << std::endl;
+    for (size_t i = 0; i < numSamples; i++) {
+        _sampleBuffer[i] = buffer[i];
+    }
+    std::cout << "set buffer\n";
+}
+
+void Babel::Buffer::setSize(int size)
+{
+    numSamples = size;
+}
+
+int Babel::Buffer::size() const
+{
+    return numSamples;
 }
