@@ -9,10 +9,9 @@
 #define BUFFER_HPP_
 
 #include "BabelException.hpp"
-
-#define NUM_SECONDS     (5)
-#define SAMPLE_RATE  (44100)
-#define NUM_CHANNELS    (2)
+#include <iostream>
+#include <vector>
+#include "babelDefines.hpp"
 
 namespace Babel {
     class Buffer {
@@ -24,9 +23,14 @@ namespace Babel {
             int getMaxFrameIndex() const;
             void setFrameIndex(int idx);
             void setMaxFrameIndex(int idx);
+            void setBuffer(SAMPLE *buffer);
+            void setSize(int size);
+            int size() const;
         private:
+            int numSamples;
             int _frameIndex;
             int _maxFrameIndex;
+            // std::vector<SAMPLE> _buffer;
             SAMPLE *_sampleBuffer;
     };
 }

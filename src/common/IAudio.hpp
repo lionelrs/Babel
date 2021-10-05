@@ -10,6 +10,7 @@
 
 #include <string>
 #include "Buffer.hpp"
+#include "ICompressor.hpp"
 
 namespace Babel {
     class IAudio {
@@ -29,6 +30,7 @@ namespace Babel {
             virtual void setInputDevice(std::string deviceName) = 0;
             virtual void setOutputDevice(std::string deviceName) = 0;
             virtual Buffer &getBuffer() = 0;
+            virtual ICompressor &getCompressor() = 0;
         private:
     };
 }
