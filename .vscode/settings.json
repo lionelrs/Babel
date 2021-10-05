@@ -54,7 +54,8 @@
         "thread": "cpp",
         "cinttypes": "cpp",
         "typeinfo": "cpp",
+        "variant": "cpp",
         "qpushbutton": "cpp",
-        "variant": "cpp"
+        "*.ipp": "cpp"
     }
 }

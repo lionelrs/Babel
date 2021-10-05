@@ -23,7 +23,7 @@ Babel::Buffer::~Buffer()
 {
 }
 
-Babel::SAMPLE *Babel::Buffer::getBuffer() const
+Babel::SAMPLE *Babel::Buffer::data() const
 {
     return _sampleBuffer;
 }
