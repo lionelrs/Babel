@@ -13,7 +13,7 @@ Babel::Opus::Opus()
 {
     numChannels = NUM_CHANNELS;
     sampleRate = SAMPLE_RATE;
-    encoder = opus_encoder_create(sampleRate, numChannels, OPUS_APPLICATION_VOIP, &error);
+    encoder = opus_encoder_create(sampleRate, numChannels, OPUS_APPLICATION_AUDIO, &error);
     if (encoder == nullptr) {
         throw OpusException(std::string("Failed to create encoder: error ") + getError(error));
     }

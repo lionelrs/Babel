@@ -18,7 +18,7 @@ namespace Babel {
         public:
             Buffer();
             ~Buffer();
-            SAMPLE *getBuffer() const;
+            SAMPLE *data() const;
             int getFrameIndex() const;
             int getMaxFrameIndex() const;
             void setFrameIndex(int idx);
