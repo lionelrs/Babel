@@ -14,6 +14,7 @@
 #include <asio.hpp>
 
 #include "SEPProtocol.hpp"
+#include "SqliteDataBase.hpp"
 
 class TcpConnection : public std::enable_shared_from_this<TcpConnection>, public SEPProtocol
 {
