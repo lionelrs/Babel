@@ -23,12 +23,13 @@ public:
 
 protected:
 private:
-    typedef ISEPCommand* (SEPProtocol::*factoryF)();
+    typedef std::string (SEPProtocol::*factoryF)(std::vector<std::string> arg);
 
     std::vector<std::string>    getInfosCommand(std::string command) const;
-    ISEPCommand*                whosThatComand(int code) const;
 
     std::map<int, factoryF>     _allCommands;
+
+    std::string     RequestConnection(std::vector<std::string> args);
 };
 
 #endif /* !SEPProtocole */

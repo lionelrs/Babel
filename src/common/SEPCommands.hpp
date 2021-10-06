@@ -8,7 +8,7 @@
 #ifndef SEPCOMMANDS_HPP_
 #define SEPCOMMANDS_HPP_
 
-#include "ISEPCommand.hpp"
+#include "ASEPCommand.hpp"
 #include <iostream>
 
 struct SEPCommands
@@ -27,6 +27,16 @@ enum SEPCode {
     ERROR = 550,
     REQUEST_USERS = 600,
     DISCONECT = 700
+};
+
+class SEP300ConnectionRequest : public ASEPCommand
+{
+    public:
+        SEP300ConnectionRequest();
+        ~SEP300ConnectionRequest();
+
+        std::string runFonction(std::vector<std::string> args);
+    private:
 };
 
 

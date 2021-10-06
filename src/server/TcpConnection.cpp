@@ -7,13 +7,6 @@
 
 #include "TcpConnection.hpp"
 
-std::string make_daytime_string()
-{
-    using namespace std; // For time_t, time and ctime;
-    time_t now = time(0);
-    return ctime(&now);
-}
-
 TcpConnection::TcpConnection(asio::io_context &io_context)
     : _socket(io_context)
 {
@@ -57,6 +50,7 @@ void TcpConnection::startComunication()
 
 void TcpConnection::handleWrite(const asio::error_code &error, size_t size)
 {
+    std::cout << "tets" << std::endl;
     asio::async_read_until(_socket, _message, "\r\n",
                             std::bind(&TcpConnection::handleRead, shared_from_this(),
                                     std::placeholders::_1,
@@ -71,7 +65,7 @@ void TcpConnection::checkCode(std::string &data)
     char *token = NULL;
     std::strcpy(local_data, data.c_str());
     token = std::strtok(local_data, " \r\n");
-
+    std::cout << data << std::endl;
     while (token != NULL) {
         token = std::strtok(NULL, " \r\n");
         std::cout << token << std::endl;
@@ -80,13 +74,19 @@ void TcpConnection::checkCode(std::string &data)
 
 void TcpConnection::handleRead(const asio::error_code &error, size_t size)
 {
+    std::cout << "FILS DE PUTE DE TA M2RE"<< std::endl;
     std::istream is(&_message);
     std::string line;
     std::getline(is, line);
     if (line != "") {
         checkCode(line);
+    } else {
+        std::cout << "ya r"<< std::endl;
     }
-    std::string sendMessage = "j'ai lue\r\n";
+    int fion = random();
+    std::cout << "FILS DE PUTE"<< std::endl;
+    std::string sendMessage = std::to_string(fion) + "\r\n";
+    std::cout << "DE TA M2RE"<< std::endl;
 
     asio::async_write(_socket, asio::buffer(sendMessage),
                       std::bind(&TcpConnection::handleWrite, shared_from_this(),

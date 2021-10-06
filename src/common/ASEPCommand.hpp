@@ -2,23 +2,27 @@
 ** EPITECH PROJECT, 2021
 ** B-CPP-500-NCE-5-1-babel-lionel.da-rocha-da-silva
 ** File description:
-** ISEPCommand
+** ASEPCommand
 */
 
 #ifndef ISEPCOMMAND_HPP_
 #define ISEPCOMMAND_HPP_
 
 #include <iostream>
+#include <vector>
 
-class ISEPCommand {
+class ASEPCommand {
 public:
-    virtual ~ISEPCommand() = 0;
+    virtual ~ASEPCommand() = 0;
 
-    virtual int             getCode() = 0;
+    int     getCode() {
+        return _code;
+    };
 
-    virtual std::string     resultCommand() = 0;
+    virtual std::string     runFonction(std::vector<std::string> arg) = 0;
 
 protected:
+    int     _code;
 private:
 };
 

@@ -9,7 +9,7 @@
 
 SEPProtocol::SEPProtocol()
 {
-
+    _allCommands.emplace(300, &SEPProtocol::RequestConnection);
 }
 
 SEPProtocol::~SEPProtocol()
@@ -18,6 +18,11 @@ SEPProtocol::~SEPProtocol()
 
 std::string SEPProtocol::processCommand(const std::string &cliInput)
 {
+    // std::vector<std::string> args = getInfosCommand(cliInput);
+
+    // SEPProtocol::factoryF func = _allCommands[std::atoi(args[0].c_str())];
+
+    // std::string respons = (*func)(args);
     return "";
 }
 
@@ -43,6 +48,7 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
     return arr;
 }
 
-ISEPCommand* SEPProtocol::whosThatComand(int code) const
+std::string SEPProtocol::RequestConnection(std::vector<std::string> args)
 {
+    return "";
 }

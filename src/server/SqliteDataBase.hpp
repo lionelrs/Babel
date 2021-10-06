@@ -35,6 +35,7 @@ public:
     static void createUser(const std::string &login, const std::string &pass, const std::string &ip);
 
     static std::string getUserInfo(const std::string &login);
+    static std::string getUsersInfo();
     static void setUserConnected(const std::string &login, const std::string &ip);
     static void setUserDisonnected(const std::string &login);
 
