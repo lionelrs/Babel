@@ -37,10 +37,6 @@ void testFunc()
 
 void TcpConnection::startComunication()
 {
-    asio::async_read_until(_socket, _message, "\r\n",
-                            std::bind(&TcpConnection::handleRead, shared_from_this(),
-                                std::placeholders::_1,
-                                std::placeholders::_2));
 
     asio::async_write(_socket, asio::buffer("Welcome !\r\n"),
                         std::bind(&TcpConnection::handleWrite, shared_from_this(),
@@ -50,7 +46,6 @@ void TcpConnection::startComunication()
 
 void TcpConnection::handleWrite(const asio::error_code &error, size_t size)
 {
-    std::cout << "tets" << std::endl;
     asio::async_read_until(_socket, _message, "\r\n",
                             std::bind(&TcpConnection::handleRead, shared_from_this(),
                                     std::placeholders::_1,
@@ -74,19 +69,12 @@ void TcpConnection::checkCode(std::string &data)
 
 void TcpConnection::handleRead(const asio::error_code &error, size_t size)
 {
-    std::cout << "FILS DE PUTE DE TA M2RE"<< std::endl;
+    std::string sendMessage = "";
     std::istream is(&_message);
     std::string line;
     std::getline(is, line);
-    if (line != "") {
-        checkCode(line);
-    } else {
-        std::cout << "ya r"<< std::endl;
-    }
-    int fion = random();
-    std::cout << "FILS DE PUTE"<< std::endl;
-    std::string sendMessage = std::to_string(fion) + "\r\n";
-    std::cout << "DE TA M2RE"<< std::endl;
+
+    sendMessage = processCommand(line);
 
     asio::async_write(_socket, asio::buffer(sendMessage),
                       std::bind(&TcpConnection::handleWrite, shared_from_this(),

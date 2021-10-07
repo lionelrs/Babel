@@ -18,12 +18,14 @@ SEPProtocol::~SEPProtocol()
 
 std::string SEPProtocol::processCommand(const std::string &cliInput)
 {
-    // std::vector<std::string> args = getInfosCommand(cliInput);
+    std::cout << "INPUT= " << cliInput << std::endl;
+    std::vector<std::string> args = getInfosCommand(cliInput);
 
-    // SEPProtocol::factoryF func = _allCommands[std::atoi(args[0].c_str())];
+    SEPProtocol::factoryF func = _allCommands[std::atoi(args[0].c_str())];
 
-    // std::string respons = (*func)(args);
-    return "";
+    std::string response = (this->*func)(args);
+
+    return response;
 }
 
 std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
@@ -33,11 +35,11 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
     std::string word;
     int lenght = 0;
 
-    while ((pos = command.find(";")) != std::string::npos) {
+    while ((pos = command.find(" ")) != std::string::npos) {
         word = command.substr(0, pos);
         if (word != "")
             arr.push_back(word);
-        for (int i = pos; command[i] == ';'; i++)
+        for (int i = pos; command[i] == ' '; i++)
             lenght++;
         command.erase(0, pos + lenght);
         lenght = 0;
@@ -50,5 +52,13 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
 
 std::string SEPProtocol::RequestConnection(std::vector<std::string> args)
 {
-    return "";
+    std::string response = "";
+
+    if (SqliteDataBase::checkUserExist(args[1]) &&
+        SqliteDataBase::checkValidPassword(args[2])) {
+            response = "200";
+        } else {
+            response = "500";
+        }
+    return response;
 }
