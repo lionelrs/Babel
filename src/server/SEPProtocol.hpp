@@ -25,13 +25,14 @@ public:
 
 protected:
 private:
-    typedef std::string (SEPProtocol::*factoryF)(std::vector<std::string> arg);
+    typedef std::string (SEPProtocol::*factoryF)(const std::vector<std::string> &arg);
 
     std::vector<std::string>    getInfosCommand(std::string command) const;
 
     std::map<int, factoryF>     _allCommands;
 
-    std::string     RequestConnection(std::vector<std::string> args);
+    std::string     RequestConnection(const std::vector<std::string> &args);
+    std::string     RequestDisconnection(const std::vector<std::string> &args);
 };
 
 #endif /* !SEPProtocole */

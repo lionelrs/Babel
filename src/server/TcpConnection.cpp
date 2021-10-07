@@ -74,6 +74,10 @@ void TcpConnection::handleRead(const asio::error_code &error, size_t size)
     std::string line;
     std::getline(is, line);
 
+    if (line == "") {
+        return;
+    }
+
     sendMessage = processCommand(line);
 
     asio::async_write(_socket, asio::buffer(sendMessage),
