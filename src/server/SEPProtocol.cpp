@@ -48,7 +48,7 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
         arr.push_back(command);
 
     // erase \r\n of last args
-    arr[2].erase(arr[2].size() - 2, arr[2].size());
+    arr[arr.size() - 1].erase(arr[arr.size() - 1].size() - 1, 2);
 
     return arr;
 }
@@ -57,8 +57,7 @@ std::string SEPProtocol::RequestConnection(const std::vector<std::string> &args)
 {
     std::string response = "";
 
-    if (SqliteDataBase::checkUserExist(args[1]) &&
-        SqliteDataBase::checkValidPassword(args[2])) {
+    if (SqliteDataBase::getInstance().checkUserValideLogin(args[1], args[2])) {
 
             // SqliteDataBase::setUserConnected()
             response = "200";
@@ -72,7 +71,7 @@ std::string SEPProtocol::RequestDisconnection(const std::vector<std::string> &ar
 {
     std::string response = "";
 
-    SqliteDataBase::setUserDisonnected(args[1]);
+    SqliteDataBase::getInstance().setUserDisonnected(args[1]);
 
     return response;
 }

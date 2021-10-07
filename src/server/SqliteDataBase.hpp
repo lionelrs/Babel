@@ -29,15 +29,14 @@ public:
 
     static SqliteDataBase &getInstance();
 
-    static bool checkValidPassword(const std::string &login);
-    static bool checkUserExist(const std::string &login);
+    bool checkUserValideLogin(const std::string &login, const std::string &pass);
 
-    static void createUser(const std::string &login, const std::string &pass, const std::string &ip);
+    void createUser(const std::string &login, const std::string &pass, const std::string &ip);
 
-    static std::string getUserInfo(const std::string &login);
-    static std::string getUsersInfo();
-    static void setUserConnected(const std::string &login, const std::string &ip);
-    static void setUserDisonnected(const std::string &login);
+    std::string getUserInfo(const std::string &login);
+    std::string getUsersInfo();
+    void setUserConnected(const std::string &login, const std::string &ip);
+    void setUserDisonnected(const std::string &login);
 
 protected:
 };
