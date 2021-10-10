@@ -5,18 +5,20 @@
 ** ASIO serv main
 */
 
-#include "AsioTcpServ.hpp"
-#include "../common/BabelException.hpp"
+#include "SEPServer.hpp"
 
 int main(int ac, char **av)
 {
     try {
-        asio::io_context io_context;
-        if (ac < 2 || std::atoi(av[1]) < 1025 || std::atoi(av[1]) > 65535)
+        if (ac < 2)
             throw Babel::BabelException("Please provide a valid port (1025 to 65535)");
-        AsioTcpServ server(io_context, std::atoi(av[1]));
-        server.start_accept();
-        io_context.run();
+        int port = std::atoi(av[1]);
+        if (port < 1025 || port > 65535)
+            throw Babel::BabelException("Please provide a valid port (1025 to 65535)");
+
+        SEPServer server(port);
+        server.initSepServer();
+        server.listenOnPort();
         return (0);
     }
     catch(const Babel::BabelException& e)

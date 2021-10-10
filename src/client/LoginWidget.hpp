@@ -16,6 +16,7 @@
 #include <QLineEdit>
 
 #include "Message.hpp"
+#include "../common/SEPCommands.hpp"
 
 class LoginWidget : public QWidget {
     Q_OBJECT

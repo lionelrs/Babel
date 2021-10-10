@@ -45,7 +45,7 @@ LoginWidget::~LoginWidget()
 
 Message LoginWidget::getLoginForm()
 {
-    return Message(_editUsername->text() + " " + _editPassword->text(), "300");
+    return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(REQUEST_CO).c_str());
 }
 
 QPushButton *LoginWidget::getButton() const

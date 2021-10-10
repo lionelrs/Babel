@@ -57,6 +57,14 @@
         "variant": "cpp",
         "qpushbutton": "cpp",
         "*.ipp": "cpp",
-        "qlistview": "cpp"
+        "qlistview": "cpp",
+        "bitset": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "csignal": "cpp",
+        "cstring": "cpp",
+        "set": "cpp",
+        "iomanip": "cpp",
+        "typeindex": "cpp"
     }
 }
