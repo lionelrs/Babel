@@ -11,22 +11,24 @@
 
 #include "User.hpp"
 
-class SEPServer {
+class SEPServer : public SEPProtocol {
     public:
         SEPServer(int port);
         ~SEPServer();
 
         void initSepServer();
         void listenOnPort();
-
+        typedef std::string (SEPProtocol::*factoryF)(const std::vector<std::string> &arg);
     protected:
     private:
 
-        void handleRead();
-        void handleWrite();
+        int parseLocalCommand();
+        void handleResponse(User *user);
         void handleConnection();
         void handleDisconnection(User *user);
         void cleanUserList();
+
+        void cmdLogin();
 
         void sendToUser(int userFd, std::string msg);
 
@@ -39,6 +41,8 @@ class SEPServer {
         struct sockaddr_in address;
         char buffer[1025];
         fd_set readfds;
+        std::map<int, factoryF> _cmd;
+        bool _hasDisconnected;
 };
 
 #endif /* !SEPSERVER_HPP_ */

@@ -35,6 +35,8 @@ class User {
         bool isConnected() const;
         void disconnect();
         int getSocket() const;
+        int getId() const;
+        void setId(int id);
 
     protected:
     private:
@@ -42,6 +44,7 @@ class User {
         std::string _ip;
         int _port;
         int _socket;
+        int _id;
 };
 
 #endif /* !USER_HPP_ */

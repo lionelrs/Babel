@@ -10,17 +10,28 @@
 SEPServer::SEPServer(int port)
 {
     _port = port;
+    _cmd.emplace(300, &SEPServer::cmdLogin);
 }
 
-void SEPServer::handleRead()
+int SEPServer::parseLocalCommand()
+{
+    char digit[4];
+    std::memset(digit, 0, sizeof(digit));
+    std::strncpy(digit, buffer, 3);
+    return (std::atoi(digit));
+}
+
+void SEPServer::cmdLogin()
 {
 
 }
 
-void SEPServer::handleWrite()
+void SEPServer::handleResponse(User *user)
 {
+    int cmd = parseLocalCommand();
     buffer[valread] = '\0';
-    sendToUser(sd, buffer);
+    std::string response = processCommand(buffer);
+    sendToUser(sd, response.c_str());
 }
 
 void SEPServer::sendToUser(int fd, std::string msg)
@@ -40,8 +51,9 @@ void SEPServer::handleConnection()
 
         std::cout << "New connection, socket fd is " << new_socket <<
         ", ip is : " << inet_ntoa(address.sin_addr) << ", port : " << ntohs(address.sin_port) << std::endl;
+        User *user = new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket);
+        this->userList.push_back(user);
 
-        this->userList.push_back(new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket));
         this->sendToUser(new_socket, "Welcome to the SEP Server !");
 
         std::cout << "Welcome message sent successfully" << std::endl;
@@ -60,7 +72,7 @@ void SEPServer::handleDisconnection(User *user)
         user->disconnect();
     }
     else {
-        this->handleWrite();
+        this->handleResponse(user);
     }
 }
 

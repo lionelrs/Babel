@@ -58,8 +58,6 @@ std::string SEPProtocol::RequestConnection(const std::vector<std::string> &args)
     std::string response = "";
 
     if (SqliteDataBase::getInstance().checkUserValideLogin(args[1], args[2])) {
-
-            // SqliteDataBase::setUserConnected()
             response = "200";
         } else {
             response = "500";
