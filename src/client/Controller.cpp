@@ -43,8 +43,8 @@ void Controller::callSelected()
 
 void Controller::responseSelector(const std::string response)
 {
-    //if (response == std::to_string(CO_ERROR))
-    //    ErrorWidget("Login failed.", "Error", _loginWidget);
+    if (response == std::to_string(CO_ERROR))
+        ErrorWidget("Login failed.", "Error", _loginWidget);
     if (response == std::to_string(CONNECTION_OK)) {
         _window->setCentralWidget(_hubWidget);
         connect(_hubWidget->getButton(), SIGNAL(clicked()), this,  SLOT(callSelected()));
