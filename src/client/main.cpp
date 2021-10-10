@@ -11,6 +11,8 @@
 #include "../common/BabelException.hpp"
 #include "../common/ValidateIp.hpp"
 #include "Controller.hpp"
+#include "../common/IAudio.hpp"
+#include "../common/ICompressor.hpp"
 
 int arg_check(int ac, char *argv[])
 {

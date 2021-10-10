@@ -11,7 +11,7 @@
 #include "BabelException.hpp"
 #include <iostream>
 #include <vector>
-#include "babelDefines.hpp"
+#include "BabelDefines.hpp"
 
 namespace Babel {
     class Buffer {
