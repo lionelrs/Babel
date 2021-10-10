@@ -33,6 +33,8 @@ private:
 
     std::string     RequestConnection(const std::vector<std::string> &args);
     std::string     RequestDisconnection(const std::vector<std::string> &args);
+
+    SqliteDataBase *_instance;
 };
 
 #endif /* !SEPProtocole */
