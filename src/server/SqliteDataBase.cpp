@@ -7,6 +7,8 @@
 
 #include "SqliteDataBase.hpp"
 
+std::stringstream ss;
+
 SqliteDataBase::SqliteDataBase()
 {
     int rc = 0;
@@ -34,7 +36,10 @@ static int callbackCheckUser(void *data, int argc, char **argv, char **azColName
     } else {
         *userExist = true;
     }
-    // std::cout << "enorme" << std::endl;
+    for (int i = 0; i < argc; i++) {
+        ss << argv[i] ? argv[i] : "NULL";
+        ss << ";";
+    }
 
     return 0;
 }
@@ -53,6 +58,15 @@ void SqliteDataBase::createTable()
     rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), nullptr, nullptr, nullptr);
 }
 
+std::string SqliteDataBase::getData()
+{
+    std::string s = ss.str();
+    ss.clear();
+    if (s.size() <= 0)
+        return ("NULL");
+    return (s);
+}
+
 bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::string &pass)
 {
     int rc = 0;
@@ -66,7 +80,6 @@ bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::s
     std::cout << sqlCommand << std::endl;
 
     rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), callbackCheckUser, &check, nullptr);
-
     return check;
 }
 

@@ -25,6 +25,7 @@ enum SEPCode {
     CO_ERROR = 500,
     ERROR = 550,
     REQUEST_USERS = 600,
+    USER_LIST = 650,
     DISCONECT = 700
 };
 

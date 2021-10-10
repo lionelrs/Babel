@@ -11,7 +11,7 @@
 #include <ctime>
 #include <iostream>
 #include <string>
-#include <sstream> 
+#include <sstream>
 #include <asio.hpp>
 #include "SEPProtocol.hpp"
 #include <stdio.h>
@@ -35,9 +35,10 @@ class User {
 
         bool isConnected() const;
         void disconnect();
+        void login();
         int getSocket() const;
-        int getId() const;
-        void setId(int id);
+        std::string getUserName() const;
+        void setUserName(std::string id);
 
     protected:
     private:
@@ -45,7 +46,7 @@ class User {
         std::string _ip;
         int _port;
         int _socket;
-        int _id;
+        std::string _username;
 };
 
 #endif /* !USER_HPP_ */

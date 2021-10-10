@@ -18,17 +18,19 @@ class SEPServer : public SEPProtocol {
 
         void initSepServer();
         void listenOnPort();
-        typedef std::string (SEPProtocol::*factoryF)(const std::vector<std::string> &arg);
+        typedef std::string (SEPServer::*factoryF)();
     protected:
     private:
 
-        int parseLocalCommand();
+        int parseLocalCommand(const char *b);
         void handleResponse(User *user);
         void handleConnection();
         void handleDisconnection(User *user);
         void cleanUserList();
 
-        void cmdLogin();
+        std::string cmdListAllLoggedUsers();
+        std::string cmdLoginSucces();
+        std::string cmdLoginFailure();
 
         void sendToUser(int userFd, std::string msg);
 
@@ -43,6 +45,7 @@ class SEPServer : public SEPProtocol {
         fd_set readfds;
         std::map<int, factoryF> _cmd;
         bool _hasDisconnected;
+        User *_currentUser;
 };
 
 #endif /* !SEPSERVER_HPP_ */

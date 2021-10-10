@@ -10,6 +10,7 @@
 SEPProtocol::SEPProtocol()
 {
     _allCommands.emplace(300, &SEPProtocol::RequestConnection);
+    _allCommands.emplace(600, &SEPProtocol::requestUserList);
 }
 
 SEPProtocol::~SEPProtocol()
@@ -51,6 +52,12 @@ std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
     arr[arr.size() - 1].erase(arr[arr.size() - 1].size() - 1, 2);
 
     return arr;
+}
+
+std::string SEPProtocol::requestUserList(const std::vector<std::string> &args)
+{
+    (void)args;
+    return ("650");
 }
 
 std::string SEPProtocol::RequestConnection(const std::vector<std::string> &args)
