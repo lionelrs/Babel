@@ -30,6 +30,7 @@ class LoginWidget : public QWidget {
     public slots:
     private slots:
 
+    protected:
     private:
         QLineEdit *_editUsername;
         QLineEdit *_editPassword;

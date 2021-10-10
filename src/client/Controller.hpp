@@ -13,6 +13,8 @@
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
 #include "LoginWidget.hpp"
+#include "ErrorWidget.hpp"
+#include "HubWidget.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
@@ -25,19 +27,23 @@ class Controller : public QObject {
     signals:
     public slots:
         void sendUdpData();
-        void listenData();
+        void listenTcpData();
         void sendTcpLoginForm();
+        void callSelected();
 
     protected:
     private:
         QMainWindow *_window;
         LoginWidget *_loginWidget;
+        HubWidget *_hubWidget;
         MyUDP *_readUdp;
         MyUDP *_writeUdp;
         MyTCP *_tcp;
 
         int _port;
         std::string _ip;
+
+        void responseSelector(const std::string response);
 
 };
 

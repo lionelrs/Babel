@@ -22,10 +22,10 @@ class MyUDP : public Socket
 
         void openConnection();
         void writeData(Message msg);
+        void readData();
 
     signals:
     public slots:
-        void readData();
 
     private:
         QUdpSocket *_socket;

@@ -5,7 +5,6 @@ qt/5.15.2
 asio/1.19.2
 sqlite3/3.36.0 
 
-
 [options]
 portaudio:shared=True
 qt:shared=True
