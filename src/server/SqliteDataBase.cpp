@@ -61,9 +61,10 @@ void SqliteDataBase::createTable()
 std::string SqliteDataBase::getData()
 {
     std::string s = ss.str();
-    ss.clear();
+    ss.str("");
     if (s.size() <= 0)
         return ("NULL");
+    std::cout << "SERVERSQL : " << s << std::endl;
     return (s);
 }
 
