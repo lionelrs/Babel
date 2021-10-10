@@ -23,34 +23,44 @@ int SEPServer::parseLocalCommand(const char *b)
     return (std::atoi(digit));
 }
 
-std::string SEPServer::cmdListAllLoggedUsers()
+std::string SEPServer::cmdListAllLoggedUsers(User *user)
 {
     std::stringstream ss;
     ss << "650 ";
-    for (auto user : userList) {
-        if (user->isConnected())
-            ss << user->getUserName();
+    for (auto itr : userList) {
+        if (itr->isConnected())
+            ss << itr->getUserName();
             ss << ";";
     }
     return (ss.str());
 }
 
-std::string SEPServer::cmdLoginSucces()
+std::string SEPServer::cmdLoginSucces(User *user)
 {
     std::string data = SqliteDataBase::getData();
     char sCopy[data.size() + 1];
     std::memset(sCopy, 0, sizeof(sCopy));
     std::strcpy(sCopy, data.c_str());
+    char *token = NULL;
+    std::stringstream ss;
     if (data != "NULL") {
-        char *token = std::strtok(sCopy, ";");
-        this->_currentUser->setUserName(token);
-        std::cout << token << std::endl;
+        token = std::strtok(sCopy, ";");
+        user->setUserName(token);
+
+        for (auto itr : userList) {
+            if (itr != user && itr->isConnected()) {
+                sendToUser(itr->getSocket(), "150 " + user->getUserName());
+            }
+        }
     }
-    return ("200");
+    ss << "200 ";
+    ss << token;
+    return (ss.str());
 }
 
-std::string SEPServer::cmdLoginFailure()
+std::string SEPServer::cmdLoginFailure(User *user)
 {
+    (void)user;
     return ("500");
 }
 
@@ -61,7 +71,7 @@ void SEPServer::handleResponse(User *user)
     std::string response = processCommand(buffer);
     cmd = parseLocalCommand(response.c_str());
     SEPServer::factoryF func = _cmd[cmd];
-    response = (this->*func)();
+    response = (this->*func)(user);
     sendToUser(sd, response.c_str());
 }
 
@@ -94,6 +104,7 @@ void SEPServer::handleConnection()
 
 void SEPServer::handleDisconnection(User *user)
 {
+    std::memset(buffer, 0, 1024);
     if ((valread = read(sd, buffer, 1024)) == 0) {
 
         getpeername(sd, (struct sockaddr *)&address,
@@ -108,10 +119,20 @@ void SEPServer::handleDisconnection(User *user)
     }
 }
 
+void SEPServer::sendDisc(std::string name)
+{
+    for (auto user : userList) {
+        if (user->isConnected()) {
+            sendToUser(user->getSocket(), "250 " + name);
+        }
+    }
+}
+
 void SEPServer::cleanUserList()
 {
     for (int i = 0; i < userList.size(); i++) {
         if (userList[i]->getSocket() == 0) {
+            this->sendDisc(userList[i]->getUserName());
             delete userList[i];
             userList[i] = nullptr;
             userList.erase(userList.begin() + i);
@@ -148,7 +169,6 @@ void SEPServer::listenOnPort()
         //else its some IO operation on some other socket
         for (User *user : userList) {
             sd = user->getSocket();
-            this->_currentUser = user;
 
             if (FD_ISSET(sd, &readfds)) {
                 this->handleDisconnection(user);
