@@ -11,6 +11,7 @@
 #include "sqlite3.h"
 
 #include <iostream>
+#include <sstream> 
 
 class SqliteDataBase
 {

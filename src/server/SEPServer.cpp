@@ -10,7 +10,7 @@
 SEPServer::SEPServer(int port)
 {
     _port = port;
-    _cmd.emplace(300, &SEPServer::cmdLogin);
+    // _cmd.emplace(300, &SEPServer::cmdLogin);
 }
 
 int SEPServer::parseLocalCommand()

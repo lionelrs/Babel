@@ -59,8 +59,13 @@ bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::s
     bool check = false;
 
     std::string sqlCommand = "SELECT LOGIN, PASSWORD FROM TEST WHERE LOGIN = '" + login + "' AND PASSWORD = '" + pass + "'";
-
-    std::cout << sqlCommand << std::endl;
+    std::stringstream ss;
+    ss << "SELECT LOGIN, PASSWORD FROM TEST WHERE LOGIN = '";
+    ss << login;
+    ss << "' AND PASSWORD = '";
+    ss << pass;
+    ss << "'";
+    std::cout << ss.str() << std::endl;
 
     rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), callbackCheckUser, &check, nullptr);
 

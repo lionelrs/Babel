@@ -11,6 +11,7 @@
 #include <ctime>
 #include <iostream>
 #include <string>
+#include <sstream> 
 #include <asio.hpp>
 #include "SEPProtocol.hpp"
 #include <stdio.h>
