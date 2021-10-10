@@ -30,7 +30,7 @@ void MyTCP::writeData(Message data)
     writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit() + "\r\n");
     _socket->write(writeData);
     _socket->waitForBytesWritten();
-    std::cout << "Writting to server" << std::endl;
+    std::cout << "Writting to server: " + data.getHeader().toLocal8Bit().toStdString() + " " + data.getBody().toLocal8Bit().toStdString() << std::endl;
     writeData.clear();
 }
 

@@ -12,8 +12,6 @@
 #include <vector>
 
 #include "../common/SEPCommands.hpp"
-#include "../common/Serializer.hpp"
-
 #include "SqliteDataBase.hpp"
 
 class SEPProtocol {

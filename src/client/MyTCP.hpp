@@ -16,7 +16,6 @@
 #include <cstdint>
 #include <cstring>
 #include "Socket.hpp"
-#include "../common/Serializer.hpp"
 #include "../common/SEPCommands.hpp"
 #include "../common/BabelException.hpp"
 
