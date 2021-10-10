@@ -24,10 +24,8 @@ class HubWidget : public QWidget {
         QPushButton *getButton() const;
         int getSelected() const;
         std::string getSelectedName() const;
-        int getSelectedPort() const;
-        std::string getSelectedIp() const;
 
-        void addUser(std::string username, std::string ip, int port);
+        void addUser(std::string username);
         void removeUser(std::string username);
 
     signals:
@@ -40,7 +38,6 @@ class HubWidget : public QWidget {
         QPushButton *_callButton;
         QListWidget *_userList;
         int _selected;
-        std::vector<std::pair<std::string, int>> _userData;
 };
 
 #endif /* !HUBWIDGET_HPP_ */

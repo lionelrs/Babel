@@ -42,8 +42,9 @@ class Controller : public QObject {
 
         int _port;
         std::string _ip;
+        std::string _username;
 
-        void responseSelector(const std::string response);
+        void responseSelector(std::string response);
 
 };
 

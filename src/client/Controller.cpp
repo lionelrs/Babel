@@ -38,16 +38,32 @@ void Controller::callSelected()
     if (selected == -1)
         ErrorWidget("No user selected.", "Error", _hubWidget);
     else
-        std::cout << "Call " + _hubWidget->getSelectedName() + " " + _hubWidget->getSelectedIp() + " " + std::to_string(_hubWidget->getSelectedPort()) << std::endl;
+        std::cout << "Calling " + _hubWidget->getSelectedName() << std::endl;
 }
 
-void Controller::responseSelector(const std::string response)
+void Controller::responseSelector(std::string response)
 {
-    if (response == std::to_string(CO_ERROR))
+    int code = std::atoi(response.substr(0, response.find(' ')).c_str());
+    if (code == CO_ERROR)
         ErrorWidget("Login failed.", "Error", _loginWidget);
-    if (response == std::to_string(CONNECTION_OK)) {
+    if (code == CONNECTION_OK) {
+        size_t pos = response.find(' ');
+        response.erase(0, pos + 1);
+        _username = response;
         _window->setCentralWidget(_hubWidget);
+        _tcp->writeData(Message("", std::to_string(REQUEST_USERS).c_str()));
         connect(_hubWidget->getButton(), SIGNAL(clicked()), this,  SLOT(callSelected()));
+    }
+    if (code == USER_LIST) {
+        size_t pos = response.find(' ');
+        response.erase(0, pos + 1);
+        std::string token;
+        while ((pos = response.find(';')) != std::string::npos) {
+            token = response.substr(0, pos);
+            response.erase(0, pos + 1);
+            if (token == _username) continue;
+            _hubWidget->addUser(token);
+        }
     }
 }
 
