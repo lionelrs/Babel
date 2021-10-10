@@ -10,7 +10,7 @@
 User::User(std::string ip, int port, int fd) : _ip(ip), _port(port), _socket(fd)
 {
     _isConnected = false;
-    _id = -1;
+    _username = "";
 }
 
 int User::getSocket() const
@@ -26,13 +26,23 @@ void User::disconnect()
     this->_isConnected = false;
 }
 
-int User::getId() const
+void User::login()
 {
-    return (_id);
+    this->_isConnected = true;
 }
-void User::setId(int id)
+
+bool User::isConnected() const
 {
-    _id = id;
+    return (_isConnected);
+}
+
+std::string User::getUserName() const
+{
+    return (_username);
+}
+void User::setUserName(std::string username)
+{
+    _username = username;
 }
 
 User::~User()

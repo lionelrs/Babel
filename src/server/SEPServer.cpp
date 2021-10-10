@@ -10,27 +10,58 @@
 SEPServer::SEPServer(int port)
 {
     _port = port;
-    // _cmd.emplace(300, &SEPServer::cmdLogin);
+    _cmd.emplace(200, &SEPServer::cmdLoginSucces);
+    _cmd.emplace(500, &SEPServer::cmdLoginFailure);
+    _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
 }
 
-int SEPServer::parseLocalCommand()
+int SEPServer::parseLocalCommand(const char *b)
 {
     char digit[4];
     std::memset(digit, 0, sizeof(digit));
-    std::strncpy(digit, buffer, 3);
+    std::strncpy(digit, b, 3);
     return (std::atoi(digit));
 }
 
-void SEPServer::cmdLogin()
+std::string SEPServer::cmdListAllLoggedUsers()
 {
+    std::stringstream ss;
+    ss << "650 ";
+    for (auto user : userList) {
+        if (user->isConnected())
+            ss << user->getUserName();
+            ss << ";";
+    }
+    return (ss.str());
+}
 
+std::string SEPServer::cmdLoginSucces()
+{
+    std::string data = SqliteDataBase::getData();
+    char sCopy[data.size() + 1];
+    std::memset(sCopy, 0, sizeof(sCopy));
+    std::strcpy(sCopy, data.c_str());
+    if (data != "NULL") {
+        char *token = std::strtok(sCopy, ";");
+        this->_currentUser->setUserName(token);
+        std::cout << token << std::endl;
+    }
+    return ("200");
+}
+
+std::string SEPServer::cmdLoginFailure()
+{
+    return ("500");
 }
 
 void SEPServer::handleResponse(User *user)
 {
-    int cmd = parseLocalCommand();
+    int cmd = parseLocalCommand(buffer);
     buffer[valread] = '\0';
     std::string response = processCommand(buffer);
+    cmd = parseLocalCommand(response.c_str());
+    SEPServer::factoryF func = _cmd[cmd];
+    response = (this->*func)();
     sendToUser(sd, response.c_str());
 }
 
@@ -53,6 +84,7 @@ void SEPServer::handleConnection()
         ", ip is : " << inet_ntoa(address.sin_addr) << ", port : " << ntohs(address.sin_port) << std::endl;
         User *user = new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket);
         this->userList.push_back(user);
+        user->login();
 
         this->sendToUser(new_socket, "Welcome to the SEP Server !");
 
@@ -116,6 +148,7 @@ void SEPServer::listenOnPort()
         //else its some IO operation on some other socket
         for (User *user : userList) {
             sd = user->getSocket();
+            this->_currentUser = user;
 
             if (FD_ISSET(sd, &readfds)) {
                 this->handleDisconnection(user);

@@ -24,6 +24,7 @@ private:
 
     void createTable();
 
+
     sqlite3 *_dataBase;
 
 public:
@@ -31,6 +32,7 @@ public:
 
     static SqliteDataBase &getInstance();
 
+    static std::string getData();
     bool checkUserValideLogin(const std::string &login, const std::string &pass);
 
     void createUser(const std::string &login, const std::string &pass, const std::string &ip);
