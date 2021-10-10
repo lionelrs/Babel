@@ -24,10 +24,10 @@ class Socket : public QObject {
 
         virtual void writeData(Message msg) = 0;
         virtual void openConnection() = 0;
+        virtual void readData() = 0;
 
     signals:
     public slots:
-        virtual void readData() = 0;
 
     protected:
         std::string _ip;

@@ -20,7 +20,8 @@ void MyTCP::openConnection()
 {
     _socket = new QTcpSocket();
     _socket->connectToHost(QHostAddress(_ip.c_str()), _port);
-    connect(_socket, SIGNAL(readyRead()), this, SLOT(readData()));
+    if (!_socket->waitForConnected(1000))
+        throw Babel::BabelException("Cannot connect to TCP host with ip " + _ip + " and port " + std::to_string(_port) + ".");
 }
 
 void MyTCP::writeData(Message data)
@@ -35,7 +36,12 @@ void MyTCP::writeData(Message data)
 
 SEPCommands *MyTCP::getSEPCommand() const
 {
-    return (_command);
+    return _command;
+}
+
+std::string MyTCP::getData() const
+{
+    return _data;
 }
 
 void MyTCP::readData()
@@ -43,7 +49,7 @@ void MyTCP::readData()
     QByteArray readBuffer = {0};
     readBuffer.resize(_socket->bytesAvailable());
     readBuffer = _socket->read(_socket->bytesAvailable());
-    std::cout << "Data recieved: " << readBuffer.data() << std::endl;
+    _data = readBuffer.data();
 }
 
 QTcpSocket *MyTCP::getSocket() const
