@@ -15,6 +15,7 @@
 #include "LoginWidget.hpp"
 #include "ErrorWidget.hpp"
 #include "HubWidget.hpp"
+#include "CallWidget.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
@@ -37,14 +38,13 @@ class Controller : public QObject {
         QMainWindow *_window;
         LoginWidget *_loginWidget;
         HubWidget *_hubWidget;
+        CallWidget *_callWidget;
         MyUDP *_readUdp;
         MyUDP *_writeUdp;
         MyTCP *_tcp;
 
         QMessageBox *_called;
-        QMessageBox *_inCall;
         QAbstractButton *_pButtonYes;
-        QAbstractButton *_pHangUp;
 
         std::string _ip;
         std::string _username;
