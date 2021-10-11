@@ -255,7 +255,6 @@ void SEPServer::handleConnection()
 
         ss << "120 ";
         ss << inet_ntoa(address.sin_addr);
-        this->sendToUser(new_socket, "Welcome to the SEP Server !");
         this->sendToUser(new_socket, ss.str());
 
         std::cout << "Welcome message sent successfully" << std::endl;
