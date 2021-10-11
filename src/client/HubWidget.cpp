@@ -38,13 +38,10 @@ void HubWidget::onListItemClicked(QListWidgetItem* item)
     _selected = _userList->row(item);
 }
 
-void HubWidget::addUser(std::string username, std::string ip, int port)
+void HubWidget::addUser(std::string username)
 {
     _userList->addItem(username.c_str());
-    _userData.push_back(std::make_pair(ip, port));
 }
-
-#include <iostream>
 
 void HubWidget::removeUser(std::string username)
 {
@@ -54,10 +51,6 @@ void HubWidget::removeUser(std::string username)
             delete _userList->takeItem(i);
             break;
         }
-    }
-    _userData.erase(_userData.begin() + i);
-    for (auto it : _userData) {
-        std::cout << it.second << std::endl;
     }
 }
 
@@ -76,18 +69,4 @@ std::string HubWidget::getSelectedName() const
     if (_selected == -1)
         return "null";
     return _userList->item(_selected)->text().toStdString();
-}
-
-std::string HubWidget::getSelectedIp() const
-{
-    if (_selected == -1)
-        return "null";
-    return _userData.at(_selected).first;
-}
-
-int HubWidget::getSelectedPort() const
-{
-    if (_selected == -1)
-        return -1;
-    return _userData.at(_selected).second;
 }
