@@ -18,7 +18,7 @@
 class HubWidget : public QWidget {
     Q_OBJECT
     public:
-        HubWidget(QWidget *parent = 0);
+        HubWidget(const std::string username, QWidget *parent = 0);
         ~HubWidget();
 
         QPushButton *getButton() const;

@@ -13,7 +13,6 @@ Controller::Controller(int port, char *ip) : _port(port), _ip(ip)
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
     _loginWidget = new LoginWidget();
-    _hubWidget = new HubWidget();
     _tcp = new MyTCP(ip, port);
 }
 
@@ -49,6 +48,7 @@ void Controller::responseSelector(std::string response)
         ErrorWidget("Login failed.", "Error", _loginWidget);
     if (code == CONNECTION_OK) {
         _username = response;
+        _hubWidget = new HubWidget(_username);
         _window->setCentralWidget(_hubWidget);
         _tcp->writeData(Message("", std::to_string(REQUEST_USERS).c_str()));
         connect(_hubWidget->getButton(), SIGNAL(clicked()), this,  SLOT(callSelected()));

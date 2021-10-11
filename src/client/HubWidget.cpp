@@ -7,20 +7,27 @@
 
 #include "HubWidget.hpp"
 
-HubWidget::HubWidget(QWidget *parent)
+HubWidget::HubWidget(const std::string username, QWidget *parent)
 {
     _userList = new QListWidget(parent);
 
     QLabel *title = new QLabel("Connected user(s)");
+    QLabel *LabelUsername = new QLabel(username.c_str());
     _callButton = new QPushButton("Call");
 
     QVBoxLayout *outterLayout = new QVBoxLayout(this);
-    outterLayout->addWidget(title);
+    QHBoxLayout *headerLayout = new QHBoxLayout();
+    headerLayout->addWidget(title);
+    headerLayout->addWidget(LabelUsername, 0, Qt::AlignRight);
+    outterLayout->addLayout(headerLayout);
     outterLayout->addWidget(_userList);
     outterLayout->addWidget(_callButton);
 
+    headerLayout->setContentsMargins(QMargins(0, 0, 20, 0));
+
     QFont font;
     font.setPointSize(14);
+    LabelUsername->setFont(font);
     title->setFont(font);
     _userList->setFont(font);
     _callButton->setFont(font);
