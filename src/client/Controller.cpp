@@ -63,6 +63,8 @@ void Controller::responseSelector(std::string response)
             _hubWidget->addUser(token);
         }
     }
+    if (code == ERROR)
+        ErrorWidget("Already connected.", "Error", _loginWidget);
     if (code == USER_CO) {
         if (response == _username) return;
         _hubWidget->addUser(response);
