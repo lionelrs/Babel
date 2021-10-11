@@ -15,6 +15,7 @@
 #include "LoginWidget.hpp"
 #include "ErrorWidget.hpp"
 #include "HubWidget.hpp"
+#include "SignUpWidget.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
@@ -34,11 +35,15 @@ class Controller : public QObject {
         void acceptedResponse();
         void refusedResponse();
         void hangUp();
+        void signUpWidget();
+        void loginWidget();
+        void sendTcpSignUpForm();
 
     protected:
     private:
         QMainWindow *_window;
         LoginWidget *_loginWidget;
+        SignUpWidget *_signUpWidget;
         HubWidget *_hubWidget;
         ErrorWidget *_error;
 

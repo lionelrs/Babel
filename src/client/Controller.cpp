@@ -12,9 +12,10 @@ Controller::Controller(int port, char *ip)
     srand(time(NULL));
     _window = new QMainWindow();
     _window->setWindowTitle("Babel Voice Client");
-    _window->resize(QSize(600, 300));
+    _window->resize(QSize(650, 385));
     _hubWidget = new HubWidget();
     _loginWidget = new LoginWidget();
+    _signUpWidget = new SignUpWidget();
     _tcp = new MyTCP(ip, port);
     _error = nullptr;
     _inCall = false;
@@ -46,7 +47,7 @@ void Controller::sendTcpLoginForm()
 {
     Message loginForm = _loginWidget->getLoginForm();
     if (loginForm.getHeader().toStdString() == "ERROR") {
-        _error = new ErrorWidget("'SPACE' isn't allowed.", "Error", _hubWidget);
+        _error = new ErrorWidget("'SPACE' isn't allowed.", "Error", _loginWidget);
         _error->show();
         return;
     }
@@ -91,7 +92,7 @@ void Controller::responseSelector(std::string response)
     if (code == PING_IP)
         _readIp = response;
     if (code == CO_ERROR) {
-        _error = new ErrorWidget("Login failed.", "Error", _window);
+        _error = new ErrorWidget("Login failed.", "Error", _loginWidget);
         _error->show();
     }
     if (code == CONNECTION_OK) {
@@ -190,11 +191,51 @@ void Controller::listenUdpData()
     _readUdp->readData();
 }
 
+void Controller::signUpWidget()
+{
+    _signUpWidget = new SignUpWidget();
+    _window->setCentralWidget(_signUpWidget);
+    connect(_signUpWidget->getBackButton(), SIGNAL(clicked()), this,  SLOT(loginWidget()));
+    connect(_signUpWidget->getValidateButton(), SIGNAL(clicked()), this,  SLOT(sendTcpSignUpForm()));
+}
+
+void Controller::loginWidget()
+{
+    _loginWidget = new LoginWidget();
+    _window->setCentralWidget(_loginWidget);
+    connect(_loginWidget->getLoginButton(), SIGNAL(clicked()), this,  SLOT(sendTcpLoginForm()));
+    connect(_loginWidget->getSignUpButton(), SIGNAL(clicked()), this,  SLOT(signUpWidget()));
+}
+
+void Controller::sendTcpSignUpForm()
+{
+    Message SignUpForm = _signUpWidget->getSignUpForm();
+    if (SignUpForm.getHeader().toStdString() == "SPACE") {
+        _error = new ErrorWidget("'SPACE' isn't allowed.", "Error", _signUpWidget);
+        _error->show();
+        return;
+    }
+    if (SignUpForm.getHeader().toStdString() == "EMPTY") {
+        _error = new ErrorWidget("A field is empty.", "Error", _signUpWidget);
+        _error->show();
+        return;
+    }
+    if (SignUpForm.getHeader().toStdString() == "MISMATCH") {
+        _error = new ErrorWidget("Passwords mismatch.", "Error", _signUpWidget);
+        _error->show();
+        return;
+    }
+    _tcp->writeData(SignUpForm);
+}
+
 void Controller::startBabel()
 {
     _window->setCentralWidget(_loginWidget);
     _tcp->openConnection();
     connect(_tcp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenTcpData()));
-    connect(_loginWidget->getButton(), SIGNAL(clicked()), this,  SLOT(sendTcpLoginForm()));
+    connect(_loginWidget->getLoginButton(), SIGNAL(clicked()), this,  SLOT(sendTcpLoginForm()));
+    connect(_loginWidget->getSignUpButton(), SIGNAL(clicked()), this,  SLOT(signUpWidget()));
+    connect(_signUpWidget->getBackButton(), SIGNAL(clicked()), this,  SLOT(loginWidget()));
+    connect(_signUpWidget->getValidateButton(), SIGNAL(clicked()), this,  SLOT(sendTcpSignUpForm()));
     _window->show();
 }

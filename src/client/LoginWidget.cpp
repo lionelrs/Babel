@@ -20,14 +20,16 @@ LoginWidget::LoginWidget(QWidget *parent)
     _editPassword = new QLineEdit();
     _editPassword->setEchoMode(QLineEdit::Password);
     _loginButton = new QPushButton("Login");
+    _signUpButton = new QPushButton("Sign Up");
 
     QVBoxLayout *innerLayout = new QVBoxLayout(groupBox);
-    innerLayout->addWidget(usernameLabel, 0, Qt::AlignTop);
-    innerLayout->addWidget(_editUsername, 1, Qt::AlignTop);
+    innerLayout->addWidget(usernameLabel);
+    innerLayout->addWidget(_editUsername);
     innerLayout->addWidget(passwordLabel);
-    innerLayout->addWidget(_editPassword);
-
+    innerLayout->addWidget(_editPassword, 1, Qt::AlignTop);
     innerLayout->addWidget(_loginButton, 1, Qt::AlignBottom);
+    innerLayout->addWidget(_signUpButton);
+
     outterLayout->setContentsMargins(QMargins(10, 0, 10, 10));
     innerLayout->setContentsMargins(QMargins(50, 50, 50, 50));
 
@@ -37,6 +39,7 @@ LoginWidget::LoginWidget(QWidget *parent)
     groupBox->setFont(font);
     passwordLabel->setFont(font);
     _loginButton->setFont(font);
+    _signUpButton->setFont(font);
 }
 
 LoginWidget::~LoginWidget()
@@ -52,7 +55,12 @@ Message LoginWidget::getLoginForm()
     return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(REQUEST_CO).c_str());
 }
 
-QPushButton *LoginWidget::getButton() const
+QPushButton *LoginWidget::getLoginButton() const
 {
     return _loginButton;
+}
+
+QPushButton *LoginWidget::getSignUpButton() const
+{
+    return _signUpButton;
 }
