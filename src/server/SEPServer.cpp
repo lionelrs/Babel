@@ -57,6 +57,8 @@ std::string SEPServer::cmdRefuseCall(User *user, std::string response)
         if (userList[i]->getUserName() == name) {
             ss << token;
             sendToUser(userList[i]->getSocket(), ss.str());
+            userList[i]->setIsInCall(false);
+            userList[i]->setCalling("");
         }
     }
     return ("");
