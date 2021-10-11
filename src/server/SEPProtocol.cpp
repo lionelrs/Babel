@@ -9,6 +9,7 @@
 
 SEPProtocol::SEPProtocol()
 {
+    _allCommands.emplace(210, &SEPProtocol::requestUserCreation);
     _allCommands.emplace(300, &SEPProtocol::RequestConnection);
     _allCommands.emplace(600, &SEPProtocol::requestUserList);
     _allCommands.emplace(400, &SEPProtocol::requestCall);
@@ -20,6 +21,18 @@ SEPProtocol::SEPProtocol()
 
 SEPProtocol::~SEPProtocol()
 {
+}
+
+std::string SEPProtocol::requestUserCreation(const std::vector<std::string> &args)
+{
+    if (args.size() < 3) return ("500");
+    if (SqliteDataBase::getInstance().checkUserValideLogin(args[1], args[2])) {
+        return ("505");
+    }
+    if (SqliteDataBase::getInstance().createUser(args[1], args[2])) {
+        return ("220");
+    }
+    return "500";
 }
 
 std::string SEPProtocol::requestRefuseCall(const std::vector<std::string> &args)

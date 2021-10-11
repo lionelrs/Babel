@@ -35,7 +35,7 @@ public:
     static std::string getData();
     bool checkUserValideLogin(const std::string &login, const std::string &pass);
 
-    void createUser(const std::string &login, const std::string &pass, const std::string &ip);
+    bool createUser(const std::string &login, const std::string &pass);
 
     std::string getUserInfo(const std::string &login);
     std::string getUsersInfo();
