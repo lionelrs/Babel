@@ -17,8 +17,15 @@ SEPServer::SEPServer(int port)
     _cmd.emplace(460, &SEPServer::cmdRefuseCall);
     _cmd.emplace(470, &SEPServer::cmdCallHangUp);
     _cmd.emplace(500, &SEPServer::cmdLoginFailure);
+    _cmd.emplace(501, &SEPServer::cmdUserCreateError);
     _cmd.emplace(505, &SEPServer::cmdUserAlreadyExist);
     _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
+}
+
+std::string SEPServer::cmdUserCreateError(User *user, std::string response)
+{
+    (void)response;
+    return ("501");
 }
 
 std::string SEPServer::cmdUserAlreadyExist(User *user, std::string response)
