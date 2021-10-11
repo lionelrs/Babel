@@ -31,7 +31,7 @@ std::string SEPProtocol::processCommand(const std::string &cliInput)
     return response;
 }
 
-std::string requestCall(const std::vector<std::string> &args)
+std::string SEPProtocol::requestCall(const std::vector<std::string> &args)
 {
     (void)args;
     std::stringstream ss;
@@ -42,7 +42,7 @@ std::string requestCall(const std::vector<std::string> &args)
     return ("450 " + ss.str());
 }
 
-std::string requestCallConfirm(const std::vector<std::string> &args)
+std::string SEPProtocol::requestCallConfirm(const std::vector<std::string> &args)
 {
     (void)args;
     std::stringstream ss;

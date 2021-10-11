@@ -55,6 +55,8 @@ std::string SEPServer::cmdCall(User *user, std::string response)
             ss << port;
             ss << " ";
             ss << user->getUserName();
+            ss << " ";
+            ss << user->getIp();
         }
     }
     return (ss.str());
