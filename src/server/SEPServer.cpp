@@ -241,6 +241,7 @@ void SEPServer::sendToUser(int fd, std::string msg)
 
 void SEPServer::handleConnection()
 {
+    std::stringstream ss;
     if (FD_ISSET(master_socket, &readfds)) {
         if ((new_socket = accept(master_socket,
                                  (struct sockaddr *)&address, (socklen_t *)&addrlen)) < 0) {
@@ -252,7 +253,10 @@ void SEPServer::handleConnection()
         User *user = new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket);
         this->userList.push_back(user);
 
+        ss << "120 ";
+        ss << inet_ntoa(address.sin_addr);
         this->sendToUser(new_socket, "Welcome to the SEP Server !");
+        this->sendToUser(new_socket, ss.str());
 
         std::cout << "Welcome message sent successfully" << std::endl;
     }
