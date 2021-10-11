@@ -107,7 +107,6 @@ void Controller::responseSelector(std::string response)
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
-        std::cout << "------ 430 readPort " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
@@ -115,10 +114,10 @@ void Controller::responseSelector(std::string response)
         _writeUdp->openConnection();
         //_callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
         //_window->setCentralWidget(_callWidget);
+        sleep(1);
         sendUdpData();
     }
     if (code == CALL_CONFIRMATION) {
-        std::cout << "------ 435 " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
@@ -130,6 +129,8 @@ void Controller::responseSelector(std::string response)
     }
     if (code == CALLREFUSED)
         ErrorWidget(_callUsername + " refused to answer", "Error", _hubWidget);
+    if (code == ALREADYINCALL)
+        ErrorWidget(_callUsername + " already in call", "Error", _hubWidget);
 }
 
 void Controller::listenTcpData()

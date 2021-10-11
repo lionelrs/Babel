@@ -9,6 +9,7 @@
 #define CONTROLLER_HPP_
 
 #include <QMainWindow>
+#include <unistd.h>
 
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
