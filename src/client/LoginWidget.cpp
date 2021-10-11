@@ -45,6 +45,10 @@ LoginWidget::~LoginWidget()
 
 Message LoginWidget::getLoginForm()
 {
+    if (_editUsername->text().toStdString().find(' ') != std::string::npos)
+        return Message("FORBIDDEN CHARACTER", "ERROR");
+    if (_editPassword->text().toStdString().find(' ') != std::string::npos)
+        return Message("FORBIDDEN CHARACTER", "ERROR");
     return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(REQUEST_CO).c_str());
 }
 

@@ -44,7 +44,13 @@ void Controller::sendUdpData()
 
 void Controller::sendTcpLoginForm()
 {
-    _tcp->writeData(_loginWidget->getLoginForm());
+    Message loginForm = _loginWidget->getLoginForm();
+    if (loginForm.getHeader().toStdString() == "ERROR") {
+        _error = new ErrorWidget("'SPACE' isn't allowed.", "Error", _hubWidget);
+        _error->show();
+        return;
+    }
+    _tcp->writeData(loginForm);
 }
 
 void Controller::callSelected()
