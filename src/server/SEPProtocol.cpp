@@ -25,14 +25,14 @@ SEPProtocol::~SEPProtocol()
 
 std::string SEPProtocol::requestUserCreation(const std::vector<std::string> &args)
 {
-    if (args.size() < 3) return ("500");
+    if (args.size() < 3) return ("501");
     if (SqliteDataBase::getInstance().checkUserValideLogin(args[1], args[2])) {
         return ("505");
     }
     if (SqliteDataBase::getInstance().createUser(args[1], args[2])) {
         return ("220");
     }
-    return "500";
+    return "501";
 }
 
 std::string SEPProtocol::requestRefuseCall(const std::vector<std::string> &args)

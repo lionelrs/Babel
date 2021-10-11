@@ -42,6 +42,7 @@ class SEPServer : public SEPProtocol {
         std::string cmdCall(User *user, std::string);
         std::string cmdUserAlreadyExist(User *user, std::string);
         std::string cmdUserCreated(User *user, std::string);
+        std::string cmdUserCreateError(User *user, std::string);
         std::string cmdCallResponse(User *user, std::string);
 
         void sendToUser(int userFd, std::string msg);
