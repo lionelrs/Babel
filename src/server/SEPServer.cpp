@@ -167,7 +167,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
             user->setCalling(name);
         }
     }
-    return ("");
+    return ("435");
 }
 
 bool SEPServer::isLoggedIn(char *token)
