@@ -116,7 +116,7 @@ void Controller::responseSelector(std::string response)
         sendUdpData();
     }
     if (code == CALL_CONFIRMATION) {
-        std::cout << ""------ 435 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
+        std::cout << "------ 435 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
