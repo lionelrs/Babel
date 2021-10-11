@@ -272,7 +272,6 @@ void SEPServer::handleDisconnection(User *user)
                 if (itr->getUserName() == buddyName) {
                     itr->setCalling("");
                     itr->setIsInCall(false);
-                    sendToUser(itr->getSocket(), "470");
                 }
             }
         }
