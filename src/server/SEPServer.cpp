@@ -66,6 +66,7 @@ std::string SEPServer::cmdLoginSucces(User *user)
             return (ss.str());
         }
         user->setUserName(token);
+        user->login();
 
         for (auto itr : userList) {
             if (itr != user && itr->isConnected()) {
@@ -115,7 +116,6 @@ void SEPServer::handleConnection()
         ", ip is : " << inet_ntoa(address.sin_addr) << ", port : " << ntohs(address.sin_port) << std::endl;
         User *user = new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket);
         this->userList.push_back(user);
-        user->login();
 
         this->sendToUser(new_socket, "Welcome to the SEP Server !");
 
