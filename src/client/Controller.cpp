@@ -44,19 +44,17 @@ void Controller::callSelected()
 void Controller::responseSelector(std::string response)
 {
     int code = std::atoi(response.substr(0, response.find(' ')).c_str());
+    response.erase(0, response.find(' ') + 1);
     if (code == CO_ERROR)
         ErrorWidget("Login failed.", "Error", _loginWidget);
     if (code == CONNECTION_OK) {
-        size_t pos = response.find(' ');
-        response.erase(0, pos + 1);
         _username = response;
         _window->setCentralWidget(_hubWidget);
         _tcp->writeData(Message("", std::to_string(REQUEST_USERS).c_str()));
         connect(_hubWidget->getButton(), SIGNAL(clicked()), this,  SLOT(callSelected()));
     }
     if (code == USER_LIST) {
-        size_t pos = response.find(' ');
-        response.erase(0, pos + 1);
+        size_t pos = 0;
         std::string token;
         while ((pos = response.find(';')) != std::string::npos) {
             token = response.substr(0, pos);
@@ -64,6 +62,14 @@ void Controller::responseSelector(std::string response)
             if (token == _username) continue;
             _hubWidget->addUser(token);
         }
+    }
+    if (code == USER_CO) {
+        if (response == _username) return;
+        _hubWidget->addUser(response);
+    }
+    if (code == USER_DECO) {
+        if (response == _username) return;
+        _hubWidget->removeUser(response);
     }
 }
 
