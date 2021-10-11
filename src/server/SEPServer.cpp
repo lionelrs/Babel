@@ -75,6 +75,8 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
     for (int i = 0; i < userList.size(); i++) {
         if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
             ss << port;
+            ss << " ";
+            user->getIp();
         }
     }
     return (ss.str());
