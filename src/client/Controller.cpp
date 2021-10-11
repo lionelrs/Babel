@@ -20,14 +20,10 @@ Controller::Controller(int port, char *ip) : _ip(ip)
     _called = new QMessageBox(_window);
     _pButtonYes = _called->addButton(tr("Yes"), QMessageBox::YesRole);
     _called->addButton(tr("No"), QMessageBox::NoRole);
-    _inCall = new QMessageBox(_window);
-    _pHangUp = _inCall->addButton(tr("Hang up"), QMessageBox::YesRole);
-    _inCall->setWindowTitle("Call");
 
     QFont font;
     font.setPointSize(14);
     _called->setFont(font);
-    _inCall->setFont(font);
 }
 
 Controller::~Controller()
@@ -112,10 +108,8 @@ void Controller::responseSelector(std::string response)
             _readUdp->openConnection();
             connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
             _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
-            _inCall->setText(("In call with " + username).c_str());
-            _inCall->exec();
-            if (_inCall->clickedButton() == _pHangUp)
-                _tcp->writeData(Message(_selectedUsername.c_str(), std::to_string(CALLHANGUP).c_str()));
+            _callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
+            //_window->setCentralWidget(_callWidget);
             sendUdpData();
         } else
             _tcp->writeData(Message(username.c_str(), std::to_string(CALLREFUSED).c_str()));
@@ -127,10 +121,8 @@ void Controller::responseSelector(std::string response)
         ip = response;
         _writeUdp = new MyUDP(ip, port);
         _writeUdp->openConnection();
-        _inCall->setText(("In call with " + _selectedUsername).c_str());
-        _inCall->exec();
-        if (_inCall->clickedButton() == _pHangUp)
-            _tcp->writeData(Message(_selectedUsername.c_str(), std::to_string(CALLHANGUP).c_str()));
+        _callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
+        //_window->setCentralWidget(_callWidget);
         sendUdpData();
     }
 }
