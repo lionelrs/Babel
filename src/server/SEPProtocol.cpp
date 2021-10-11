@@ -11,6 +11,8 @@ SEPProtocol::SEPProtocol()
 {
     _allCommands.emplace(300, &SEPProtocol::RequestConnection);
     _allCommands.emplace(600, &SEPProtocol::requestUserList);
+    _allCommands.emplace(400, &SEPProtocol::requestCall);
+    _allCommands.emplace(420, &SEPProtocol::requestCallConfirm);
 }
 
 SEPProtocol::~SEPProtocol()
@@ -28,6 +30,24 @@ std::string SEPProtocol::processCommand(const std::string &cliInput)
 
     return response;
 }
+
+std::string requestCall(const std::vector<std::string> &args)
+{
+    (void)args;
+    std::stringstream ss;
+    for (auto itr : args) {
+        ss << itr;
+        ss << " ";
+    }
+    return ("450 " + ss.str());
+}
+
+std::string requestCallConfirm(const std::vector<std::string> &args)
+{
+    (void)args;
+    return ("430");
+}
+
 
 std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
 {

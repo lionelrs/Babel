@@ -11,6 +11,8 @@ SEPServer::SEPServer(int port)
 {
     _port = port;
     _cmd.emplace(200, &SEPServer::cmdLoginSucces);
+    _cmd.emplace(430, &SEPServer::cmdCallResponse);
+    _cmd.emplace(450, &SEPServer::cmdCall);
     _cmd.emplace(500, &SEPServer::cmdLoginFailure);
     _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
 }
@@ -23,10 +25,11 @@ int SEPServer::parseLocalCommand(const char *b)
     return (std::atoi(digit));
 }
 
-std::string SEPServer::cmdListAllLoggedUsers(User *user)
+std::string SEPServer::cmdListAllLoggedUsers(User *user, std::string response)
 {
     std::stringstream ss;
     ss << "650 ";
+    (void)response;
     for (auto itr : userList) {
         if (itr->isConnected()) {
             ss << itr->getUserName();
@@ -36,11 +39,33 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user)
     return (ss.str());
 }
 
-std::string SEPServer::cmdCall(User *user)
+std::string SEPServer::cmdCall(User *user, std::string response)
 {
+    char *token = NULL, *port = NULL, *name = NULL;
+    (void)response;
+    char s[response.size()];
+    std::stringstream ss;
+    std::strcpy(s, response.c_str());
+    token = std::strtok(s, " ");
+    port = std::strtok(NULL, " ");
+    name = std::strtok(NULL, " ");
+    ss << "450 ";
+    for (int i = 0; i < userList.size(); i++) {
+        if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
+            ss << port;
+            ss << " ";
+            ss << user->getUserName();
+        }
+    }
+    return (ss.str());
+}
+
+std::string SEPServer::cmdCallResponse(User *user, std::string response)
+{
+    (void)response;
     // char *token = NULL;
     // std::cout << user->getUserName() << "<--->" <<
-    return ("");
+    return ("430");
 }
 
 bool SEPServer::isLoggedIn(char *token)
@@ -52,8 +77,9 @@ bool SEPServer::isLoggedIn(char *token)
     return (false);
 }
 
-std::string SEPServer::cmdLoginSucces(User *user)
+std::string SEPServer::cmdLoginSucces(User *user, std::string response)
 {
+    (void)response;
     std::string data = SqliteDataBase::getData();
     char sCopy[data.size() + 1];
     std::memset(sCopy, 0, sizeof(sCopy));
@@ -80,7 +106,7 @@ std::string SEPServer::cmdLoginSucces(User *user)
     return (ss.str());
 }
 
-std::string SEPServer::cmdLoginFailure(User *user)
+std::string SEPServer::cmdLoginFailure(User *user, std::string)
 {
     (void)user;
     return ("500");
@@ -94,7 +120,7 @@ void SEPServer::handleResponse(User *user)
     std::string response = processCommand(buffer);
     cmd = parseLocalCommand(response.c_str());
     SEPServer::factoryF func = _cmd[cmd];
-    response = (this->*func)(user);
+    response = (this->*func)(user, response);
     sendToUser(sd, response.c_str());
 }
 
@@ -214,7 +240,7 @@ void SEPServer::initSepServer()
 
     if (setsockopt(master_socket, SOL_SOCKET, SO_REUSEADDR, (char *)&opt,
                    sizeof(opt)) < 0) {
-        throw Babel::BabelException("setsockopt");
+        throw Babel::BabelException("setsockopt failed");
     }
 
     address.sin_family = AF_INET;
@@ -228,7 +254,7 @@ void SEPServer::initSepServer()
     std::cout << "Server Listening on port " << _port << std::endl;
 
     if (listen(master_socket, 3) < 0) {
-        throw Babel::BabelException("listen");
+        throw Babel::BabelException("listen failed");
     }
 }
 
