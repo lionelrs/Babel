@@ -45,7 +45,12 @@ std::string requestCall(const std::vector<std::string> &args)
 std::string requestCallConfirm(const std::vector<std::string> &args)
 {
     (void)args;
-    return ("430");
+    std::stringstream ss;
+    for (auto itr : args) {
+        ss << itr;
+        ss << " ";
+    }
+    return ("430 " + ss.str());
 }
 
 

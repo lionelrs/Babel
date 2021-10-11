@@ -62,10 +62,20 @@ std::string SEPServer::cmdCall(User *user, std::string response)
 
 std::string SEPServer::cmdCallResponse(User *user, std::string response)
 {
+    char *token = NULL, *port = NULL, *name = NULL;
     (void)response;
-    // char *token = NULL;
-    // std::cout << user->getUserName() << "<--->" <<
-    return ("430");
+    char s[response.size()];
+    std::stringstream ss;
+    std::strcpy(s, response.c_str());
+    token = std::strtok(s, " ");
+    port = std::strtok(NULL, " ");
+    ss << "430 ";
+    for (int i = 0; i < userList.size(); i++) {
+        if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
+            ss << port;
+        }
+    }
+    return (ss.str());
 }
 
 bool SEPServer::isLoggedIn(char *token)
