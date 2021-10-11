@@ -9,14 +9,12 @@
 #define CONTROLLER_HPP_
 
 #include <QMainWindow>
-#include <unistd.h>
 
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
 #include "LoginWidget.hpp"
 #include "ErrorWidget.hpp"
 #include "HubWidget.hpp"
-#include "CallWidget.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
@@ -33,13 +31,16 @@ class Controller : public QObject {
         void listenUdpData();
         void sendTcpLoginForm();
         void callSelected();
+        void acceptedResponse();
+        void refusedResponse();
+        void hangUp();
 
     protected:
     private:
         QMainWindow *_window;
         LoginWidget *_loginWidget;
         HubWidget *_hubWidget;
-        CallWidget *_callWidget;
+        ErrorWidget *_error;
 
         MyUDP *_readUdp;
         int _readPort;
@@ -47,11 +48,15 @@ class Controller : public QObject {
         MyUDP *_writeUdp;
         int _writePort;
         std::string _writeIp;
+        bool _inCall;
 
         MyTCP *_tcp;
 
-        QMessageBox *_called;
+        QMessageBox *_answerBox;
         QAbstractButton *_pButtonYes;
+
+        QMessageBox *_callBox;
+        QAbstractButton *_pButtonHangUp;
 
         std::string _myUsername;
         std::string _callUsername;

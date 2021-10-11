@@ -17,12 +17,16 @@ class ErrorWidget : public QWidget {
         ErrorWidget(std::string msg, std::string title, QWidget *parent = 0);
         ~ErrorWidget();
 
+        void show();
+        void hide();
+
     signals:
     public slots:
     private slots:
 
     protected:
     private:
+        QMessageBox *_msgBox;
 };
 
 #endif /* !ERRORWIDGET_HPP_ */

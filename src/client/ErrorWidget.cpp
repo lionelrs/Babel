@@ -9,15 +9,25 @@
 
 ErrorWidget::ErrorWidget(std::string msg, std::string title, QWidget *parent)
 {
-    QMessageBox msgBox(parent);
-    msgBox.setText(msg.c_str());
-    msgBox.setWindowTitle(title.c_str());
+    _msgBox = new QMessageBox(parent);
+    _msgBox->setText(msg.c_str());
+    _msgBox->setWindowTitle(title.c_str());
+
     QFont font;
     font.setPointSize(14);
-    msgBox.setFont(font);
-    msgBox.exec();
+    _msgBox->setFont(font);
 }
 
 ErrorWidget::~ErrorWidget()
 {
+}
+
+void ErrorWidget::show()
+{
+    _msgBox->show();
+}
+
+void ErrorWidget::hide()
+{
+    _msgBox->hide();
 }

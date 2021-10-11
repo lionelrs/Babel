@@ -16,14 +16,20 @@ Controller::Controller(int port, char *ip)
     _hubWidget = new HubWidget();
     _loginWidget = new LoginWidget();
     _tcp = new MyTCP(ip, port);
+    _error = nullptr;
+    _inCall = false;
 
-    _called = new QMessageBox(_hubWidget);
-    _pButtonYes = _called->addButton(tr("Yes"), QMessageBox::YesRole);
-    _called->addButton(tr("No"), QMessageBox::NoRole);
+    _answerBox = new QMessageBox(_hubWidget);
+    _pButtonYes = _answerBox->addButton(tr("Yes"), QMessageBox::YesRole);
+    _answerBox->addButton(tr("No"), QMessageBox::NoRole);
+
+    _callBox = new QMessageBox(_hubWidget);
+    _pButtonHangUp = _callBox->addButton(tr("Hang up"), QMessageBox::NoRole);
 
     QFont font;
     font.setPointSize(14);
-    _called->setFont(font);
+    _answerBox->setFont(font);
+    _callBox->setFont(font);
 }
 
 Controller::~Controller()
@@ -44,13 +50,32 @@ void Controller::sendTcpLoginForm()
 void Controller::callSelected()
 {
     int selected = _hubWidget->getSelected();
-    if (selected == -1)
-        ErrorWidget("No user selected.", "Error", _hubWidget);
+    if (selected == -1) {
+        _error = new ErrorWidget("No user selected.", "Error", _hubWidget);
+        _error->show();
+    }
     else {
         _readPort = 1024 + rand() % 64512;
         _callUsername = _hubWidget->getSelectedName();
         _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(REQUEST_CALL).c_str()));
     }
+}
+
+void Controller::acceptedResponse()
+{
+    _readPort = 1024 + rand() % 64512;
+    _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
+}
+
+void Controller::refusedResponse()
+{
+    _tcp->writeData(Message(_callUsername.c_str(), std::to_string(CALLREFUSED).c_str()));
+}
+
+void Controller::hangUp()
+{
+    _tcp->writeData(Message(_callUsername.c_str(), std::to_string(CALLHANGUP).c_str()));
+    _inCall = false;
 }
 
 void Controller::responseSelector(std::string response)
@@ -59,8 +84,10 @@ void Controller::responseSelector(std::string response)
     response.erase(0, response.find(' ') + 1);
     if (code == PING_IP)
         _readIp = response;
-    if (code == CO_ERROR)
-        ErrorWidget("Login failed.", "Error", _loginWidget);
+    if (code == CO_ERROR) {
+        _error = new ErrorWidget("Login failed.", "Error", _window);
+        _error->show();
+    }
     if (code == CONNECTION_OK) {
         _myUsername = response;
         _window->setCentralWidget(_hubWidget);
@@ -78,8 +105,10 @@ void Controller::responseSelector(std::string response)
             _hubWidget->addUser(token);
         }
     }
-    if (code == ERROR)
-        ErrorWidget("Already connected.", "Error", _loginWidget);
+    if (code == ERROR) {
+        _error = new ErrorWidget("Already connected.", "Error", _loginWidget);
+        _error->show();
+    }
     if (code == USER_CO) {
         if (response == _myUsername) return;
         _hubWidget->addUser(response);
@@ -94,14 +123,11 @@ void Controller::responseSelector(std::string response)
         _callUsername = response.substr(0, response.find(' ')).c_str();
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
-        _called->setWindowTitle((_callUsername + " is calling!").c_str());
-        _called->setText("Answer?");
-        _called->exec();
-        if (_called->clickedButton() == _pButtonYes) {
-            _readPort = 1024 + rand() % 64512;
-            _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
-        } else
-            _tcp->writeData(Message(_callUsername.c_str(), std::to_string(CALLREFUSED).c_str()));
+        _answerBox->setWindowTitle((_callUsername + " is calling!").c_str());
+        _answerBox->setText("Answer?");
+        _answerBox->show();
+        connect(_answerBox, SIGNAL(accepted()), this,  SLOT(acceptedResponse()));
+        connect(_answerBox, SIGNAL(rejected()), this,  SLOT(refusedResponse()));
     }
     if (code == USERCALLBACKCONFIRMATION) {
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
@@ -112,9 +138,11 @@ void Controller::responseSelector(std::string response)
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
         _writeUdp = new MyUDP(_writeIp, _writePort);
         _writeUdp->openConnection();
-        //_callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
-        //_window->setCentralWidget(_callWidget);
-        sleep(1);
+        _callBox->setWindowTitle("Communication");
+        _callBox->setText(("In call with " + _callUsername).c_str());
+        _callBox->show();
+        connect(_callBox, SIGNAL(rejected()), this,  SLOT(hangUp()));
+        _inCall = true;
         sendUdpData();
     }
     if (code == CALL_CONFIRMATION) {
@@ -123,14 +151,25 @@ void Controller::responseSelector(std::string response)
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
         _writeUdp = new MyUDP(_writeIp, _writePort);
         _writeUdp->openConnection();
-        //_callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
-        //_window->setCentralWidget(_callWidget);
+        _callBox->setWindowTitle("Communication");
+        _callBox->setText(("In call with " + _callUsername).c_str());
+        _callBox->show();
+        connect(_callBox, SIGNAL(rejected()), this,  SLOT(hangUp()));
+        _inCall = true;
         sendUdpData();
     }
-    if (code == CALLREFUSED)
-        ErrorWidget(_callUsername + " refused to answer", "Error", _hubWidget);
-    if (code == ALREADYINCALL)
-        ErrorWidget(_callUsername + " already in call", "Error", _hubWidget);
+    if (code == CALLREFUSED) {
+        _error = new ErrorWidget(_callUsername + " refused to answer", "Error", _hubWidget);
+        _error->show();
+    }
+    if (code == ALREADYINCALL) {
+        _error = new ErrorWidget(_callUsername + " already in call", "Error", _hubWidget);
+        _error->show();
+    }
+    if (code == CALLHANGUP) {
+        _callBox->hide();
+        _inCall = false;
+    }
 }
 
 void Controller::listenTcpData()
