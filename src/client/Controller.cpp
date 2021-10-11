@@ -105,7 +105,7 @@ void Controller::responseSelector(std::string response)
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
-        std::cout << "------ 430 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
+        std::cout << "------ 430 readPort " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp" << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
@@ -116,7 +116,7 @@ void Controller::responseSelector(std::string response)
         sendUdpData();
     }
     if (code == CALL_CONFIRMATION) {
-        std::cout << "------ 435 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
+        std::cout << "------ 435 " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp" << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
