@@ -15,7 +15,6 @@ SEPServer::SEPServer(int port)
     _cmd.emplace(450, &SEPServer::cmdCall);
     _cmd.emplace(460, &SEPServer::cmdRefuseCall);
     _cmd.emplace(470, &SEPServer::cmdCallHangUp);
-    _cmd.emplace(480, &SEPServer::cmdAlreadyInCall);
     _cmd.emplace(500, &SEPServer::cmdLoginFailure);
     _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
 }
@@ -128,6 +127,8 @@ std::string SEPServer::cmdCall(User *user, std::string response)
     ss << "450 ";
     for (int i = 0; i < userList.size(); i++) {
         if (userList[i]->getUserName() == name) {
+            if (userList[i]->isInCall())
+                return ("480");
             ss << port;
             ss << " ";
             ss << user->getUserName();
@@ -166,7 +167,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
             user->setCalling(name);
         }
     }
-    return ("");
+    return ("435");
 }
 
 bool SEPServer::isLoggedIn(char *token)
@@ -272,7 +273,6 @@ void SEPServer::handleDisconnection(User *user)
                 if (itr->getUserName() == buddyName) {
                     itr->setCalling("");
                     itr->setIsInCall(false);
-                    sendToUser(itr->getSocket(), "470");
                 }
             }
         }

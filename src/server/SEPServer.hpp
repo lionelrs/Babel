@@ -30,6 +30,8 @@ class SEPServer : public SEPProtocol {
         void handleDisconnectionHangup(User *user);
         void cleanUserList();
 
+        void checkAlreadyInCall(User *user, std::string name);
+
 
         std::string cmdRefuseCall(User *user, std::string response);
         std::string cmdAlreadyInCall(User *user, std::string response);
