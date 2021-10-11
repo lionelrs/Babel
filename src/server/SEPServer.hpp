@@ -27,6 +27,7 @@ class SEPServer : public SEPProtocol {
         void handleResponse(User *user);
         void handleConnection();
         void handleDisconnection(User *user);
+        void handleDisconnectionHangup(User *user);
         void cleanUserList();
 
 

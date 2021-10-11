@@ -265,6 +265,17 @@ void SEPServer::handleDisconnection(User *user)
         std::cout << "Host disconnected, socket fd is " << sd <<
         ", ip is : " << inet_ntoa(address.sin_addr) << ", port : " << ntohs(address.sin_port) << std::endl;
         close(sd);
+        if (user->isInCall()) {
+            user->setIsInCall(false);
+            std::string buddyName = user->getCalling();
+            for (auto itr : userList) {
+                if (itr->getUserName() == buddyName) {
+                    itr->setCalling("");
+                    itr->setIsInCall(false);
+                    sendToUser(itr->getSocket(), "470");
+                }
+            }
+        }
         user->disconnect();
     }
     else {
