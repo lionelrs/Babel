@@ -12,6 +12,7 @@ Controller::Controller(int port, char *ip) : _port(port), _ip(ip)
     _window = new QMainWindow();
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
+    _hubWidget = nullptr;
     _loginWidget = new LoginWidget();
     _tcp = new MyTCP(ip, port);
 }
@@ -66,10 +67,12 @@ void Controller::responseSelector(std::string response)
     if (code == ERROR)
         ErrorWidget("Already connected.", "Error", _loginWidget);
     if (code == USER_CO) {
+        if (!_hubWidget) return;
         if (response == _username) return;
         _hubWidget->addUser(response);
     }
     if (code == USER_DECO) {
+        if (!_hubWidget) return;
         if (response == _username) return;
         _hubWidget->removeUser(response);
     }
