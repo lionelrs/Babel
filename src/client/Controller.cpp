@@ -102,10 +102,10 @@ void Controller::responseSelector(std::string response)
             _tcp->writeData(Message(_callUsername.c_str(), std::to_string(CALLREFUSED).c_str()));
     }
     if (code == USERCALLBACKCONFIRMATION) {
-        std::cout << "------ 430 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
+        std::cout << "------ 430 " << _readPort << " " << _readIp << " " << _writePort << " " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
