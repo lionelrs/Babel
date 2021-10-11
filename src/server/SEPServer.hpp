@@ -32,6 +32,7 @@ class SEPServer : public SEPProtocol {
         std::string cmdListAllLoggedUsers(User *User);
         std::string cmdLoginSucces(User *User);
         std::string cmdLoginFailure(User *user);
+        std::string cmdCall(User *user);
 
         void sendToUser(int userFd, std::string msg);
         void sendDisc(std::string name);

@@ -24,8 +24,10 @@ enum SEPCode {
     USER_DECO = 250,
     REQUEST_CO = 300,
     REQUEST_CALL = 400,
+    CALL = 450,
     CO_ERROR = 500,
     ERROR = 550,
+    NOT_LOGGED = 580,
     REQUEST_USERS = 600,
     USER_LIST = 650,
     DISCONECT = 700

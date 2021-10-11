@@ -35,6 +35,12 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user)
     return (ss.str());
 }
 
+std::string SEPServer::cmdCall(User *user)
+{
+    // char *token = NULL;
+    // std::cout << user->getUserName() << "<--->" << 
+}
+
 bool SEPServer::isLoggedIn(char *token)
 {
     for (auto itr : userList) {
