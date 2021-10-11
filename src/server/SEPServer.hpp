@@ -18,7 +18,7 @@ class SEPServer : public SEPProtocol {
 
         void initSepServer();
         void listenOnPort();
-        typedef std::string (SEPServer::*factoryF)(User *user);
+        typedef std::string (SEPServer::*factoryF)(User *user, std::string);
     protected:
     private:
 
@@ -29,10 +29,11 @@ class SEPServer : public SEPProtocol {
         void handleDisconnection(User *user);
         void cleanUserList();
 
-        std::string cmdListAllLoggedUsers(User *User);
-        std::string cmdLoginSucces(User *User);
-        std::string cmdLoginFailure(User *user);
-        std::string cmdCall(User *user);
+        std::string cmdListAllLoggedUsers(User *User, std::string);
+        std::string cmdLoginSucces(User *User, std::string);
+        std::string cmdLoginFailure(User *user, std::string);
+        std::string cmdCall(User *user, std::string);
+        std::string cmdCallResponse(User *user, std::string);
 
         void sendToUser(int userFd, std::string msg);
         void sendDisc(std::string name);

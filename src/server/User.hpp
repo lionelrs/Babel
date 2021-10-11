@@ -37,6 +37,7 @@ class User {
         void disconnect();
         void login();
         int getSocket() const;
+        std::string getIp() const;
         std::string getUserName() const;
         void setUserName(std::string id);
 

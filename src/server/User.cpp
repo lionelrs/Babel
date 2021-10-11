@@ -26,6 +26,11 @@ void User::disconnect()
     this->_isConnected = false;
 }
 
+std::string User::getIp() const
+{
+    return (_ip);
+}
+
 void User::login()
 {
     this->_isConnected = true;
