@@ -24,18 +24,20 @@ SEPProtocol::~SEPProtocol()
 
 std::string SEPProtocol::requestRefuseCall(const std::vector<std::string> &args)
 {
-
+    if (args.size() < 2) return ("500");
+    return ("460");
 }
 
 std::string SEPProtocol::requestCallHangUp(const std::vector<std::string> &args)
 {
-
+    if (args.size() < 2) return ("500");
+    return ("470");
 }
 
 std::string SEPProtocol::requestAlreadyInCall(const std::vector<std::string> &args)
 {
     if (args.size() < 2) return ("500");
-    return ("650");
+    return ("480");
 }
 
 

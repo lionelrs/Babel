@@ -44,20 +44,71 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user, std::string response)
 
 std::string SEPServer::cmdRefuseCall(User *user, std::string response)
 {
-    (void)response;
-    return ("460");
+    std::string token, name;
+    std::stringstream ss;
+    std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
+    if (rawData.size() < 2) {
+        return ("500");
+    }
+    token = rawData[0];
+    name = rawData[1];
+    name.erase(std::remove(name.begin(), name.end(), '\r'), name.end());
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+    for (int i = 0; i < userList.size(); i++) {
+        if (userList[i]->getUserName() == name) {
+            ss << token;
+            sendToUser(userList[i]->getSocket(), ss.str());
+        }
+    }
+    return ("");
 }
 
 std::string SEPServer::cmdAlreadyInCall(User *user, std::string response)
 {
+    std::string token, port, name;
+    std::stringstream ss;
     (void)response;
-    return ("480");
+    std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
+    if (rawData.size() < 3) {
+        return ("500");
+    }
+    token = rawData[0];
+    port = rawData[1];
+    name = rawData[2];
+    name.erase(std::remove(name.begin(), name.end(), '\r'), name.end());
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+    ss << "480";
+    for (int i = 0; i < userList.size(); i++) {
+        if (userList[i]->getUserName() == name) {
+            sendToUser(userList[i]->getSocket(), ss.str());
+        }
+    }
+    return ("");
 }
 
 std::string SEPServer::cmdCallHangUp(User *user, std::string response)
 {
-    (void)response;
-    return ("470");
+    std::string token, name;
+    std::stringstream ss;
+    std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
+    if (rawData.size() < 2) {
+        return ("500");
+    }
+    token = rawData[0];
+    name = rawData[1];
+    name.erase(std::remove(name.begin(), name.end(), '\r'), name.end());
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
+    for (int i = 0; i < userList.size(); i++) {
+        if (userList[i]->getUserName() == name) {
+            ss << token;
+            sendToUser(userList[i]->getSocket(), ss.str());
+            user->setIsInCall(false);
+            user->setCalling("");
+            userList[i]->setIsInCall(false);
+            userList[i]->setCalling("");
+        }
+    }
+    return ("");
 }
 
 std::string SEPServer::cmdCall(User *user, std::string response)
@@ -67,8 +118,7 @@ std::string SEPServer::cmdCall(User *user, std::string response)
     (void)response;
     std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
     if (rawData.size() < 3) {
-        sendToUser(userList[i]->getSocket(), "500");
-        return ("");
+        return ("500");
     }
     token = rawData[0];
     port = rawData[1];
@@ -84,6 +134,8 @@ std::string SEPServer::cmdCall(User *user, std::string response)
             ss << " ";
             ss << user->getIp();
             sendToUser(userList[i]->getSocket(), ss.str());
+            user->setIsInCall(true);
+            user->setCalling(name);
         }
     }
     return ("");
@@ -96,8 +148,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
     (void)response;
     std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
     if (rawData.size() < 3) {
-        sendToUser(userList[i]->getSocket(), "500");
-        return ("");
+        return ("500");
     }
     token = rawData[0];
     port = rawData[1];
@@ -111,6 +162,8 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
             ss << " ";
             ss << user->getIp();
             sendToUser(userList[i]->getSocket(), ss.str());
+            user->setIsInCall(true);
+            user->setCalling(name);
         }
     }
     return ("");

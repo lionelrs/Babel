@@ -34,12 +34,16 @@ class User {
         ~User();
 
         bool isConnected() const;
+        bool isInCall() const;
         void disconnect();
         void login();
         int getSocket() const;
+        std::string getCalling() const;
         std::string getIp() const;
         std::string getUserName() const;
         void setUserName(std::string id);
+        void setIsInCall(bool isInCall);
+        void setCalling(std::string name);
 
     protected:
     private:
@@ -47,6 +51,8 @@ class User {
         std::string _ip;
         int _port;
         int _socket;
+        bool _isInCall;
+        std::string _calling;
         std::string _username;
 };
 
