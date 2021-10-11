@@ -16,6 +16,18 @@ Controller::Controller(int port, char *ip) : _ip(ip)
     _hubWidget = nullptr;
     _loginWidget = new LoginWidget();
     _tcp = new MyTCP(ip, port);
+
+    _called = new QMessageBox(_window);
+    _pButtonYes = _called->addButton(tr("Yes"), QMessageBox::YesRole);
+    _called->addButton(tr("No"), QMessageBox::NoRole);
+    _inCall = new QMessageBox(_window);
+    _pHangUp = _inCall->addButton(tr("Hang up"), QMessageBox::YesRole);
+    _inCall->setWindowTitle("Call");
+
+    QFont font;
+    font.setPointSize(14);
+    _called->setFont(font);
+    _inCall->setFont(font);
 }
 
 Controller::~Controller()
@@ -43,7 +55,8 @@ void Controller::callSelected()
         _readUdp = new MyUDP(_ip, readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
-        _tcp->writeData(Message((std::to_string(readPort) + " " + _hubWidget->getSelectedName()).c_str(), std::to_string(REQUEST_CALL).c_str()));
+        _selectedUsername = _hubWidget->getSelectedName();
+        _tcp->writeData(Message((std::to_string(readPort) + " " + _selectedUsername).c_str(), std::to_string(REQUEST_CALL).c_str()));
     }
 }
 
@@ -88,14 +101,24 @@ void Controller::responseSelector(std::string response)
         std::string username = response.substr(0, response.find(' ')).c_str();
         response.erase(0, response.find(' ') + 1);
         std::string ip = response;
-        _writeUdp = new MyUDP(ip, writePort);
-        _writeUdp->openConnection();
-        int readPort = 1024 + rand() % 64512;
-        _readUdp = new MyUDP(_ip, readPort);
-        _readUdp->openConnection();
-        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
-        _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
-        sendUdpData();
+        _called->setWindowTitle((username + " is calling!").c_str());
+        _called->setText("Answer?");
+        _called->exec();
+        if (_called->clickedButton() == _pButtonYes) {
+            _writeUdp = new MyUDP(ip, writePort);
+            _writeUdp->openConnection();
+            int readPort = 1024 + rand() % 64512;
+            _readUdp = new MyUDP(_ip, readPort);
+            _readUdp->openConnection();
+            connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
+            _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
+            _inCall->setText(("In call with " + username).c_str());
+            _inCall->exec();
+            if (_inCall->clickedButton() == _pHangUp)
+                _tcp->writeData(Message(_selectedUsername.c_str(), std::to_string(CALLHANGUP).c_str()));
+            sendUdpData();
+        } else
+            _tcp->writeData(Message(username.c_str(), std::to_string(CALLREFUSED).c_str()));
     }
     if (code == USERCALLBACKCONFIRMATION) {
         std::string ip;
@@ -104,6 +127,10 @@ void Controller::responseSelector(std::string response)
         ip = response;
         _writeUdp = new MyUDP(ip, port);
         _writeUdp->openConnection();
+        _inCall->setText(("In call with " + _selectedUsername).c_str());
+        _inCall->exec();
+        if (_inCall->clickedButton() == _pHangUp)
+            _tcp->writeData(Message(_selectedUsername.c_str(), std::to_string(CALLHANGUP).c_str()));
         sendUdpData();
     }
 }

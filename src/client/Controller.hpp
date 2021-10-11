@@ -41,8 +41,14 @@ class Controller : public QObject {
         MyUDP *_writeUdp;
         MyTCP *_tcp;
 
+        QMessageBox *_called;
+        QMessageBox *_inCall;
+        QAbstractButton *_pButtonYes;
+        QAbstractButton *_pHangUp;
+
         std::string _ip;
         std::string _username;
+        std::string _selectedUsername;
 
         void responseSelector(std::string response);
 
