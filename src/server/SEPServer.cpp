@@ -13,6 +13,9 @@ SEPServer::SEPServer(int port)
     _cmd.emplace(200, &SEPServer::cmdLoginSucces);
     _cmd.emplace(430, &SEPServer::cmdCallResponse);
     _cmd.emplace(450, &SEPServer::cmdCall);
+    _cmd.emplace(460, &SEPServer::cmdRefuseCall);
+    _cmd.emplace(470, &SEPServer::cmdCallHangUp);
+    _cmd.emplace(480, &SEPServer::cmdAlreadyInCall);
     _cmd.emplace(500, &SEPServer::cmdLoginFailure);
     _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
 }
@@ -39,20 +42,40 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user, std::string response)
     return (ss.str());
 }
 
+std::string SEPServer::cmdRefuseCall(User *user, std::string response)
+{
+    (void)response;
+    return ("460");
+}
+
+std::string SEPServer::cmdAlreadyInCall(User *user, std::string response)
+{
+    (void)response;
+    return ("480");
+}
+
+std::string SEPServer::cmdCallHangUp(User *user, std::string response)
+{
+    (void)response;
+    return ("470");
+}
+
 std::string SEPServer::cmdCall(User *user, std::string response)
 {
-    char *token = NULL, *port = NULL, *name = NULL;
-    (void)response;
-    char s[response.size()];
+    std::string token, port, name;
     std::stringstream ss;
-    std::strcpy(s, response.c_str());
-    std::cout << s << std::endl;
-    token = std::strtok(s, " ");
-    port = std::strtok(NULL, " ");
-    name = std::strtok(NULL, " ");
+    (void)response;
+    std::vector<std::string> rawData = getInfosCommand(response);
+    if (rawData.size() < 3) {
+        sendToUser(userList[i]->getSocket(), "500");
+        return ("");
+    }
+    token = rawData[0];
+    port = rawData[1];
+    name = rawData[2];
     ss << "450 ";
     for (int i = 0; i < userList.size(); i++) {
-        if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
+        if (userList[i]->getUserName() == name) {
             ss << port;
             ss << " ";
             ss << user->getUserName();
@@ -66,17 +89,20 @@ std::string SEPServer::cmdCall(User *user, std::string response)
 
 std::string SEPServer::cmdCallResponse(User *user, std::string response)
 {
-    char *token = NULL, *port = NULL, *name = NULL;
-    (void)response;
-    char s[response.size()];
+    std::string token, port, name;
     std::stringstream ss;
-    std::strcpy(s, response.c_str());
-    token = std::strtok(s, " ");
-    port = std::strtok(NULL, " ");
-    name = std::strtok(NULL, " ");
+    (void)response;
+    std::vector<std::string> rawData = getInfosCommand(response);
+    if (rawData.size() < 3) {
+        sendToUser(userList[i]->getSocket(), "500");
+        return ("");
+    }
+    token = rawData[0];
+    port = rawData[1];
+    name = rawData[2];
     ss << "430 ";
     for (int i = 0; i < userList.size(); i++) {
-        if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
+        if (userList[i]->getUserName() == name) {
             ss << port;
             ss << " ";
             ss << user->getIp();
@@ -106,6 +132,10 @@ std::string SEPServer::cmdLoginSucces(User *user, std::string response)
     std::stringstream ss;
     if (data != "NULL") {
         token = std::strtok(sCopy, ";");
+        if (token == NULL) {
+            ss << "500";
+            return (ss.str());
+        }
         if (isLoggedIn(token)) {
             ss << "550";
             return (ss.str());

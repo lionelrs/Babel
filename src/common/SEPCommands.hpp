@@ -17,7 +17,8 @@ struct SEPCommands
     char ip[1024];
 };
 
-enum SEPCode {
+enum SEPCode
+{
     PING = 100,
     USER_CO = 150,
     CONNECTION_OK = 200,
