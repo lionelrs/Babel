@@ -28,6 +28,7 @@ class Controller : public QObject {
     public slots:
         void sendUdpData();
         void listenTcpData();
+        void listenUdpData();
         void sendTcpLoginForm();
         void callSelected();
 

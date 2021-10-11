@@ -79,7 +79,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
         if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
             ss << port;
             ss << " ";
-            user->getIp();
+            ss << user->getIp();
             sendToUser(userList[i]->getSocket(), ss.str());
         }
     }

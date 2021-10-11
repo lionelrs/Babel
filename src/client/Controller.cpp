@@ -42,6 +42,7 @@ void Controller::callSelected()
         int readPort = 1024 + rand() % 64512;
         _readUdp = new MyUDP(_ip, readPort);
         _readUdp->openConnection();
+        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
         _tcp->writeData(Message((std::to_string(readPort) + " " + _hubWidget->getSelectedName()).c_str(), std::to_string(REQUEST_CALL).c_str()));
     }
 }
@@ -82,37 +83,28 @@ void Controller::responseSelector(std::string response)
         _hubWidget->removeUser(response);
     }
     if (code == CALL) {
-        std::string ip;
-        std::string username;
-        int writePort;
-        for (size_t pos = 0, i = 0; (pos = response.find(' ')) != std::string::npos; i++) {
-            if (i == 0)
-                writePort = std::atoi(response.substr(0, pos).c_str());
-            else if (i == 1)
-                username = response.substr(0, pos).c_str();
-            else
-                ip = response.substr(0, pos).c_str();
-            response.erase(0, pos + 1);
-        }
+        int writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
+        response.erase(0, response.find(' ') + 1);
+        std::string username = response.substr(0, response.find(' ')).c_str();
+        response.erase(0, response.find(' ') + 1);
+        std::string ip = response;
         _writeUdp = new MyUDP(ip, writePort);
         _writeUdp->openConnection();
         int readPort = 1024 + rand() % 64512;
         _readUdp = new MyUDP(_ip, readPort);
         _readUdp->openConnection();
+        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
         _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
+        sendUdpData();
     }
     if (code == USERCALLBACKCONFIRMATION) {
         std::string ip;
-        int port;
-        for (size_t pos = 0, i = 0; (pos = response.find(' ')) != std::string::npos; i++) {
-            if (i == 0)
-                port = std::atoi(response.substr(0, pos).c_str());
-            else
-                ip = response.substr(0, pos).c_str();
-            response.erase(0, pos + 1);
-        }
+        int port = std::atoi(response.substr(0, response.find(' ')).c_str());
+        response.erase(0, response.find(' ') + 1);
+        ip = response;
         _writeUdp = new MyUDP(ip, port);
         _writeUdp->openConnection();
+        sendUdpData();
     }
 }
 
@@ -121,6 +113,11 @@ void Controller::listenTcpData()
     _tcp->readData();
     std::cout << "Data received: " << _tcp->getData() << std::endl;
     responseSelector(_tcp->getData());
+}
+
+void Controller::listenUdpData()
+{
+    _readUdp->readData();
 }
 
 void Controller::startBabel()
