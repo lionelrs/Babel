@@ -38,7 +38,8 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user)
 std::string SEPServer::cmdCall(User *user)
 {
     // char *token = NULL;
-    // std::cout << user->getUserName() << "<--->" << 
+    // std::cout << user->getUserName() << "<--->" <<
+    return ("");
 }
 
 bool SEPServer::isLoggedIn(char *token)
@@ -65,6 +66,7 @@ std::string SEPServer::cmdLoginSucces(User *user)
             return (ss.str());
         }
         user->setUserName(token);
+        user->login();
 
         for (auto itr : userList) {
             if (itr != user && itr->isConnected()) {
@@ -86,6 +88,7 @@ std::string SEPServer::cmdLoginFailure(User *user)
 void SEPServer::handleResponse(User *user)
 {
     int cmd = parseLocalCommand(buffer);
+    std::cout << "CMD" << ": " << cmd << std::endl;
     buffer[valread] = '\0';
     std::string response = processCommand(buffer);
     cmd = parseLocalCommand(response.c_str());
@@ -113,7 +116,6 @@ void SEPServer::handleConnection()
         ", ip is : " << inet_ntoa(address.sin_addr) << ", port : " << ntohs(address.sin_port) << std::endl;
         User *user = new User(inet_ntoa(address.sin_addr), ntohs(address.sin_port), new_socket);
         this->userList.push_back(user);
-        user->login();
 
         this->sendToUser(new_socket, "Welcome to the SEP Server !");
 
