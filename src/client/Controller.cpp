@@ -9,6 +9,7 @@
 
 Controller::Controller(int port, char *ip) : _ip(ip)
 {
+    srand(time(NULL));
     _window = new QMainWindow();
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
@@ -38,10 +39,10 @@ void Controller::callSelected()
     if (selected == -1)
         ErrorWidget("No user selected.", "Error", _hubWidget);
     else {
-        int port = 1024 + random() % 64512;
-        _readUdp = new MyUDP(_ip, 1024 + random() % 64512);
+        int readPort = 1024 + rand() % 64512;
+        _readUdp = new MyUDP(_ip, readPort);
         _readUdp->openConnection();
-        _tcp->writeData(Message((std::to_string(port) + " " + _hubWidget->getSelectedName()).c_str(), std::to_string(REQUEST_CALL).c_str()));
+        _tcp->writeData(Message((std::to_string(readPort) + " " + _hubWidget->getSelectedName()).c_str(), std::to_string(REQUEST_CALL).c_str()));
     }
 }
 
@@ -83,22 +84,22 @@ void Controller::responseSelector(std::string response)
     if (code == CALL) {
         std::string ip;
         std::string username;
-        int port;
+        int writePort;
         for (size_t pos = 0, i = 0; (pos = response.find(' ')) != std::string::npos; i++) {
             if (i == 0)
-                port = std::atoi(response.substr(0, pos).c_str());
+                writePort = std::atoi(response.substr(0, pos).c_str());
             else if (i == 1)
                 username = response.substr(0, pos).c_str();
             else
                 ip = response.substr(0, pos).c_str();
             response.erase(0, pos + 1);
         }
-        _writeUdp = new MyUDP(ip, port);
+        _writeUdp = new MyUDP(ip, writePort);
         _writeUdp->openConnection();
-        port = 1024 + random() % 64512;
-        _readUdp = new MyUDP(_ip, 1024 + random() % 64512);
+        int readPort = 1024 + rand() % 64512;
+        _readUdp = new MyUDP(_ip, readPort);
         _readUdp->openConnection();
-        _tcp->writeData(Message((std::to_string(port) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
+        _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
     }
     if (code == USERCALLBACKCONFIRMATION) {
         std::string ip;
