@@ -34,6 +34,9 @@ private:
     std::string requestUserList(const std::vector<std::string> &args);
     std::string requestCall(const std::vector<std::string> &args);
     std::string requestCallConfirm(const std::vector<std::string> &args);
+    std::string requestRefuseCall(const std::vector<std::string> &args);
+    std::string requestCallHangUp(const std::vector<std::string> &args);
+    std::string requestAlreadyInCall(const std::vector<std::string> &args);
     SqliteDataBase *_instance;
 };
 

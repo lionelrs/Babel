@@ -65,7 +65,7 @@ std::string SEPServer::cmdCall(User *user, std::string response)
     std::string token, port, name;
     std::stringstream ss;
     (void)response;
-    std::vector<std::string> rawData = getInfosCommand(response);
+    std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
     if (rawData.size() < 3) {
         sendToUser(userList[i]->getSocket(), "500");
         return ("");
@@ -73,6 +73,8 @@ std::string SEPServer::cmdCall(User *user, std::string response)
     token = rawData[0];
     port = rawData[1];
     name = rawData[2];
+    name.erase(std::remove(name.begin(), name.end(), '\r'), name.end());
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
     ss << "450 ";
     for (int i = 0; i < userList.size(); i++) {
         if (userList[i]->getUserName() == name) {
@@ -92,7 +94,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
     std::string token, port, name;
     std::stringstream ss;
     (void)response;
-    std::vector<std::string> rawData = getInfosCommand(response);
+    std::vector<std::string> rawData = getInfosCommand(response + "\r\n");
     if (rawData.size() < 3) {
         sendToUser(userList[i]->getSocket(), "500");
         return ("");
@@ -100,6 +102,8 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
     token = rawData[0];
     port = rawData[1];
     name = rawData[2];
+    name.erase(std::remove(name.begin(), name.end(), '\r'), name.end());
+    name.erase(std::remove(name.begin(), name.end(), '\n'), name.end());
     ss << "430 ";
     for (int i = 0; i < userList.size(); i++) {
         if (userList[i]->getUserName() == name) {

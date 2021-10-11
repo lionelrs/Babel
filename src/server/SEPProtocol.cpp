@@ -13,11 +13,31 @@ SEPProtocol::SEPProtocol()
     _allCommands.emplace(600, &SEPProtocol::requestUserList);
     _allCommands.emplace(400, &SEPProtocol::requestCall);
     _allCommands.emplace(420, &SEPProtocol::requestCallConfirm);
+    _allCommands.emplace(460, &SEPProtocol::requestRefuseCall);
+    _allCommands.emplace(470, &SEPProtocol::requestCallHangUp);
+    _allCommands.emplace(480, &SEPProtocol::requestAlreadyInCall);
 }
 
 SEPProtocol::~SEPProtocol()
 {
 }
+
+std::string SEPProtocol::requestRefuseCall(const std::vector<std::string> &args)
+{
+
+}
+
+std::string SEPProtocol::requestCallHangUp(const std::vector<std::string> &args)
+{
+
+}
+
+std::string SEPProtocol::requestAlreadyInCall(const std::vector<std::string> &args)
+{
+    if (args.size() < 2) return ("500");
+    return ("650");
+}
+
 
 std::string SEPProtocol::processCommand(const std::string &cliInput)
 {
