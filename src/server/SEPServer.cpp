@@ -58,9 +58,10 @@ std::string SEPServer::cmdCall(User *user, std::string response)
             ss << user->getUserName();
             ss << " ";
             ss << user->getIp();
+            sendToUser(userList[i]->getSocket(), ss.str());
         }
     }
-    return (ss.str());
+    return ("");
 }
 
 std::string SEPServer::cmdCallResponse(User *user, std::string response)
@@ -79,9 +80,10 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
             ss << port;
             ss << " ";
             user->getIp();
+            sendToUser(userList[i]->getSocket(), ss.str());
         }
     }
-    return (ss.str());
+    return ("");
 }
 
 bool SEPServer::isLoggedIn(char *token)
