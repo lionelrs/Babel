@@ -28,9 +28,10 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user)
     std::stringstream ss;
     ss << "650 ";
     for (auto itr : userList) {
-        if (itr->isConnected())
+        if (itr->isConnected()) {
             ss << itr->getUserName();
             ss << ";";
+        }
     }
     return (ss.str());
 }
