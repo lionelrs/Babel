@@ -7,7 +7,7 @@
 
 #include "Controller.hpp"
 
-Controller::Controller(int port, char *ip) : _readIp(ip)
+Controller::Controller(int port, char *ip)
 {
     srand(time(NULL));
     _window = new QMainWindow();
@@ -57,6 +57,8 @@ void Controller::responseSelector(std::string response)
 {
     int code = std::atoi(response.substr(0, response.find(' ')).c_str());
     response.erase(0, response.find(' ') + 1);
+    if (code == PING_IP)
+        _readIp = response;
     if (code == CO_ERROR)
         ErrorWidget("Login failed.", "Error", _loginWidget);
     if (code == CONNECTION_OK) {
@@ -105,7 +107,7 @@ void Controller::responseSelector(std::string response)
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
-        std::cout << "------ 430 readPort " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp" << _writeIp << std::endl;
+        std::cout << "------ 430 readPort " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
@@ -116,7 +118,7 @@ void Controller::responseSelector(std::string response)
         sendUdpData();
     }
     if (code == CALL_CONFIRMATION) {
-        std::cout << "------ 435 " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp" << _writeIp << std::endl;
+        std::cout << "------ 435 " << _readPort << " readIp " << _readIp << " writePort " << _writePort << " writeIp " << _writeIp << std::endl;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));

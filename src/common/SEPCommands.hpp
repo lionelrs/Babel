@@ -20,6 +20,7 @@ struct SEPCommands
 enum SEPCode
 {
     PING = 100,
+    PING_IP  = 120,
     USER_CO = 150,
     CONNECTION_OK = 200,
     USER_DECO = 250,
