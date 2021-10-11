@@ -98,10 +98,10 @@ void Controller::responseSelector(std::string response)
         if (_called->clickedButton() == _pButtonYes) {
             _readPort = 1024 + rand() % 64512;
             _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
-        } //else if (_called->clickedButton() == )
-            //_tcp->writeData(Message(username.c_str(), std::to_string(CALLREFUSED).c_str()));
+        } else
+            _tcp->writeData(Message(_callUsername.c_str(), std::to_string(CALLREFUSED).c_str()));
     }
-    if (code == USERCALLBACKCONFIRMATION || code == 435) {
+    if (code == USERCALLBACKCONFIRMATION) {
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
@@ -114,6 +114,18 @@ void Controller::responseSelector(std::string response)
         //_window->setCentralWidget(_callWidget);
         sendUdpData();
     }
+    if (code == CALL_CONFIRMATION) {
+        _readUdp = new MyUDP(_readIp, _readPort);
+        _readUdp->openConnection();
+        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
+        _writeUdp = new MyUDP(_writeIp, _writePort);
+        _writeUdp->openConnection();
+        //_callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
+        //_window->setCentralWidget(_callWidget);
+        sendUdpData();
+    }
+    if (code == CALLREFUSED)
+        ErrorWidget(_callUsername + " refused to answer", "Error", _hubWidget);
 }
 
 void Controller::listenTcpData()
