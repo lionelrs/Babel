@@ -17,7 +17,8 @@ struct SEPCommands
     char ip[1024];
 };
 
-enum SEPCode {
+enum SEPCode
+{
     PING = 100,
     USER_CO = 150,
     CONNECTION_OK = 200,
@@ -27,6 +28,9 @@ enum SEPCode {
     USERCALLBACKRESPONSE = 420,
     USERCALLBACKCONFIRMATION = 430,
     CALL = 450,
+    CALLREFUSED = 460,
+    CALLHANGUP = 470,
+    ALREADYINCALL = 480,
     CO_ERROR = 500,
     ERROR = 550,
     NOT_LOGGED = 580,

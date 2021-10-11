@@ -29,6 +29,10 @@ class SEPServer : public SEPProtocol {
         void handleDisconnection(User *user);
         void cleanUserList();
 
+
+        std::string cmdRefuseCall(User *user, std::string response);
+        std::string cmdAlreadyInCall(User *user, std::string response);
+        std::string cmdCallHangUp(User *user, std::string response);
         std::string cmdListAllLoggedUsers(User *User, std::string);
         std::string cmdLoginSucces(User *User, std::string);
         std::string cmdLoginFailure(User *user, std::string);

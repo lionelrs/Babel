@@ -20,12 +20,12 @@ public:
     ~SEPProtocol();
 
     std::string     processCommand(const std::string &cliInput);
+    std::vector<std::string>    getInfosCommand(std::string command) const;
 
 protected:
 private:
     typedef std::string (SEPProtocol::*factoryF)(const std::vector<std::string> &arg);
 
-    std::vector<std::string>    getInfosCommand(std::string command) const;
 
     std::map<int, factoryF>     _allCommands;
 
