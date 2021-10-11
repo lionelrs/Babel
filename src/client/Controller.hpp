@@ -40,7 +40,6 @@ class Controller : public QObject {
         MyUDP *_writeUdp;
         MyTCP *_tcp;
 
-        int _port;
         std::string _ip;
         std::string _username;
 
