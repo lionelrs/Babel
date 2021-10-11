@@ -35,6 +35,15 @@ std::string SEPServer::cmdListAllLoggedUsers(User *user)
     return (ss.str());
 }
 
+bool SEPServer::isLoggedIn(char *token)
+{
+    for (auto itr : userList) {
+        if (std::strcmp(itr->getUserName().c_str(), token) == 0)
+            return (true);
+    }
+    return (false);
+}
+
 std::string SEPServer::cmdLoginSucces(User *user)
 {
     std::string data = SqliteDataBase::getData();
@@ -45,6 +54,10 @@ std::string SEPServer::cmdLoginSucces(User *user)
     std::stringstream ss;
     if (data != "NULL") {
         token = std::strtok(sCopy, ";");
+        if (isLoggedIn(token)) {
+            ss << "550";
+            return (ss.str());
+        }
         user->setUserName(token);
 
         for (auto itr : userList) {

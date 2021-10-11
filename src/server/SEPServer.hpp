@@ -22,6 +22,7 @@ class SEPServer : public SEPProtocol {
     protected:
     private:
 
+        bool isLoggedIn(char *token);
         int parseLocalCommand(const char *b);
         void handleResponse(User *user);
         void handleConnection();
