@@ -43,6 +43,14 @@ static int callbackCheckUser(void *data, int argc, char **argv, char **azColName
 
     return 0;
 }
+
+static int callbackCreateUser(void *NotUsed, int argc, char **argv, char **azColName) {
+   (void)NotUsed;
+   (void)argc;
+   (void)argv;
+   (void)azColName;
+   return 0;
+}
 // ------------------- //
 
 void SqliteDataBase::createTable()
@@ -77,15 +85,27 @@ bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::s
     for (char c: chars) {
         s.erase(std::remove(s.begin(), s.end(), c), s.end());
     }
-    std::string sqlCommand = "SELECT LOGIN, PASSWORD FROM USERINFO WHERE LOGIN = \"" + login + "\" AND PASSWORD = \"" + s + "\"";
+    std::string sqlCommand = "SELECT Username, Password FROM USER WHERE Username = \"" + login + "\" AND Password = \"" + s + "\"";
     std::cout << sqlCommand << std::endl;
 
     rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), callbackCheckUser, &check, nullptr);
     return check;
 }
 
-void SqliteDataBase::createUser(const std::string &login, const std::string &mp, const std::string &ip)
+bool SqliteDataBase::createUser(const std::string &login, const std::string &pass)
 {
+    std::string chars = "\r\n";
+    std::string s = pass;
+    for (char c: chars) {
+        s.erase(std::remove(s.begin(), s.end(), c), s.end());
+    }
+    std::string sqlCommand = "INSERT INTO USER VALUES(\"" + login + "\", \"" + s + "\")";
+    int rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), callbackCreateUser, 0, nullptr);
+    if (rc != SQLITE_OK) {
+        std::cerr << "SQL error couldn't create User shitbag" << std::endl;
+        return (false);
+    }
+    return (true);
 }
 
 std::string SqliteDataBase::getUserInfo(const std::string &login)

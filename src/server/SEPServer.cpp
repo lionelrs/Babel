@@ -11,13 +11,28 @@ SEPServer::SEPServer(int port)
 {
     _port = port;
     _cmd.emplace(200, &SEPServer::cmdLoginSucces);
+    _cmd.emplace(220, &SEPServer::cmdUserCreated);
     _cmd.emplace(430, &SEPServer::cmdCallResponse);
     _cmd.emplace(450, &SEPServer::cmdCall);
     _cmd.emplace(460, &SEPServer::cmdRefuseCall);
     _cmd.emplace(470, &SEPServer::cmdCallHangUp);
     _cmd.emplace(500, &SEPServer::cmdLoginFailure);
+    _cmd.emplace(505, &SEPServer::cmdUserAlreadyExist);
     _cmd.emplace(650, &SEPServer::cmdListAllLoggedUsers);
 }
+
+std::string SEPServer::cmdUserAlreadyExist(User *user, std::string response)
+{
+    (void)response;
+    return ("505");
+}
+
+std::string SEPServer::cmdUserCreated(User *user, std::string response)
+{
+    (void)response;
+    return ("220");
+}
+
 
 int SEPServer::parseLocalCommand(const char *b)
 {
