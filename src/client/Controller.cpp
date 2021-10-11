@@ -7,17 +7,17 @@
 
 #include "Controller.hpp"
 
-Controller::Controller(int port, char *ip) : _ip(ip)
+Controller::Controller(int port, char *ip) : _readIp(ip)
 {
     srand(time(NULL));
     _window = new QMainWindow();
     _window->setWindowTitle("Babel Voice Client");
     _window->resize(QSize(600, 300));
-    _hubWidget = nullptr;
+    _hubWidget = new HubWidget();
     _loginWidget = new LoginWidget();
     _tcp = new MyTCP(ip, port);
 
-    _called = new QMessageBox(_window);
+    _called = new QMessageBox(_hubWidget);
     _pButtonYes = _called->addButton(tr("Yes"), QMessageBox::YesRole);
     _called->addButton(tr("No"), QMessageBox::NoRole);
 
@@ -47,12 +47,9 @@ void Controller::callSelected()
     if (selected == -1)
         ErrorWidget("No user selected.", "Error", _hubWidget);
     else {
-        int readPort = 1024 + rand() % 64512;
-        _readUdp = new MyUDP(_ip, readPort);
-        _readUdp->openConnection();
-        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
-        _selectedUsername = _hubWidget->getSelectedName();
-        _tcp->writeData(Message((std::to_string(readPort) + " " + _selectedUsername).c_str(), std::to_string(REQUEST_CALL).c_str()));
+        _readPort = 1024 + rand() % 64512;
+        _callUsername = _hubWidget->getSelectedName();
+        _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(REQUEST_CALL).c_str()));
     }
 }
 
@@ -63,9 +60,9 @@ void Controller::responseSelector(std::string response)
     if (code == CO_ERROR)
         ErrorWidget("Login failed.", "Error", _loginWidget);
     if (code == CONNECTION_OK) {
-        _username = response;
-        _hubWidget = new HubWidget(_username);
+        _myUsername = response;
         _window->setCentralWidget(_hubWidget);
+        _hubWidget->setUsername(_myUsername);
         _tcp->writeData(Message("", std::to_string(REQUEST_USERS).c_str()));
         connect(_hubWidget->getButton(), SIGNAL(clicked()), this,  SLOT(callSelected()));
     }
@@ -75,53 +72,45 @@ void Controller::responseSelector(std::string response)
         while ((pos = response.find(';')) != std::string::npos) {
             token = response.substr(0, pos);
             response.erase(0, pos + 1);
-            if (token == _username) continue;
+            if (token == _myUsername) continue;
             _hubWidget->addUser(token);
         }
     }
     if (code == ERROR)
         ErrorWidget("Already connected.", "Error", _loginWidget);
     if (code == USER_CO) {
-        if (!_hubWidget) return;
-        if (response == _username) return;
+        if (response == _myUsername) return;
         _hubWidget->addUser(response);
     }
     if (code == USER_DECO) {
-        if (!_hubWidget) return;
-        if (response == _username) return;
+        if (response == _myUsername) return;
         _hubWidget->removeUser(response);
     }
     if (code == CALL) {
-        int writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
+        _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
-        std::string username = response.substr(0, response.find(' ')).c_str();
+        _callUsername = response.substr(0, response.find(' ')).c_str();
         response.erase(0, response.find(' ') + 1);
-        std::string ip = response;
-        _called->setWindowTitle((username + " is calling!").c_str());
+        _writeIp = response;
+        _called->setWindowTitle((_callUsername + " is calling!").c_str());
         _called->setText("Answer?");
         _called->exec();
         if (_called->clickedButton() == _pButtonYes) {
-            _writeUdp = new MyUDP(ip, writePort);
-            _writeUdp->openConnection();
-            int readPort = 1024 + rand() % 64512;
-            _readUdp = new MyUDP(_ip, readPort);
-            _readUdp->openConnection();
-            connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
-            _tcp->writeData(Message((std::to_string(readPort) + " " + username).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
-            _callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
-            //_window->setCentralWidget(_callWidget);
-            sendUdpData();
-        } else
-            _tcp->writeData(Message(username.c_str(), std::to_string(CALLREFUSED).c_str()));
+            _readPort = 1024 + rand() % 64512;
+            _tcp->writeData(Message((std::to_string(_readPort) + " " + _callUsername).c_str(), std::to_string(USERCALLBACKRESPONSE).c_str()));
+        } //else if (_called->clickedButton() == )
+            //_tcp->writeData(Message(username.c_str(), std::to_string(CALLREFUSED).c_str()));
     }
-    if (code == USERCALLBACKCONFIRMATION) {
-        std::string ip;
-        int port = std::atoi(response.substr(0, response.find(' ')).c_str());
+    if (code == USERCALLBACKCONFIRMATION || code == 435) {
+        _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
-        ip = response;
-        _writeUdp = new MyUDP(ip, port);
+        _writeIp = response;
+        _readUdp = new MyUDP(_readIp, _readPort);
+        _readUdp->openConnection();
+        connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
+        _writeUdp = new MyUDP(_writeIp, _writePort);
         _writeUdp->openConnection();
-        _callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
+        //_callWidget = new CallWidget(_selectedUsername, _username, _hubWidget);
         //_window->setCentralWidget(_callWidget);
         sendUdpData();
     }

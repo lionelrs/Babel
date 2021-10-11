@@ -39,16 +39,21 @@ class Controller : public QObject {
         LoginWidget *_loginWidget;
         HubWidget *_hubWidget;
         CallWidget *_callWidget;
+
         MyUDP *_readUdp;
+        int _readPort;
+        std::string _readIp;
         MyUDP *_writeUdp;
+        int _writePort;
+        std::string _writeIp;
+
         MyTCP *_tcp;
 
         QMessageBox *_called;
         QAbstractButton *_pButtonYes;
 
-        std::string _ip;
-        std::string _username;
-        std::string _selectedUsername;
+        std::string _myUsername;
+        std::string _callUsername;
 
         void responseSelector(std::string response);
 

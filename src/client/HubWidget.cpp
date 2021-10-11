@@ -7,18 +7,18 @@
 
 #include "HubWidget.hpp"
 
-HubWidget::HubWidget(const std::string username, QWidget *parent)
+HubWidget::HubWidget(QWidget *parent)
 {
     _userList = new QListWidget(parent);
 
     QLabel *title = new QLabel("Connected user(s)");
-    QLabel *LabelUsername = new QLabel(username.c_str());
+    _labelUsername = new QLabel();
     _callButton = new QPushButton("Call");
 
     QVBoxLayout *outterLayout = new QVBoxLayout(this);
     QHBoxLayout *headerLayout = new QHBoxLayout();
     headerLayout->addWidget(title);
-    headerLayout->addWidget(LabelUsername, 0, Qt::AlignRight);
+    headerLayout->addWidget(_labelUsername, 0, Qt::AlignRight);
     outterLayout->addLayout(headerLayout);
     outterLayout->addWidget(_userList);
     outterLayout->addWidget(_callButton);
@@ -27,7 +27,7 @@ HubWidget::HubWidget(const std::string username, QWidget *parent)
 
     QFont font;
     font.setPointSize(14);
-    LabelUsername->setFont(font);
+    _labelUsername->setFont(font);
     title->setFont(font);
     _userList->setFont(font);
     _callButton->setFont(font);
@@ -76,4 +76,9 @@ std::string HubWidget::getSelectedName() const
     if (_selected == -1)
         return "null";
     return _userList->item(_selected)->text().toStdString();
+}
+
+void HubWidget::setUsername(const std::string username)
+{
+    _labelUsername->setText(username.c_str());
 }

@@ -18,12 +18,13 @@
 class HubWidget : public QWidget {
     Q_OBJECT
     public:
-        HubWidget(const std::string username, QWidget *parent = 0);
+        HubWidget(QWidget *parent = 0);
         ~HubWidget();
 
         QPushButton *getButton() const;
         int getSelected() const;
         std::string getSelectedName() const;
+        void setUsername(const std::string username);
 
         void addUser(std::string username);
         void removeUser(std::string username);
@@ -37,6 +38,7 @@ class HubWidget : public QWidget {
     private:
         QPushButton *_callButton;
         QListWidget *_userList;
+        QLabel *_labelUsername;
         int _selected;
 };
 
