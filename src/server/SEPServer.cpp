@@ -139,6 +139,8 @@ std::string SEPServer::cmdCall(User *user, std::string response)
             sendToUser(userList[i]->getSocket(), ss.str());
             user->setIsInCall(true);
             user->setCalling(name);
+            userList[i]->setIsInCall(true);
+            userList[i]->setCalling(user->getUserName());
         }
     }
     return ("");
