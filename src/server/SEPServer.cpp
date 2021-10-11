@@ -46,6 +46,7 @@ std::string SEPServer::cmdCall(User *user, std::string response)
     char s[response.size()];
     std::stringstream ss;
     std::strcpy(s, response.c_str());
+    std::cout << s << std::endl;
     token = std::strtok(s, " ");
     port = std::strtok(NULL, " ");
     name = std::strtok(NULL, " ");
@@ -71,6 +72,7 @@ std::string SEPServer::cmdCallResponse(User *user, std::string response)
     std::strcpy(s, response.c_str());
     token = std::strtok(s, " ");
     port = std::strtok(NULL, " ");
+    name = std::strtok(NULL, " ");
     ss << "430 ";
     for (int i = 0; i < userList.size(); i++) {
         if (std::strcmp(userList[i]->getUserName().c_str(), name) == 0) {
@@ -130,11 +132,11 @@ void SEPServer::handleResponse(User *user)
 {
     int cmd = parseLocalCommand(buffer);
     std::cout << "CMD" << ": " << cmd << std::endl;
-    buffer[valread] = '\0';
     std::string response = processCommand(buffer);
     cmd = parseLocalCommand(response.c_str());
     SEPServer::factoryF func = _cmd[cmd];
-    response = (this->*func)(user, response);
+    char *token = strtok(buffer, "\r\n");
+    response = (this->*func)(user, std::string(token));
     sendToUser(sd, response.c_str());
 }
 
