@@ -63,6 +63,9 @@ class Controller : public QObject {
         QMessageBox *_callBox;
         QAbstractButton *_pButtonHangUp;
 
+        QMessageBox *_signSuccess;
+        QAbstractButton *_pButtonBack;
+
         std::string _myUsername;
         std::string _callUsername;
 

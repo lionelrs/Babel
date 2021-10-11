@@ -64,7 +64,7 @@ Message SignUpWidget::getSignUpForm()
     if (_editConfirmPassword->text().toStdString() == "" || _editPassword->text().toStdString() == ""
     || _editUsername->text().toStdString() == "")
         return Message("EMPTY FIELD", "EMPTY");
-    return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(REQUEST_CO).c_str());
+    return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(SIGN_UP).c_str());
 }
 
 QPushButton *SignUpWidget::getValidateButton() const
