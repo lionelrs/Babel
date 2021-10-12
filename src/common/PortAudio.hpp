@@ -12,11 +12,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdio>
+#include <queue>
+#include <map>
+
 #include "PortAudioException.hpp"
 #include "IAudio.hpp"
-#include <cstdio>
-#include "Buffer.hpp"
 #include "Opus.hpp"
+#include "ISoundListener.hpp"
 
 namespace Babel {
     class PortAudio : virtual public IAudio {
@@ -34,24 +37,23 @@ namespace Babel {
             void closeOutputStream();
             void record();
             void play();
-            Buffer getBuffer() const;
-            void setBuffer(Buffer buffer);
-            CBuffer getAudioData() const;
-            void setAudioData(CBuffer data);
+            Babel::Sound getSound();
+            void setSound(const Sound &sound, const std::string &id);
         private:
             static int recordCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
             static int playCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
             ICompressor *_compressor;
-            Buffer _buffer;
-            CBuffer _audioData;
+            sound_t _soundBuff;
+            compressed_t _compressBuff;
             int _error;
             bool _isInit;
-            unsigned char *_compressed;
-            int _numSamples;
             PaStreamParameters _inputParams;
             PaStreamParameters _outputParams;
             PaStream *_inputStream;
             PaStream *_outputStream;
+            //ISoundListener *_listener;
+            std::queue<sound_t> _inputBuff;
+            std::map<std::string, std::queue<sound_t>> _outputBuff;
     };
 };
 

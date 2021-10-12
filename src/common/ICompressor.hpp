@@ -16,8 +16,8 @@ namespace Babel {
     class ICompressor {
         public:
             ~ICompressor() = default;
-            virtual CBuffer encodeFrame(const Buffer &sound) = 0;
-            virtual Buffer decodeFrame(const CBuffer &compressed) = 0;
+            virtual compressed_t encodeFrame(const sound_t &sound) = 0;
+            virtual sound_t decodeFrame(const compressed_t &compressed) = 0;
         private:
     };
 }

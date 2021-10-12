@@ -20,17 +20,13 @@ namespace Babel {
         public:
             Opus();
             ~Opus();
-            CBuffer encodeFrame(const Buffer &sound);
-            Buffer decodeFrame(const CBuffer &compressed);
+            compressed_t encodeFrame(const sound_t &sound);
+            sound_t decodeFrame(const compressed_t &compressed);
         private:
             const std::string getError(int err) const;
-            int sampleRate;
-            int numChannels;
-            int dataSize;
-            int error;
-            int _framesPerBuffer;
-            OpusEncoder *encoder;
-            OpusDecoder *decoder;
+            int _error;
+            OpusEncoder *_encoder;
+            OpusDecoder *_decoder;
     };
 }
 
