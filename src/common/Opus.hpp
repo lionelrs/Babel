@@ -20,8 +20,8 @@ namespace Babel {
         public:
             Opus();
             ~Opus();
-            unsigned char *encodeFrame(const float *frame, int frame_size);
-            float *decodeFrame(const unsigned char *data, int frame_size);
+            CBuffer encodeFrame(const Buffer &sound);
+            Buffer decodeFrame(const CBuffer &compressed);
             void setSampleRate(int rate);
             void setNumberChannels(int nb);
             int getSampleRate() const;
@@ -32,6 +32,7 @@ namespace Babel {
             int numChannels;
             int dataSize;
             int error;
+            int _framesPerBuffer;
             OpusEncoder *encoder;
             OpusDecoder *decoder;
     };
