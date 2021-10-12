@@ -25,7 +25,7 @@ Babel::Opus::Opus()
     }
 }
 
-Babel::Opus::~Opus(void)
+Babel::Opus::~Opus()
 {
     if (encoder)
         opus_encoder_destroy(encoder);
@@ -50,14 +50,6 @@ Babel::Buffer Babel::Opus::decodeFrame(const CBuffer &compressed)
     if (size < 0)
         throw OpusException(std::string("Failed to decode sample: ") + getError(size));
     return sound;
-}
-
-Babel::Opus::~Opus(void)
-{
-    if (encoder)
-        opus_encoder_destroy(encoder);
-    if (decoder)
-        opus_decoder_destroy(decoder);
 }
 
 const std::string Babel::Opus::getError(int err) const

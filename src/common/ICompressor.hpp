@@ -18,10 +18,6 @@ namespace Babel {
             ~ICompressor() = default;
             virtual CBuffer encodeFrame(const Buffer &sound) = 0;
             virtual Buffer decodeFrame(const CBuffer &compressed) = 0;
-            virtual void setSampleRate(int rate) = 0;
-            virtual void setNumberChannels(int nb) = 0;
-            virtual int getSampleRate() const = 0;
-            virtual int getNumberChannels() const = 0;
         private:
     };
 }

@@ -22,10 +22,6 @@ namespace Babel {
             ~Opus();
             CBuffer encodeFrame(const Buffer &sound);
             Buffer decodeFrame(const CBuffer &compressed);
-            void setSampleRate(int rate);
-            void setNumberChannels(int nb);
-            int getSampleRate() const;
-            int getNumberChannels() const;
         private:
             const std::string getError(int err) const;
             int sampleRate;
