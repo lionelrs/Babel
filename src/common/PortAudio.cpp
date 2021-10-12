@@ -1,9 +1,9 @@
-/*
-** EPITECH PROJECT, 2021
-** B-CPP-500-NCE-5-1-babel-lionel.da-rocha-da-silva
-** File description:
-** PortAudio
-*/
+// /*
+// ** EPITECH PROJECT, 2021
+// ** B-CPP-500-NCE-5-1-babel-lionel.da-rocha-da-silva
+// ** File description:
+// ** PortAudio
+// */
 
 #include "PortAudio.hpp"
 #include <stdio.h>

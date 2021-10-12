@@ -16,6 +16,7 @@
 #include <QLineEdit>
 
 #include "Message.hpp"
+#include "../common/SEPCommands.hpp"
 
 class LoginWidget : public QWidget {
     Q_OBJECT
@@ -24,16 +25,19 @@ class LoginWidget : public QWidget {
         ~LoginWidget();
 
         Message getLoginForm();
-        QPushButton *getButton() const;
+        QPushButton *getLoginButton() const;
+        QPushButton *getSignUpButton() const;
 
     signals:
     public slots:
     private slots:
 
+    protected:
     private:
         QLineEdit *_editUsername;
         QLineEdit *_editPassword;
         QPushButton *_loginButton;
+        QPushButton *_signUpButton;
 };
 
 #endif /* !LOGINWIDGET_HPP_ */

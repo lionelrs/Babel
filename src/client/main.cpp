@@ -6,15 +6,23 @@
 */
 
 #include <QApplication>
+#include <arpa/inet.h>
+
 #include "../common/BabelException.hpp"
+#include "../common/ValidateIp.hpp"
 #include "Controller.hpp"
 #include "../common/PortAudio.hpp"
+#include "../common/IAudio.hpp"
+#include "../common/ICompressor.hpp"
 
 int arg_check(int ac, char *argv[])
 {
     if (ac < 3) throw Babel::BabelException("./babel_server ip port");
     if (std::atoi(argv[2]) < 1025 || std::atoi(argv[2]) > 65535)
-        throw Babel::BabelException("Please provide a valid port (1025 to 65535)");
+        throw Babel::BabelException("Please provide a valid port (1025 to 65535).");
+    Babel::ValidateIp validator;
+    if (validator.validateIpAddress(argv[1]) == 0)
+        throw Babel::BabelException("Please provide a valid ip address.");
     return (0);
 }
 

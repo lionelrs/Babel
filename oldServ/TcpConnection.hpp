@@ -14,6 +14,7 @@
 #include <asio.hpp>
 
 #include "SEPProtocol.hpp"
+#include "SqliteDataBase.hpp"
 
 class TcpConnection : public std::enable_shared_from_this<TcpConnection>, public SEPProtocol
 {
@@ -33,6 +34,7 @@ private:
 
     void    handleWrite(const asio::error_code& err, size_t size);
     void    handleRead(const asio::error_code& error, size_t size);
+    void    checkCode(std::string &data);
 
     asio::ip::tcp::socket   _socket;
     asio::streambuf         _message;

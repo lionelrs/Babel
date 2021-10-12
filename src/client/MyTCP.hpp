@@ -16,8 +16,8 @@
 #include <cstdint>
 #include <cstring>
 #include "Socket.hpp"
-#include "../common/Serializer.hpp"
 #include "../common/SEPCommands.hpp"
+#include "../common/BabelException.hpp"
 
 class MyTCP : public Socket {
         Q_OBJECT
@@ -26,19 +26,21 @@ class MyTCP : public Socket {
         ~MyTCP();
 
         QTcpSocket *getSocket() const;
+        std::string getData() const;
 
         void writeData(Message msg);
         void openConnection();
+        void readData();
 
         SEPCommands *getSEPCommand() const;
 
     signals:
     public slots:
-        void readData();
 
     private:
         SEPCommands *_command;
         QTcpSocket *_socket;
+        std::string _data;
 };
 
 #endif /* !MYTCP_HPP_ */

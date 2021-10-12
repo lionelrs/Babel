@@ -20,7 +20,8 @@ void MyTCP::openConnection()
 {
     _socket = new QTcpSocket();
     _socket->connectToHost(QHostAddress(_ip.c_str()), _port);
-    connect(_socket, SIGNAL(readyRead()), this, SLOT(readData()));
+    if (!_socket->waitForConnected(1000))
+        throw Babel::BabelException("Cannot connect to TCP host with ip " + _ip + " and port " + std::to_string(_port) + ".");
 }
 
 void MyTCP::writeData(Message data)
@@ -29,13 +30,18 @@ void MyTCP::writeData(Message data)
     writeData.append(data.getHeader().toLocal8Bit() + " " + data.getBody().toLocal8Bit() + "\r\n");
     _socket->write(writeData);
     _socket->waitForBytesWritten();
-    std::cout << "Writting to server" << std::endl;
+    std::cout << "Writting to server: " + data.getHeader().toLocal8Bit().toStdString() + " " + data.getBody().toLocal8Bit().toStdString() << std::endl;
     writeData.clear();
 }
 
 SEPCommands *MyTCP::getSEPCommand() const
 {
-    return (_command);
+    return _command;
+}
+
+std::string MyTCP::getData() const
+{
+    return _data;
 }
 
 void MyTCP::readData()
@@ -43,12 +49,7 @@ void MyTCP::readData()
     QByteArray readBuffer = {0};
     readBuffer.resize(_socket->bytesAvailable());
     readBuffer = _socket->read(_socket->bytesAvailable());
-    SEPCommands *data = Serializer::unSerialize(readBuffer.data());
-    _command = data;
-    std::cout << "SEP Command recieved !" << std::endl;
-    std::cout << "code: " <<_command->code << std::endl;
-    std::cout << "port: " <<_command->port << std::endl;
-    std::cout << "ip: " <<_command->ip << std::endl;
+    _data = readBuffer.data();
 }
 
 QTcpSocket *MyTCP::getSocket() const

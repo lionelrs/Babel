@@ -52,24 +52,12 @@ Babel::Buffer Babel::Opus::decodeFrame(const CBuffer &compressed)
     return sound;
 }
 
-void Babel::Opus::setSampleRate(int rate)
+Babel::Opus::~Opus(void)
 {
-    sampleRate = rate;
-}
-
-void Babel::Opus::setNumberChannels(int nb)
-{
-    numChannels = nb;
-}
-
-int Babel::Opus::getSampleRate() const
-{
-    return sampleRate;
-}
-
-int Babel::Opus::getNumberChannels() const
-{
-    return numChannels;
+    if (encoder)
+        opus_encoder_destroy(encoder);
+    if (decoder)
+        opus_decoder_destroy(decoder);
 }
 
 const std::string Babel::Opus::getError(int err) const

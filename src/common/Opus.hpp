@@ -8,12 +8,12 @@
 #ifndef OPUS_HPP_
 #define OPUS_HPP_
 
-#include "BabelException.hpp"
 #include <opus.h>
+#include "BabelException.hpp"
 #include "ICompressor.hpp"
 #include "OpusException.hpp"
-#include <vector>
-#include "babelDefines.hpp"
+#include "BabelDefines.hpp"
+#include "Buffer.hpp"
 
 namespace Babel {
     class Opus : virtual public ICompressor {
