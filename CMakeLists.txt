@@ -19,6 +19,12 @@ link_directories(${CONAN_LIBRARIES_DIRS})
 
 SET(GCC_COVERAGE_COMPILE_FLAGS "-lrt -lm -lasound -ljack -pthread")
 
+message("\n\nwoow je vais set env")
+
+# set(ENV{ALSA_CONFIG_DIR} "~/.conan/data/libalsa/1.1.9/_/_/package/d48130e0dd76369b1338deb3b2372c5a649f9f2d/res/alsa")
+
+message("j'ai fini \n\n")
+
 file(GLOB CLIENT_SRC "src/client/*.cpp" "src/client/*.hpp")
 
 file(GLOB SERVER_SRC "src/server/*.cpp" "src/server/*.hpp")
