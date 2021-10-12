@@ -17,51 +17,41 @@
 #include <cstdio>
 #include "Buffer.hpp"
 #include "Opus.hpp"
-#include <QList>
-#include <QByteArray>
-#include "babelDefines.hpp"
-
 
 namespace Babel {
     class PortAudio : virtual public IAudio {
         public:
             PortAudio();
             ~PortAudio();
+            ICompressor &getCompressor();
             void init();
             void terminate();
+            void openInputStream();
+            void openOutputStream();
+            void startInputStream();
+            void startOutputStream();
+            void closeInputStream();
+            void closeOutputStream();
             void record();
             void play();
-            int getDeviceCount() const;
-            std::string getDefaultInputDevice() const;
-            std::string getDefaultOutputDevice() const;
-            std::string getInputDevice() const;
-            std::string getOutputDevice() const;
-            int getMaxInputChannels() const;
-            int getMaxOutputChannels() const;
-            void setInputDevice(std::string deviceName);
-            void setOutputDevice(std::string deviceName);
-            Buffer &getBuffer();
-            ICompressor &getCompressor();
-            
+            Buffer getBuffer() const;
+            void setBuffer(Buffer buffer);
+            CBuffer getAudioData() const;
+            void setAudioData(CBuffer data);
         private:
             static int recordCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
             static int playCallback(const void *inputBuffer, void *outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void *userData);
-            PaStream *_stream;
-            int _deviceNb;
-            int _totalFrames;
+            ICompressor *_compressor;
+            Buffer _buffer;
+            CBuffer _audioData;
+            int _error;
+            bool _isInit;
+            unsigned char *_compressed;
             int _numSamples;
-            int _numBytes;
-            SAMPLE _max;
-            SAMPLE _val;
-            double _average;
-            PaError err;
             PaStreamParameters _inputParams;
             PaStreamParameters _outputParams;
-	        const PaDeviceInfo *_inputDevice;
-	        const PaDeviceInfo *_outputDevice;
-            bool _isInit;
-            Buffer _data;
-            ICompressor *_compressor;
+            PaStream *_inputStream;
+            PaStream *_outputStream;
     };
 };
 
