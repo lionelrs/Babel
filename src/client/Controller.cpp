@@ -180,7 +180,7 @@ void Controller::responseSelector(std::string response)
                 array = {0};
                 array = _recorder->getBuffer().data();
                 s = _parser->buildSoundFromSoundBuffer(array);
-                sendUdpData(Message(s.c_str(), "header"));
+                sendUdpData(Message(s.c_str(), std::to_string(std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count()).c_str()));
             }
             exit(child);
         }
@@ -205,8 +205,8 @@ void Controller::responseSelector(std::string response)
                 s = "";
                 array = {0};
                 array = _recorder->getBuffer().data();
-                s = _parser->buildSoundFromSoundBuffer(array);
-                sendUdpData(Message(s.c_str(), "header"));
+                s = _parser->buildSoundFromSoundBuffer(array);                
+                sendUdpData(Message(s.c_str(), std::to_string(std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count()).c_str()));
             }
             exit(child);
         }

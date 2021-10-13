@@ -25,13 +25,15 @@ void MyUDP::openConnection()
 void MyUDP::writeData(Message data)
 {
     QByteArray writeData;
-    writeData.append(data.getBody().toLocal8Bit());
+    writeData.append(data.getHeader().toLocal8Bit() + "/" +  data.getBody().toLocal8Bit());
     _socket->writeDatagram(writeData, QHostAddress(_ip.c_str()), _port);
     writeData.clear();
 }
 
 void MyUDP::readData()
 {
+    static int64_t timeSort = 0;
+    std::string header = "";
     Parser parser(_player->getBuffer().size());
     float *array;
     QByteArray readBuffer;
@@ -40,7 +42,22 @@ void MyUDP::readData()
     QHostAddress sender;
     quint16 senderPort;
     _socket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
-    array = parser.rebuildSoundFromString(readBuffer.toStdString());
+
+    size_t pos = 0;
+    std::string token;
+    std::string delimiter = "/";
+    std::string my_string = readBuffer.toStdString();
+
+    pos = my_string.find(delimiter);
+    header = my_string.substr(0, pos);
+
+    my_string.erase(0, pos + delimiter.length());
+
+    if (timeSort > std::strtoll(header.c_str(), NULL, 10)) {
+        return;
+    }
+
+    array = parser.rebuildSoundFromString(my_string);
     pid_t child = fork();
     _player->getBuffer().setBuffer(array);
     if (child == 0) {
