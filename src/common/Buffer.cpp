@@ -11,8 +11,8 @@ Babel::Buffer::Buffer()
 {
     _samples.fill(0);
     _frameIndex = 0;
-    _maxFrameIndex = NUM_SECONDS * SAMPLE_RATE;
-    numSamples = NUM_SECONDS * SAMPLE_RATE * NUM_CHANNELS;
+    _maxFrameIndex = SAMPLE_RATE / 100;
+    numSamples = (SAMPLE_RATE * NUM_CHANNELS) / 100;
     _sampleBuffer = new SAMPLE[numSamples];
     for (size_t i = 0; i < numSamples; i++) {
         _sampleBuffer[i] = 0;

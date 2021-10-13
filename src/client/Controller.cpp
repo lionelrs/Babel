@@ -21,7 +21,6 @@ Controller::Controller(int port, char *ip)
     _inCall = false;
 
     _recorder = new Babel::PortAudio();
-    _player = new Babel::PortAudio();
 
     _parser = new Parser(_recorder->getBuffer().size());
     _answerBox = new QMessageBox(_window);
@@ -181,8 +180,7 @@ void Controller::responseSelector(std::string response)
                 array = {0};
                 array = _recorder->getBuffer().data();
                 s = _parser->buildSoundFromSoundBuffer(array);
-                sendUdpData(Message("body", s.c_str()));
-
+                sendUdpData(Message(s.c_str(), "header"));
             }
             exit(child);
         }
@@ -208,8 +206,7 @@ void Controller::responseSelector(std::string response)
                 array = {0};
                 array = _recorder->getBuffer().data();
                 s = _parser->buildSoundFromSoundBuffer(array);
-                sendUdpData(Message("body", s.c_str()));
-
+                sendUdpData(Message(s.c_str(), "header"));
             }
             exit(child);
         }

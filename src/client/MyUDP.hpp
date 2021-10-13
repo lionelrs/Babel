@@ -12,6 +12,10 @@
 
 #include "Socket.hpp"
 
+#include "../common/PortAudio.hpp"
+#include "../common/Parser.hpp"
+#include <unistd.h>
+
 class MyUDP : public Socket
 {
     public:
@@ -29,6 +33,8 @@ class MyUDP : public Socket
 
     private:
         QUdpSocket *_socket;
+        Babel::IAudio *_player;
+
 };
 
 #endif /* !MYUDP_HPP_ */

@@ -9,6 +9,7 @@
 
 MyUDP::MyUDP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
+    _player = new Babel::PortAudio();
 }
 
 MyUDP::~MyUDP()
@@ -31,17 +32,26 @@ void MyUDP::writeData(Message data)
 
 void MyUDP::readData()
 {
+    Parser parser(_player->getBuffer().size());
+    float *array;
     QByteArray readBuffer;
     readBuffer.resize(_socket->pendingDatagramSize());
 
     QHostAddress sender;
     quint16 senderPort;
-
     _socket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
+    array = parser.rebuildSoundFromString(readBuffer.toStdString());
+    pid_t child = fork();
+    _player->getBuffer().setBuffer(array);
+    if (child == 0) {
+        
+        _player->play();
+        exit(0);
+    }
 
-    qDebug() << "Message from: " << sender.toString();
-    qDebug() << "Message port: " << senderPort;
-    qDebug() << "Message: " << readBuffer;
+    // qDebug() << "Message from: " << sender.toString();
+    // qDebug() << "Message port: " << senderPort;
+    // qDebug() << "Message: " << readBuffer;
 }
 
 QUdpSocket *MyUDP::getSocket() const

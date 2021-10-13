@@ -117,10 +117,11 @@ void Babel::PortAudio::record()
     openInputStream();
     startInputStream();
     while (Pa_IsStreamActive(_inputStream) == 1) {
-        Pa_Sleep(1000);
-        printf("index = %d\n", _buffer.getFrameIndex() ); fflush(stdout);
+        // Pa_Sleep(1000);
+        // printf("index = %d\n", _buffer.getFrameIndex() ); fflush(stdout);
     }
     closeInputStream();
+    _buffer.setFrameIndex(0);
     // _audioData = _compressor->encodeFrame(_buffer);
     std::cout << "Finished recording" << std::endl;
 }
@@ -133,8 +134,8 @@ void Babel::PortAudio::play()
     openOutputStream();
     startOutputStream();
     while (Pa_IsStreamActive(_outputStream) == 1) {
-        Pa_Sleep(1000);
-        printf("index = %d\n", _buffer.getFrameIndex() ); fflush(stdout);
+        // Pa_Sleep(1000);
+        // printf("index = %d\n", _buffer.getFrameIndex() ); fflush(stdout);
     }
     closeOutputStream();
     std::cout << "Finished playing" << std::endl;

@@ -63,7 +63,6 @@ class Controller : public QObject {
         MyTCP *_tcp;
 
         Babel::IAudio *_recorder;
-        Babel::IAudio *_player;
 
         QMessageBox *_answerBox;
         QAbstractButton *_pButtonYes;
