@@ -169,6 +169,12 @@ void Controller::responseSelector(std::string response)
         connect(_callBox, SIGNAL(rejected()), this,  SLOT(hangUp()));
         _inCall = true;
         sendUdpData();
+        pid_t child = fork();
+        if (child == 0) {
+            while (1) {
+                
+            }
+        }
     }
     if (code == CALL_CONFIRMATION) {
         _readUdp = new MyUDP(_readIp, _readPort);
