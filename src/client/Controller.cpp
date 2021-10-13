@@ -20,6 +20,10 @@ Controller::Controller(int port, char *ip)
     _error = nullptr;
     _inCall = false;
 
+    _recorder = new Babel::PortAudio();
+    _player = new Babel::PortAudio();
+
+    _parser = new Parser(_recorder->getBuffer().size());
     _answerBox = new QMessageBox(_window);
     _pButtonYes = _answerBox->addButton(tr("Yes"), QMessageBox::YesRole);
     _answerBox->addButton(tr("No"), QMessageBox::NoRole);
@@ -43,10 +47,9 @@ Controller::~Controller()
 {
 }
 
-void Controller::sendUdpData()
+void Controller::sendUdpData(Message msg)
 {
-    Message data("Body", "Header");
-    _writeUdp->writeData(data);
+    _writeUdp->writeData(msg);
 }
 
 void Controller::sendTcpLoginForm()
@@ -155,6 +158,8 @@ void Controller::responseSelector(std::string response)
         connect(_answerBox, SIGNAL(rejected()), this,  SLOT(refusedResponse()));
     }
     if (code == USERCALLBACKCONFIRMATION) {
+        float *array;
+        std::string s;
         _writePort = std::atoi(response.substr(0, response.find(' ')).c_str());
         response.erase(0, response.find(' ') + 1);
         _writeIp = response;
@@ -168,15 +173,23 @@ void Controller::responseSelector(std::string response)
         _callBox->show();
         connect(_callBox, SIGNAL(rejected()), this,  SLOT(hangUp()));
         _inCall = true;
-        sendUdpData();
         pid_t child = fork();
         if (child == 0) {
             while (1) {
-                
+                _recorder->record();
+                s = "";
+                array = {0};
+                array = _recorder->getBuffer().data();
+                s = _parser->buildSoundFromSoundBuffer(array);
+                sendUdpData(Message("body", s.c_str()));
+
             }
+            exit(child);
         }
     }
     if (code == CALL_CONFIRMATION) {
+        float *array;
+        std::string s;
         _readUdp = new MyUDP(_readIp, _readPort);
         _readUdp->openConnection();
         connect(_readUdp->getSocket(), SIGNAL(readyRead()), this, SLOT(listenUdpData()));
@@ -187,7 +200,19 @@ void Controller::responseSelector(std::string response)
         _callBox->show();
         connect(_callBox, SIGNAL(rejected()), this,  SLOT(hangUp()));
         _inCall = true;
-        sendUdpData();
+        pid_t child = fork();
+        if (child == 0) {
+            while (1) {
+                _recorder->record();
+                s = "";
+                array = {0};
+                array = _recorder->getBuffer().data();
+                s = _parser->buildSoundFromSoundBuffer(array);
+                sendUdpData(Message("body", s.c_str()));
+
+            }
+            exit(child);
+        }
     }
     if (code == CALLREFUSED) {
         _error = new ErrorWidget(_callUsername + " refused to answer", "Error", _window);

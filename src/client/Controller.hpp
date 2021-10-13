@@ -17,6 +17,8 @@
 #include "ErrorWidget.hpp"
 #include "HubWidget.hpp"
 #include "SignUpWidget.hpp"
+#include "../common/PortAudio.hpp"
+#include "../common/Parser.hpp"
 
 class Controller : public QObject {
         Q_OBJECT
@@ -25,10 +27,10 @@ class Controller : public QObject {
         ~Controller();
 
         void startBabel();
+        void sendUdpData(Message msg);
 
     signals:
     public slots:
-        void sendUdpData();
         void listenTcpData();
         void listenUdpData();
         void sendTcpLoginForm();
@@ -56,7 +58,12 @@ class Controller : public QObject {
         std::string _writeIp;
         bool _inCall;
 
+        Parser *_parser;
+
         MyTCP *_tcp;
+
+        Babel::IAudio *_recorder;
+        Babel::IAudio *_player;
 
         QMessageBox *_answerBox;
         QAbstractButton *_pButtonYes;
