@@ -28,16 +28,16 @@ int arg_check(int ac, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    Babel::IAudio *recorder = new Babel::PortAudio();
-    Babel::IAudio *player = new Babel::PortAudio();
+    // Babel::IAudio *recorder = new Babel::PortAudio();
+    // Babel::IAudio *player = new Babel::PortAudio();
 
-    recorder->record();
-    recorder->play();
-    //player->play();
-    recorder->terminate();
-    player->terminate();
+    // recorder->record();
+    // player->setBuffer(recorder->getBuffer());
+    // player->play();
+    // recorder->terminate();
+    // player->terminate();
 
-    /*try
+    try
     {
         arg_check(argc, argv);
         QApplication app(argc, argv);
@@ -49,5 +49,5 @@ int main(int argc, char *argv[])
     {
         std::cerr << WHERE << std::endl << "\t" << e.what() << std::endl;
         return (84);
-    }*/
+    }
 }
