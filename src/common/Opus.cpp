@@ -6,43 +6,70 @@
 */
 
 #include "Opus.hpp"
+#include "Buffer.hpp"
+#include <iostream>
+#include "CBuffer.hpp"
 
 Babel::Opus::Opus()
 {
-    _encoder = opus_encoder_create(SAMPLE_RATE, NUM_CHANNELS, OPUS_APPLICATION_VOIP, &_error);
-    if (_error != OPUS_OK)
-        throw OpusException(std::string("Failed to create encoder: error ") + getError(_error));
-
-    _decoder = opus_decoder_create(SAMPLE_RATE, NUM_CHANNELS, &_error);
-    if (_error != OPUS_OK)
-        throw OpusException(std::string("Failed to create decoder: error ") + getError(_error));
+    numChannels = NUM_CHANNELS;
+    sampleRate = SAMPLE_RATE;
+    _framesPerBuffer = FRAMES_PER_BUFFER;
+    encoder = opus_encoder_create(sampleRate, numChannels, OPUS_APPLICATION_VOIP, &error);
+    if (encoder == nullptr) {
+        throw OpusException(std::string("Failed to create encoder: error ") + getError(error));
+    }
+    decoder = opus_decoder_create(sampleRate, numChannels, &error);
+    if (decoder == nullptr) {
+        throw OpusException(std::string("Failed to create decoder: error ") + getError(error));
+    }
 }
 
 Babel::Opus::~Opus(void)
 {
-    if (_encoder)
-        opus_encoder_destroy(_encoder);
-    if (_decoder)
-        opus_decoder_destroy(_decoder);
+    if (encoder)
+        opus_encoder_destroy(encoder);
+    if (decoder)
+        opus_decoder_destroy(decoder);
 }
 
-Babel::compressed_t Babel::Opus::encodeFrame(const sound_t &sound)
+Babel::CBuffer Babel::Opus::encodeFrame(const Buffer &sound)
 {
-    compressed_t compressed;
-    int size = opus_encode_float(_encoder, sound.samples.data(), FRAMES_PER_BUFFER, compressed.samples.data(), ELEM_PER_BUFFER);
-    compressed.size = size;
+    CBuffer compressed;
+    int size = opus_encode_float(encoder, sound.data(), FRAMES_PER_BUFFER, compressed.data().data(), ELEM_PER_BUFFER);
+    compressed.setSize(size);
     if (size < 0)
         throw OpusException(std::string("Failed to encode sample: ") + getError(size));
     return compressed;
 }
 
-Babel::sound_t Babel::Opus::decodeFrame(const compressed_t &compressed)
+Babel::Buffer Babel::Opus::decodeFrame(const CBuffer &compressed)
 {
-    sound_t sound;
-    int size = opus_decode_float(_decoder, compressed.samples.data(), compressed.size, sound.samples.data(), FRAMES_PER_BUFFER, 0);
+    Buffer sound;
+    int size = opus_decode_float(decoder, compressed.data().data(), compressed.size(), sound.getArray().data(), FRAMES_PER_BUFFER, 0);
     if (size < 0)
         throw OpusException(std::string("Failed to decode sample: ") + getError(size));
     return sound;
+}
+
+void Babel::Opus::setSampleRate(int rate)
+{
+    sampleRate = rate;
+}
+
+void Babel::Opus::setNumberChannels(int nb)
+{
+    numChannels = nb;
+}
+
+int Babel::Opus::getSampleRate() const
+{
+    return sampleRate;
+}
+
+int Babel::Opus::getNumberChannels() const
+{
+    return numChannels;
 }
 
 const std::string Babel::Opus::getError(int err) const

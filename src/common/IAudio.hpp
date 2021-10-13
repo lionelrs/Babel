@@ -28,6 +28,10 @@ namespace Babel {
             virtual void closeOutputStream() = 0;
             virtual void record() = 0;
             virtual void play() = 0;
+            virtual Buffer getBuffer() const = 0;
+            virtual void setBuffer(Buffer buffer) = 0;
+            virtual CBuffer getAudioData() const = 0;
+            virtual void setAudioData(CBuffer data) = 0;
         private:
     };
 }
