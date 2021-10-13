@@ -54,9 +54,10 @@ void MyUDP::readData()
     my_string.erase(0, pos + delimiter.length());
 
     if (timeSort > std::strtoll(header.c_str(), NULL, 10)) {
+        std::cout << "BOOOOMMM ---------------------------------------------------------------------------------------------------------------------\n";
         return;
     }
-
+    timeSort = std::strtoll(header.c_str(), NULL, 10);
     array = parser.rebuildSoundFromString(my_string);
     pid_t child = fork();
     _player->getBuffer().setBuffer(array);
