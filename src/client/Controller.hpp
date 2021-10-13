@@ -10,6 +10,7 @@
 
 #include <QMainWindow>
 
+#include <unistd.h>
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
 #include "LoginWidget.hpp"
