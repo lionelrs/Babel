@@ -292,6 +292,14 @@ void SEPServer::handleDisconnection(User *user)
     std::memset(buffer, 0, 1024);
     if ((valread = read(sd, buffer, 1024)) == 0) {
 
+        if (user->isInCall()) {
+            for (auto userCall : userList) {
+                if (userCall->getUserName() == user->getCalling()) {
+                    sendToUser(userCall->getSocket(), "470");
+                }
+            }
+        }
+
         getpeername(sd, (struct sockaddr *)&address,
                     (socklen_t *)&addrlen);
         std::cout << "Host disconnected, socket fd is " << sd <<
