@@ -26,7 +26,7 @@ class SEPServer : public SEPProtocol {
         int parseLocalCommand(const char *b);
         void handleResponse(User *user);
         void handleConnection();
-        void handleDisconnection(User *user);
+        void handleClientResponse(User *user);
         void handleDisconnectionHangup(User *user);
         void cleanUserList();
 

@@ -287,7 +287,7 @@ void SEPServer::handleConnection()
     }
 }
 
-void SEPServer::handleDisconnection(User *user)
+void SEPServer::handleClientResponse(User *user)
 {
     std::memset(buffer, 0, 1024);
     if ((valread = read(sd, buffer, 1024)) == 0) {
@@ -374,7 +374,7 @@ void SEPServer::listenOnPort()
             sd = user->getSocket();
 
             if (FD_ISSET(sd, &readfds)) {
-                this->handleDisconnection(user);
+                this->handleClientResponse(user);
             }
         }
         this->cleanUserList();
