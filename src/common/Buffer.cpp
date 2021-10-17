@@ -7,9 +7,11 @@
 
 #include "Buffer.hpp"
 
+/**
+ * Creates an instance of Buffer
+*/
 Babel::Buffer::Buffer()
 {
-    _samples.fill(0);
     _frameIndex = 0;
     _maxFrameIndex = SAMPLE_RATE / 60;
     numSamples = (SAMPLE_RATE * NUM_CHANNELS) / 60;
@@ -19,40 +21,56 @@ Babel::Buffer::Buffer()
     }
 }
 
-Babel::Buffer::Buffer(const float *begin)
-{
-    std::memcpy(_samples.data(), begin, ELEM_PER_BUFFER * sizeof(float));
-}
-
 Babel::Buffer::~Buffer()
 {
 }
 
+/**
+ * Gets the raw audio buffer
+ * Returns a SAMPLE*
+*/
 Babel::SAMPLE *Babel::Buffer::data() const
 {
     return _sampleBuffer;
 }
 
+/**
+ * Gets the actual frame index
+ * Returns an integer
+*/
 int Babel::Buffer::getFrameIndex() const
 {
     return _frameIndex;
 }
 
+/**
+ * Gets the maximum frame index
+ * Returns an integer
+*/
 int Babel::Buffer::getMaxFrameIndex() const
 {
     return _maxFrameIndex;
 }
 
+/**
+ * Sets the actual frame index to the value of @param idx
+*/
 void Babel::Buffer::setFrameIndex(int idx)
 {
     _frameIndex = idx;
 }
 
+/**
+ * Sets the maximum frame index to the value of @param idx
+*/
 void Babel::Buffer::setMaxFrameIndex(int idx)
 {
     _maxFrameIndex = idx;
 }
 
+/**
+ * Sets the raw audio buffer to the value of @param buffer
+*/
 void Babel::Buffer::setBuffer(SAMPLE *buffer)
 {
     std::cout << numSamples << std::endl;
@@ -62,17 +80,19 @@ void Babel::Buffer::setBuffer(SAMPLE *buffer)
     std::cout << "set buffer\n";
 }
 
+/**
+ * Sets the buffer size to the value of @param size
+*/
 void Babel::Buffer::setSize(int size)
 {
     numSamples = size;
 }
 
+/**
+ * Gets the size of the audio buffer
+ * Returns an integer
+*/
 int Babel::Buffer::size() const
 {
     return numSamples;
-}
-
-std::array<float, ELEM_PER_BUFFER> Babel::Buffer::getArray() const
-{
-    return _samples;
 }

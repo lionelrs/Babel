@@ -19,7 +19,6 @@ namespace Babel {
     class Buffer {
         public:
             Buffer();
-            Buffer(const float *begin);
             ~Buffer();
             SAMPLE *data() const;
             int getFrameIndex() const;
@@ -29,12 +28,10 @@ namespace Babel {
             void setBuffer(SAMPLE *buffer);
             void setSize(int size);
             int size() const;
-            std::array<float, ELEM_PER_BUFFER> getArray() const;
         private:
             int numSamples;
             int _frameIndex;
             int _maxFrameIndex;
-            std::array<float, ELEM_PER_BUFFER> _samples;
             SAMPLE *_sampleBuffer;
     };
 }

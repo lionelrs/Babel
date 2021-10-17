@@ -8,6 +8,9 @@
 #include "PortAudio.hpp"
 #include <stdio.h>
 
+/**
+ * Creates an instance of PortAudio
+*/
 Babel::PortAudio::PortAudio()
 {
     _compressor = new Opus();
@@ -24,11 +27,17 @@ Babel::PortAudio::~PortAudio()
 {
 }
 
+/**
+ * Returns an instance of ICompressor 
+*/
 Babel::ICompressor &Babel::PortAudio::getCompressor()
 {
     return *_compressor;
 }
 
+/**
+ * Inits input and output devices from default devices
+*/
 void Babel::PortAudio::init()
 {
     _inputParams.device = Pa_GetDefaultInputDevice();
@@ -44,6 +53,9 @@ void Babel::PortAudio::init()
     _outputParams.hostApiSpecificStreamInfo = NULL;
 }
 
+/**
+ * Terminates portaudio library
+*/
 void Babel::PortAudio::terminate()
 {
     if (_isInit) {
@@ -57,6 +69,9 @@ void Babel::PortAudio::terminate()
     _isInit = false;
 }
 
+/**
+ * Opens an input stream
+*/
 void Babel::PortAudio::openInputStream()
 {
     _error = Pa_OpenStream(&_inputStream, &_inputParams, NULL, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, recordCallback, &_buffer);
@@ -66,6 +81,9 @@ void Babel::PortAudio::openInputStream()
     }
 }
 
+/**
+ * Opens an output stream
+*/
 void Babel::PortAudio::openOutputStream()
 {
     _error = Pa_OpenStream(&_outputStream, NULL, &_outputParams, SAMPLE_RATE, FRAMES_PER_BUFFER, paClipOff, playCallback, &_buffer);
@@ -75,6 +93,9 @@ void Babel::PortAudio::openOutputStream()
     }
 }
 
+/**
+ * Starts the input stream
+*/
 void Babel::PortAudio::startInputStream()
 {
     _error = Pa_StartStream(_inputStream);
@@ -84,6 +105,9 @@ void Babel::PortAudio::startInputStream()
     }
 }
 
+/**
+ * Starts the output stream
+*/
 void Babel::PortAudio::startOutputStream()
 {
     _error = Pa_StartStream(_outputStream);
@@ -93,6 +117,9 @@ void Babel::PortAudio::startOutputStream()
     }
 }
 
+/**
+ * Closes the input stream
+*/
 void Babel::PortAudio::closeInputStream()
 {
     _error = Pa_CloseStream(_inputStream);
@@ -102,6 +129,9 @@ void Babel::PortAudio::closeInputStream()
     }
 }
 
+/**
+ * Closes the output stream
+*/
 void Babel::PortAudio::closeOutputStream()
 {
     _error = Pa_CloseStream(_outputStream);
@@ -111,6 +141,9 @@ void Babel::PortAudio::closeOutputStream()
     }
 }
 
+/**
+ * Records for 20 milliseconds
+*/
 void Babel::PortAudio::record()
 {
     std::cout << "Recording" << std::endl;
@@ -126,6 +159,9 @@ void Babel::PortAudio::record()
     std::cout << "Finished recording" << std::endl;
 }
 
+/**
+ * Plays recorded audio
+*/
 void Babel::PortAudio::play()
 {
     std::cout << "Playing" << std::endl;
@@ -141,21 +177,35 @@ void Babel::PortAudio::play()
     std::cout << "Finished playing" << std::endl;
 }
 
+/**
+ * Returns raw audio buffer
+ * Raw audio buffer is a Buffer class
+*/
 Babel::Buffer Babel::PortAudio::getBuffer() const
 {
     return _buffer;
 }
 
+/**
+ * Sets raw audio data to the value of @param buffer
+*/
 void Babel::PortAudio::setBuffer(Buffer buffer)
 {
     _buffer = buffer;
 }
 
+/**
+ * Returns compressed audio data
+ * Compressed audio data is a CBuffer class
+*/
 Babel::CBuffer Babel::PortAudio::getAudioData() const
 {
     return _audioData;
 }
 
+/**
+ * Sets compressed data to the value of @param data
+*/
 void Babel::PortAudio::setAudioData(CBuffer data)
 {
     _audioData = data;

@@ -10,6 +10,9 @@
 #include <iostream>
 #include "CBuffer.hpp"
 
+/**
+ * Creates an instance of Opus
+*/
 Babel::Opus::Opus()
 {
     numChannels = NUM_CHANNELS;
@@ -33,6 +36,10 @@ Babel::Opus::~Opus(void)
         opus_decoder_destroy(decoder);
 }
 
+/**
+ * Takes a Buffer class @param sound to compress the raw audio data
+ * Returns a CBuffer class with the compressed audio data
+*/
 Babel::CBuffer Babel::Opus::encodeFrame(const Buffer &sound)
 {
     CBuffer compressed;
@@ -43,6 +50,10 @@ Babel::CBuffer Babel::Opus::encodeFrame(const Buffer &sound)
     return compressed;
 }
 
+/**
+ * Takes a CBuffer class @param compressed to decompress the compressed audio data
+ * Returns a Buffer class with the raw audio data
+*/
 Babel::Buffer Babel::Opus::decodeFrame(const CBuffer &compressed)
 {
     Buffer sound;
@@ -50,26 +61,6 @@ Babel::Buffer Babel::Opus::decodeFrame(const CBuffer &compressed)
     if (size < 0)
         throw OpusException(std::string("Failed to decode sample: ") + getError(size));
     return sound;
-}
-
-void Babel::Opus::setSampleRate(int rate)
-{
-    sampleRate = rate;
-}
-
-void Babel::Opus::setNumberChannels(int nb)
-{
-    numChannels = nb;
-}
-
-int Babel::Opus::getSampleRate() const
-{
-    return sampleRate;
-}
-
-int Babel::Opus::getNumberChannels() const
-{
-    return numChannels;
 }
 
 const std::string Babel::Opus::getError(int err) const
