@@ -1,0 +1,42 @@
+                        SHITTY EPITECH PROTOCOL (SEP)
+
+Status of this Memo
+
+   This memo is the official specification of the Shitty Epitech
+   Protocol (SEP).  Distribution of this memo is unlimited.
+
+Shitty Epitech Protocol
+
+                Transfer parameters (every code and argument
+                are separated by a space)
+
+                Server->Client
+                    100 (simple ping)
+                    120 + ip (ping with user's ip)
+                    150 + username (user connected)
+                    250 + username (user disconnected)
+                    500 (Unspecified error)
+
+                Client->Server
+                    210 + username + password (request sign up)
+                      ->  220 (sign up ok)
+                      ->  505 (user already exists)
+                      ->  500 (Error)
+                    300 + username + password (request sign in)
+                      ->  200 (sign in ok)
+                      ->  550 (Already logged in)
+                      ->  500 (Error)
+                    400 + username (Request call)
+                      ->  430 + ip + port (User call confirmed)
+                      ->  460 (User call refused)
+                      ->  480 (User Already in call)
+                      ->  500 (Error)
+                      ->  501 (Parsing error)
+                    420 + ip + port (Accepting code after recieving 450 from server 400->450)
+                      ->  435 + ip + port (User call confirmed)
+                      ->  500 (Error)
+                      ->  501 (Parsing error)
+                    600 (Request user list)
+                      ->  500 (Error)
+                      ->  650 + userlist (User list)
+
