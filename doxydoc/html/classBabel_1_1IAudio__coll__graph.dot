@@ -1,7 +1,0 @@
-digraph "Babel::IAudio"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{Babel::IAudio\n||+ ~IAudio()\l+ getCompressor()\l+ init()\l+ terminate()\l+ openInputStream()\l+ openOutputStream()\l+ startInputStream()\l+ startOutputStream()\l+ closeInputStream()\l+ closeOutputStream()\land 6 more...\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
-}

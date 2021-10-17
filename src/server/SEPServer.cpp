@@ -7,6 +7,11 @@
 
 #include "SEPServer.hpp"
 
+/**
+ * Creates an instance of SEPServer.
+ *
+ * @param port Specifies the listening port of the server.
+ */
 SEPServer::SEPServer(int port)
 {
     _port = port;
@@ -28,6 +33,14 @@ std::string SEPServer::cmdUserCreateError(User *user, std::string response)
     return ("501");
 }
 
+/**
+ * A brief history of JavaDoc-style (C-style) comments.
+ *
+ * Function that returns 505 to user.
+ *
+ * @param user Current user.
+ * @param response Response to user.
+ */
 std::string SEPServer::cmdUserAlreadyExist(User *user, std::string response)
 {
     (void)response;
@@ -343,6 +356,13 @@ void SEPServer::cleanUserList()
     }
 }
 
+
+/**
+ * Function that starts the server loop.
+ * The server now listens to users on the specified port.
+ *
+ * "Waiting for connections ..."
+ */
 void SEPServer::listenOnPort()
 {
     std::cout << "Waiting for connections ..." << std::endl;
@@ -381,6 +401,11 @@ void SEPServer::listenOnPort()
     }
 }
 
+/**
+ * Function that inits the server.
+ * The server will bind its secified port and set its mastersocket.
+ *
+ */
 void SEPServer::initSepServer()
 {
     addrlen = sizeof(address);

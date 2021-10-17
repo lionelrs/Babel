@@ -13,7 +13,7 @@ var searchData=
   ['getheader_10',['getHeader',['../classMessage.html#a09bc9df202329b6285a63e8b025ad7f8',1,'Message']]],
   ['getinfoscommand_11',['getInfosCommand',['../classSEPProtocol.html#af39870488d6da1cad97f2b860488673d',1,'SEPProtocol']]],
   ['getinstance_12',['getInstance',['../classSqliteDataBase.html#ace559eaacfac41caecc5f366f1de3b56',1,'SqliteDataBase']]],
-  ['getip_13',['getIp',['../classSocket.html#aef4e39539ce366def43d7778aeac05ea',1,'Socket::getIp()'],['../classUser.html#aa54d9d353dbc15fc9b64fd2a1be00796',1,'User::getIp()']]],
+  ['getip_13',['getIp',['../classUser.html#aa54d9d353dbc15fc9b64fd2a1be00796',1,'User::getIp()'],['../classSocket.html#aef4e39539ce366def43d7778aeac05ea',1,'Socket::getIp()']]],
   ['getloginbutton_14',['getLoginButton',['../classLoginWidget.html#adb379a1a6763f18781f69586e9535c33',1,'LoginWidget']]],
   ['getloginform_15',['getLoginForm',['../classLoginWidget.html#a4eaa7653d722f523c4443f1cde1668d8',1,'LoginWidget']]],
   ['getmaxframeindex_16',['getMaxFrameIndex',['../classBabel_1_1Buffer.html#a1ea401856ebe109daaecd297dd64755b',1,'Babel::Buffer']]],
@@ -25,9 +25,7 @@ var searchData=
   ['getsepcommand_22',['getSEPCommand',['../classMyTCP.html#a4b29b8d84c0a0ec69e99cc140c2e8083',1,'MyTCP']]],
   ['getsignupbutton_23',['getSignUpButton',['../classLoginWidget.html#a08d0ebef8c254ecf1ef1e9e732e573d5',1,'LoginWidget']]],
   ['getsignupform_24',['getSignUpForm',['../classSignUpWidget.html#a85e2d6089c2a39726bc456fd610441b7',1,'SignUpWidget']]],
-  ['getsocket_25',['getSocket',['../classMyTCP.html#a357c6eb09c61a36b573d38db4dc2b304',1,'MyTCP::getSocket()'],['../classMyUDP.html#ae090e71add2626f76a08847a39a50457',1,'MyUDP::getSocket()'],['../classUser.html#af6ce795e546ccf7979a3b8fa4d1d1468',1,'User::getSocket()']]],
-  ['getuserinfo_26',['getUserInfo',['../classSqliteDataBase.html#ab16e0bba40ca6b4194fa4cce595959f8',1,'SqliteDataBase']]],
-  ['getusername_27',['getUserName',['../classUser.html#a7eff012d6182f6829329620d8e21b124',1,'User']]],
-  ['getusersinfo_28',['getUsersInfo',['../classSqliteDataBase.html#a41c1df2e904a48d4b1d1cf449ed0ef64',1,'SqliteDataBase']]],
-  ['getvalidatebutton_29',['getValidateButton',['../classSignUpWidget.html#a7abce5937591d7439c293c809449ceb1',1,'SignUpWidget']]]
+  ['getsocket_25',['getSocket',['../classMyTCP.html#a357c6eb09c61a36b573d38db4dc2b304',1,'MyTCP::getSocket()'],['../classMyUDP.html#ae090e71add2626f76a08847a39a50457',1,'MyUDP::getSocket()'],['../classUser.html#af6ce795e546ccf7979a3b8fa4d1d1468',1,'User::getSocket() const']]],
+  ['getusername_26',['getUserName',['../classUser.html#a7eff012d6182f6829329620d8e21b124',1,'User']]],
+  ['getvalidatebutton_27',['getValidateButton',['../classSignUpWidget.html#a7abce5937591d7439c293c809449ceb1',1,'SignUpWidget']]]
 ];

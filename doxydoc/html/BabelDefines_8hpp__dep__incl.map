@@ -1,0 +1,18 @@
+<map id="src/common/BabelDefines.hpp" name="src/common/BabelDefines.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="715,5,935,32"/>
+<area shape="rect" id="node2" href="$Buffer_8hpp.html" title=" " alt="" coords="591,80,763,107"/>
+<area shape="rect" id="node6" href="$PortAudio_8hpp.html" title=" " alt="" coords="733,304,930,331"/>
+<area shape="rect" id="node13" href="$Opus_8hpp.html" title=" " alt="" coords="655,229,821,256"/>
+<area shape="rect" id="node15" href="$CBuffer_8hpp.html" title=" " alt="" coords="183,80,365,107"/>
+<area shape="rect" id="node3" href="$Buffer_8cpp.html" title=" " alt="" coords="653,155,823,181"/>
+<area shape="rect" id="node4" href="$IAudio_8hpp.html" title=" " alt="" coords="403,229,577,256"/>
+<area shape="rect" id="node12" href="$ICompressor_8hpp.html" title=" " alt="" coords="312,155,527,181"/>
+<area shape="rect" id="node14" href="$Opus_8cpp.html" title=" " alt="" coords="532,304,699,331"/>
+<area shape="rect" id="node5" href="$client_2main_8cpp.html" title=" " alt="" coords="433,528,579,555"/>
+<area shape="rect" id="node7" href="$Controller_8hpp.html" title=" " alt="" coords="753,453,929,480"/>
+<area shape="rect" id="node9" href="$MyUDP_8hpp.html" title=" " alt="" coords="569,379,728,405"/>
+<area shape="rect" id="node11" href="$PortAudio_8cpp.html" title=" " alt="" coords="752,379,948,405"/>
+<area shape="rect" id="node8" href="$Controller_8cpp.html" title=" " alt="" coords="753,528,928,555"/>
+<area shape="rect" id="node10" href="$MyUDP_8cpp.html" title=" " alt="" coords="569,453,728,480"/>
+<area shape="rect" id="node16" href="$CBuffer_8cpp.html" title=" " alt="" coords="5,155,185,181"/>
+</map>

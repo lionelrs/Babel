@@ -30,7 +30,6 @@ private:
     std::map<int, factoryF>     _allCommands;
 
     std::string     RequestConnection(const std::vector<std::string> &args);
-    std::string     RequestDisconnection(const std::vector<std::string> &args);
     std::string requestUserList(const std::vector<std::string> &args);
     std::string requestCall(const std::vector<std::string> &args);
     std::string requestUserCreation(const std::vector<std::string> &args);

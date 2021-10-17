@@ -7,6 +7,9 @@
 
 #include "SEPProtocol.hpp"
 
+/**
+ * Creates an instance of SEPProtocol.
+ */
 SEPProtocol::SEPProtocol()
 {
     _allCommands.emplace(210, &SEPProtocol::requestUserCreation);
@@ -54,6 +57,11 @@ std::string SEPProtocol::requestAlreadyInCall(const std::vector<std::string> &ar
 }
 
 
+/**
+ * Parses the command line sent to the server contained in @param cliInput
+ *
+ * Returns a std::string as response.
+ */
 std::string SEPProtocol::processCommand(const std::string &cliInput)
 {
     std::cout << "INPUT= " << cliInput << std::endl;
@@ -88,6 +96,12 @@ std::string SEPProtocol::requestCallConfirm(const std::vector<std::string> &args
 }
 
 
+/**
+ * Parses the command line @param command.
+ * This function will cut this string into a vector of strings
+ *
+ * Returns a std::vector<std::string> as response.
+ */
 std::vector<std::string> SEPProtocol::getInfosCommand(std::string command) const
 {
     std::vector<std::string> arr;
@@ -126,14 +140,5 @@ std::string SEPProtocol::RequestConnection(const std::vector<std::string> &args)
         } else {
             response = "500";
         }
-    return response;
-}
-
-std::string SEPProtocol::RequestDisconnection(const std::vector<std::string> &args)
-{
-    std::string response = "";
-
-    SqliteDataBase::getInstance().setUserDisonnected(args[1]);
-
     return response;
 }

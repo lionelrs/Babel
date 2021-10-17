@@ -6,11 +6,10 @@ var searchData=
   ['message_3',['Message',['../classMessage.html',1,'Message'],['../classMessage.html#a91f7076208b2d1ddc725619b3d966272',1,'Message::Message(const QString &amp;body, const QString &amp;header)'],['../classMessage.html#ad253b20930e70257e2523bb9fc7d299c',1,'Message::Message(const Message &amp;other)'],['../classMessage.html#a4fc4f717b634e66070366cb7722d7761',1,'Message::Message()']]],
   ['message_2ecpp_4',['Message.cpp',['../Message_8cpp.html',1,'']]],
   ['message_2ehpp_5',['Message.hpp',['../Message_8hpp.html',1,'']]],
-  ['my_2eh_6',['my.h',['../my_8h.html',1,'']]],
-  ['mytcp_7',['MyTCP',['../classMyTCP.html',1,'MyTCP'],['../classMyTCP.html#aeb3c813d5c4f49952e20f3e9ebd1a583',1,'MyTCP::MyTCP()']]],
-  ['mytcp_2ecpp_8',['MyTCP.cpp',['../MyTCP_8cpp.html',1,'']]],
-  ['mytcp_2ehpp_9',['MyTCP.hpp',['../MyTCP_8hpp.html',1,'']]],
-  ['myudp_10',['MyUDP',['../classMyUDP.html#ac9b395b89c3faa64edbb8b7c1fa39549',1,'MyUDP::MyUDP()'],['../classMyUDP.html',1,'MyUDP']]],
-  ['myudp_2ecpp_11',['MyUDP.cpp',['../MyUDP_8cpp.html',1,'']]],
-  ['myudp_2ehpp_12',['MyUDP.hpp',['../MyUDP_8hpp.html',1,'']]]
+  ['mytcp_6',['MyTCP',['../classMyTCP.html',1,'MyTCP'],['../classMyTCP.html#aeb3c813d5c4f49952e20f3e9ebd1a583',1,'MyTCP::MyTCP()']]],
+  ['mytcp_2ecpp_7',['MyTCP.cpp',['../MyTCP_8cpp.html',1,'']]],
+  ['mytcp_2ehpp_8',['MyTCP.hpp',['../MyTCP_8hpp.html',1,'']]],
+  ['myudp_9',['MyUDP',['../classMyUDP.html#ac9b395b89c3faa64edbb8b7c1fa39549',1,'MyUDP::MyUDP()'],['../classMyUDP.html',1,'MyUDP']]],
+  ['myudp_2ecpp_10',['MyUDP.cpp',['../MyUDP_8cpp.html',1,'']]],
+  ['myudp_2ehpp_11',['MyUDP.hpp',['../MyUDP_8hpp.html',1,'']]]
 ];

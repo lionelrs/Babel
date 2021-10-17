@@ -37,10 +37,6 @@ public:
 
     bool createUser(const std::string &login, const std::string &pass);
 
-    std::string getUserInfo(const std::string &login);
-    std::string getUsersInfo();
-    void setUserConnected(const std::string &login, const std::string &ip);
-    void setUserDisonnected(const std::string &login);
 
 protected:
 };

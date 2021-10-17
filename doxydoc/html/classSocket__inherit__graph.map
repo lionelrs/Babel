@@ -1,0 +1,6 @@
+<map id="Socket" name="Socket">
+<area shape="rect" id="node1" title=" " alt="" coords="98,131,250,311"/>
+<area shape="rect" id="node3" href="$classMyTCP.html" title=" " alt="" coords="5,359,164,539"/>
+<area shape="rect" id="node4" href="$classMyUDP.html" title=" " alt="" coords="189,373,341,524"/>
+<area shape="rect" id="node2" href="$classQObject.html" title=" " alt="" coords="137,5,211,83"/>
+</map>

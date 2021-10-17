@@ -9,6 +9,9 @@
 
 std::stringstream ss;
 
+/**
+ * Creates an instance of SqlDataBase.
+ */
 SqliteDataBase::SqliteDataBase()
 {
     int rc = 0;
@@ -66,6 +69,12 @@ void SqliteDataBase::createTable()
     rc = sqlite3_exec(_dataBase, sqlCommand.c_str(), nullptr, nullptr, nullptr);
 }
 
+/**
+ * Retrieves the data from the global stringstream buffer.
+ * It contains the result of the last sql command.
+ *
+ * It returns a std::string and then purges the stringstream.
+ */
 std::string SqliteDataBase::getData()
 {
     std::string s = ss.str();
@@ -76,6 +85,10 @@ std::string SqliteDataBase::getData()
     return (s);
 }
 
+/**
+ * Check the @param login and @param pass if they match in database.
+ * Returns true or false.
+ */
 bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::string &pass)
 {
     int rc = 0;
@@ -92,6 +105,12 @@ bool SqliteDataBase::checkUserValideLogin(const std::string &login, const std::s
     return check;
 }
 
+/**
+ * Check the @param login and @param pass.
+ *
+ * If they match in database returns false and does nothing.
+ * Returns true and creates user if they dont match.
+ */
 bool SqliteDataBase::createUser(const std::string &login, const std::string &pass)
 {
     std::string chars = "\r\n";
@@ -106,17 +125,4 @@ bool SqliteDataBase::createUser(const std::string &login, const std::string &pas
         return (false);
     }
     return (true);
-}
-
-std::string SqliteDataBase::getUserInfo(const std::string &login)
-{
-    return "";
-}
-
-void SqliteDataBase::setUserConnected(const std::string &login, const std::string &ip)
-{
-}
-
-void SqliteDataBase::setUserDisonnected(const std::string &login)
-{
 }

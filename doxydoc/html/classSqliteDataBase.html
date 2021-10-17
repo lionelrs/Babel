@@ -75,6 +75,9 @@ $(function() {
 Collaboration diagram for SqliteDataBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSqliteDataBase__coll__graph.png" border="0" usemap="#aSqliteDataBase_coll__map" alt="Collaboration graph"/></div>
+<map name="aSqliteDataBase_coll__map" id="aSqliteDataBase_coll__map">
+<area shape="rect" title=" " alt="" coords="5,5,196,141"/>
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -85,14 +88,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aeff958ea4cf0ee28c1aa2d28f2cfff92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02ce8a3f4ba552cd2ae1d8fa2120b865"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSqliteDataBase.html#a02ce8a3f4ba552cd2ae1d8fa2120b865">createUser</a> (const std::string &amp;login, const std::string &amp;pass)</td></tr>
 <tr class="separator:a02ce8a3f4ba552cd2ae1d8fa2120b865"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab16e0bba40ca6b4194fa4cce595959f8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSqliteDataBase.html#ab16e0bba40ca6b4194fa4cce595959f8">getUserInfo</a> (const std::string &amp;login)</td></tr>
-<tr class="separator:ab16e0bba40ca6b4194fa4cce595959f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41c1df2e904a48d4b1d1cf449ed0ef64"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSqliteDataBase.html#a41c1df2e904a48d4b1d1cf449ed0ef64">getUsersInfo</a> ()</td></tr>
-<tr class="separator:a41c1df2e904a48d4b1d1cf449ed0ef64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6317bbe5e987f0bb4a80c4da79990f19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSqliteDataBase.html#a6317bbe5e987f0bb4a80c4da79990f19">setUserConnected</a> (const std::string &amp;login, const std::string &amp;ip)</td></tr>
-<tr class="separator:a6317bbe5e987f0bb4a80c4da79990f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa3464e39db11909502a044b330325efc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSqliteDataBase.html#aa3464e39db11909502a044b330325efc">setUserDisonnected</a> (const std::string &amp;login)</td></tr>
-<tr class="separator:aa3464e39db11909502a044b330325efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -145,6 +140,13 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Check the</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>and</td></tr>
+    <tr><td class="paramname">pass</td><td>if they match in database. Returns true or false. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -173,6 +175,14 @@ Static Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Check the</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">login</td><td>and</td></tr>
+    <tr><td class="paramname">pass.</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If they match in database returns false and does nothing. Returns true and creates user if they dont match. </p>
 
 </div>
 </div>
@@ -198,6 +208,8 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Retrieves the data from the global stringstream buffer. It contains the result of the last sql command.</p>
+<p >It returns a std::string and then purges the stringstream. </p>
 
 </div>
 </div>
@@ -222,87 +234,6 @@ Static Public Member Functions</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab16e0bba40ca6b4194fa4cce595959f8" name="ab16e0bba40ca6b4194fa4cce595959f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab16e0bba40ca6b4194fa4cce595959f8">&#9670;&nbsp;</a></span>getUserInfo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string SqliteDataBase::getUserInfo </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>login</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a41c1df2e904a48d4b1d1cf449ed0ef64" name="a41c1df2e904a48d4b1d1cf449ed0ef64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41c1df2e904a48d4b1d1cf449ed0ef64">&#9670;&nbsp;</a></span>getUsersInfo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string SqliteDataBase::getUsersInfo </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6317bbe5e987f0bb4a80c4da79990f19" name="a6317bbe5e987f0bb4a80c4da79990f19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6317bbe5e987f0bb4a80c4da79990f19">&#9670;&nbsp;</a></span>setUserConnected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SqliteDataBase::setUserConnected </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>login</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>ip</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa3464e39db11909502a044b330325efc" name="aa3464e39db11909502a044b330325efc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa3464e39db11909502a044b330325efc">&#9670;&nbsp;</a></span>setUserDisonnected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SqliteDataBase::setUserDisonnected </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>login</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
 </div><div class="memdoc">
 
 </div>
