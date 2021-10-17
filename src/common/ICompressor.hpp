@@ -16,12 +16,16 @@ namespace Babel {
     class ICompressor {
         public:
             ~ICompressor() = default;
+            /**
+             * Takes a Buffer class @param sound to compress the raw audio data
+             * Returns a CBuffer class with the compressed audio data
+            */
             virtual CBuffer encodeFrame(const Buffer &sound) = 0;
+            /**
+             * Takes a CBuffer class @param compressed to decompress the compressed audio data
+             * Returns a Buffer class with the raw audio data
+            */
             virtual Buffer decodeFrame(const CBuffer &compressed) = 0;
-            virtual void setSampleRate(int rate) = 0;
-            virtual void setNumberChannels(int nb) = 0;
-            virtual int getSampleRate() const = 0;
-            virtual int getNumberChannels() const = 0;
         private:
     };
 }
