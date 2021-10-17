@@ -225,7 +225,6 @@ void Controller::responseSelector(std::string response)
         _error->show();
     }
     if (code == CALLHANGUP) {
-        printf("ANALLLLLLL SEEEEXXXXXXXXX\n");
         _callBox->hide();
         *_sharedMemory = 1;
         _inCall = false;
