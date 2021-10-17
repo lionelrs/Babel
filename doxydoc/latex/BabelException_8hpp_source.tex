@@ -1,0 +1,36 @@
+\hypertarget{BabelException_8hpp_source}{}\doxysection{Babel\+Exception.\+hpp}
+\label{BabelException_8hpp_source}\index{src/common/BabelException.hpp@{src/common/BabelException.hpp}}
+\mbox{\hyperlink{BabelException_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** BabelException}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef BABELEXCEPTION\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define BABELEXCEPTION\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define WHERE ("{}exception at : \(\backslash\)n\(\backslash\)t"{}} + std::string(\_\_FILE\_\_) + "{} l:"{} + std::to\_string(\_\_LINE\_\_))}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceBabel}{Babel}} \{}
+\DoxyCodeLine{17     \textcolor{keyword}{using} \mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}} = float;}
+\DoxyCodeLine{18     \textcolor{keyword}{class }\mbox{\hyperlink{classBabel_1_1BabelException}{BabelException}} : \textcolor{keyword}{public} std::exception \{}
+\DoxyCodeLine{19         \textcolor{keyword}{public}:}
+\DoxyCodeLine{20             \mbox{\hyperlink{classBabel_1_1BabelException_a64075bb2a837cb341e1ecebee84c8c37}{BabelException}}(\textcolor{keyword}{const} std::string \&\mbox{\hyperlink{classBabel_1_1BabelException_aeb59012013ff371e733c7ef536536156}{what}}): \_what(\mbox{\hyperlink{classBabel_1_1BabelException_aeb59012013ff371e733c7ef536536156}{what}}) \{\};}
+\DoxyCodeLine{21             \mbox{\hyperlink{classBabel_1_1BabelException_aba970c815fee189cc491d62728f44eaf}{\string~BabelException}}() \textcolor{keyword}{override} = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{22             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\mbox{\hyperlink{classBabel_1_1BabelException_aeb59012013ff371e733c7ef536536156}{what}}() const noexcept\textcolor{keyword}{ override }\{}
+\DoxyCodeLine{23                 \textcolor{keywordflow}{return} \_what.c\_str();}
+\DoxyCodeLine{24             \}}
+\DoxyCodeLine{25         \textcolor{keyword}{private}:}
+\DoxyCodeLine{26             std::string \_what;}
+\DoxyCodeLine{27     \};}
+\DoxyCodeLine{28 \};}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !BABELEXCEPTION\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

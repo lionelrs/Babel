@@ -1,0 +1,135 @@
+\hypertarget{classUser}{}\doxysection{User Class Reference}
+\label{classUser}\index{User@{User}}
+
+
+{\ttfamily \#include $<$User.\+hpp$>$}
+
+
+
+Collaboration diagram for User\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classUser_a8f424e99a31e1ca640191dc6c8346c68}{User}} (std\+::string ip, int port, int fd)
+\item 
+\mbox{\hyperlink{classUser_ac00b72ad64eb4149f7b21b9f5468c2b2}{$\sim$\+User}} ()
+\item 
+bool \mbox{\hyperlink{classUser_a49fe72b8210076c14c342085559052bd}{is\+Connected}} () const
+\item 
+bool \mbox{\hyperlink{classUser_a9406658d42bfd5069c89ad2451ebbfe3}{is\+In\+Call}} () const
+\item 
+void \mbox{\hyperlink{classUser_a0a785fe2326a41cc0d044c5a7d7ca1d4}{disconnect}} ()
+\item 
+void \mbox{\hyperlink{classUser_a42fc61851c865d8e9e0a02dd6d794553}{login}} ()
+\item 
+int \mbox{\hyperlink{classUser_af6ce795e546ccf7979a3b8fa4d1d1468}{get\+Socket}} () const
+\item 
+std\+::string \mbox{\hyperlink{classUser_ab454651d3eaf5f095004799fe167246b}{get\+Calling}} () const
+\item 
+std\+::string \mbox{\hyperlink{classUser_aa54d9d353dbc15fc9b64fd2a1be00796}{get\+Ip}} () const
+\item 
+std\+::string \mbox{\hyperlink{classUser_a7eff012d6182f6829329620d8e21b124}{get\+User\+Name}} () const
+\item 
+void \mbox{\hyperlink{classUser_af4038d8c0ea4448220c3b8b214042c1d}{set\+User\+Name}} (std\+::string id)
+\item 
+void \mbox{\hyperlink{classUser_a3c478ba8a9c8a84b1800c38a55e45273}{set\+Is\+In\+Call}} (bool \mbox{\hyperlink{classUser_a9406658d42bfd5069c89ad2451ebbfe3}{is\+In\+Call}})
+\item 
+void \mbox{\hyperlink{classUser_a501107b5aa1f98950b28fc8935b1cab2}{set\+Calling}} (std\+::string name)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classUser_a8f424e99a31e1ca640191dc6c8346c68}\label{classUser_a8f424e99a31e1ca640191dc6c8346c68}} 
+\index{User@{User}!User@{User}}
+\index{User@{User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{User()}{User()}}
+{\footnotesize\ttfamily User\+::\+User (\begin{DoxyParamCaption}\item[{std\+::string}]{ip,  }\item[{int}]{port,  }\item[{int}]{fd }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUser_ac00b72ad64eb4149f7b21b9f5468c2b2}\label{classUser_ac00b72ad64eb4149f7b21b9f5468c2b2}} 
+\index{User@{User}!````~User@{$\sim$User}}
+\index{````~User@{$\sim$User}!User@{User}}
+\doxysubsubsection{\texorpdfstring{$\sim$User()}{~User()}}
+{\footnotesize\ttfamily User\+::$\sim$\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUser_a0a785fe2326a41cc0d044c5a7d7ca1d4}\label{classUser_a0a785fe2326a41cc0d044c5a7d7ca1d4}} 
+\index{User@{User}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!User@{User}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void User\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUser_ab454651d3eaf5f095004799fe167246b}\label{classUser_ab454651d3eaf5f095004799fe167246b}} 
+\index{User@{User}!getCalling@{getCalling}}
+\index{getCalling@{getCalling}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getCalling()}{getCalling()}}
+{\footnotesize\ttfamily std\+::string User\+::get\+Calling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUser_aa54d9d353dbc15fc9b64fd2a1be00796}\label{classUser_aa54d9d353dbc15fc9b64fd2a1be00796}} 
+\index{User@{User}!getIp@{getIp}}
+\index{getIp@{getIp}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getIp()}{getIp()}}
+{\footnotesize\ttfamily std\+::string User\+::get\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUser_af6ce795e546ccf7979a3b8fa4d1d1468}\label{classUser_af6ce795e546ccf7979a3b8fa4d1d1468}} 
+\index{User@{User}!getSocket@{getSocket}}
+\index{getSocket@{getSocket}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getSocket()}{getSocket()}}
+{\footnotesize\ttfamily int User\+::get\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classUser_a7eff012d6182f6829329620d8e21b124}\label{classUser_a7eff012d6182f6829329620d8e21b124}} 
+\index{User@{User}!getUserName@{getUserName}}
+\index{getUserName@{getUserName}!User@{User}}
+\doxysubsubsection{\texorpdfstring{getUserName()}{getUserName()}}
+{\footnotesize\ttfamily std\+::string User\+::get\+User\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUser_a49fe72b8210076c14c342085559052bd}\label{classUser_a49fe72b8210076c14c342085559052bd}} 
+\index{User@{User}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!User@{User}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily bool User\+::is\+Connected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classUser_a9406658d42bfd5069c89ad2451ebbfe3}\label{classUser_a9406658d42bfd5069c89ad2451ebbfe3}} 
+\index{User@{User}!isInCall@{isInCall}}
+\index{isInCall@{isInCall}!User@{User}}
+\doxysubsubsection{\texorpdfstring{isInCall()}{isInCall()}}
+{\footnotesize\ttfamily bool User\+::is\+In\+Call (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classUser_a42fc61851c865d8e9e0a02dd6d794553}\label{classUser_a42fc61851c865d8e9e0a02dd6d794553}} 
+\index{User@{User}!login@{login}}
+\index{login@{login}!User@{User}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily void User\+::login (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUser_a501107b5aa1f98950b28fc8935b1cab2}\label{classUser_a501107b5aa1f98950b28fc8935b1cab2}} 
+\index{User@{User}!setCalling@{setCalling}}
+\index{setCalling@{setCalling}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setCalling()}{setCalling()}}
+{\footnotesize\ttfamily void User\+::set\+Calling (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classUser_a3c478ba8a9c8a84b1800c38a55e45273}\label{classUser_a3c478ba8a9c8a84b1800c38a55e45273}} 
+\index{User@{User}!setIsInCall@{setIsInCall}}
+\index{setIsInCall@{setIsInCall}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setIsInCall()}{setIsInCall()}}
+{\footnotesize\ttfamily void User\+::set\+Is\+In\+Call (\begin{DoxyParamCaption}\item[{bool}]{is\+In\+Call }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classUser_af4038d8c0ea4448220c3b8b214042c1d}\label{classUser_af4038d8c0ea4448220c3b8b214042c1d}} 
+\index{User@{User}!setUserName@{setUserName}}
+\index{setUserName@{setUserName}!User@{User}}
+\doxysubsubsection{\texorpdfstring{setUserName()}{setUserName()}}
+{\footnotesize\ttfamily void User\+::set\+User\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/\mbox{\hyperlink{User_8hpp}{User.\+hpp}}\item 
+src/server/\mbox{\hyperlink{User_8cpp}{User.\+cpp}}\end{DoxyCompactItemize}

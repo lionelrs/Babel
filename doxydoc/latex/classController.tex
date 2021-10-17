@@ -1,0 +1,182 @@
+\hypertarget{classController}{}\doxysection{Controller Class Reference}
+\label{classController}\index{Controller@{Controller}}
+
+
+{\ttfamily \#include $<$Controller.\+hpp$>$}
+
+
+
+Inheritance diagram for Controller\+:
+% FIG 0
+
+
+Collaboration diagram for Controller\+:
+% FIG 1
+\doxysubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classController_a860bfababf5e83e930e358feed221b7f}{listen\+Tcp\+Data}} ()
+\item 
+void \mbox{\hyperlink{classController_a7a52c74e7c006335b8e52304c148e7d9}{listen\+Udp\+Data}} ()
+\item 
+void \mbox{\hyperlink{classController_a0156e1502789036ac8ab31a2f309fe19}{send\+Tcp\+Login\+Form}} ()
+\item 
+void \mbox{\hyperlink{classController_a219a0adb1074b601555b5c518b7d1a3a}{call\+Selected}} ()
+\item 
+void \mbox{\hyperlink{classController_a115e3e0977b504fe917c444895730514}{accepted\+Response}} ()
+\item 
+void \mbox{\hyperlink{classController_a089b114cd4e9e6cbf5c972dc50ead530}{refused\+Response}} ()
+\item 
+void \mbox{\hyperlink{classController_a65e832b2356281e8bdc644e50fda4d28}{hang\+Up}} ()
+\item 
+void \mbox{\hyperlink{classController_ae70620b038939e79ab4657f1a0728d84}{sign\+Up\+Widget}} ()
+\item 
+void \mbox{\hyperlink{classController_af68c8ab6e09982d93f1a7bf88646d2ec}{login\+Widget}} ()
+\item 
+void \mbox{\hyperlink{classController_aaee6fc089bd71645b400793cbdc8f18b}{send\+Tcp\+Sign\+Up\+Form}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classController_a774129142b53dd5db86111fb99a0d332}{Controller}} (int port, char $\ast$ip)
+\item 
+\mbox{\hyperlink{classController_a0ab87934c4f7a266cfdb86e0f36bc1b5}{$\sim$\+Controller}} ()
+\item 
+void \mbox{\hyperlink{classController_acff084ea54b3982435003fbe6da340ea}{start\+Babel}} ()
+\item 
+void \mbox{\hyperlink{classController_a349b17eb2f784ae63722c40d6503d761}{send\+Udp\+Data}} (\mbox{\hyperlink{classMessage}{Message}} msg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classController_a774129142b53dd5db86111fb99a0d332}\label{classController_a774129142b53dd5db86111fb99a0d332}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{Controller()}{Controller()}}
+{\footnotesize\ttfamily Controller\+::\+Controller (\begin{DoxyParamCaption}\item[{int}]{port,  }\item[{char $\ast$}]{ip }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classController_a0ab87934c4f7a266cfdb86e0f36bc1b5}\label{classController_a0ab87934c4f7a266cfdb86e0f36bc1b5}} 
+\index{Controller@{Controller}!````~Controller@{$\sim$Controller}}
+\index{````~Controller@{$\sim$Controller}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{$\sim$Controller()}{~Controller()}}
+{\footnotesize\ttfamily Controller\+::$\sim$\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classController_a115e3e0977b504fe917c444895730514}\label{classController_a115e3e0977b504fe917c444895730514}} 
+\index{Controller@{Controller}!acceptedResponse@{acceptedResponse}}
+\index{acceptedResponse@{acceptedResponse}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{acceptedResponse}{acceptedResponse}}
+{\footnotesize\ttfamily void Controller\+::accepted\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classController_a219a0adb1074b601555b5c518b7d1a3a}\label{classController_a219a0adb1074b601555b5c518b7d1a3a}} 
+\index{Controller@{Controller}!callSelected@{callSelected}}
+\index{callSelected@{callSelected}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{callSelected}{callSelected}}
+{\footnotesize\ttfamily void Controller\+::call\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classController_a65e832b2356281e8bdc644e50fda4d28}\label{classController_a65e832b2356281e8bdc644e50fda4d28}} 
+\index{Controller@{Controller}!hangUp@{hangUp}}
+\index{hangUp@{hangUp}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{hangUp}{hangUp}}
+{\footnotesize\ttfamily void Controller\+::hang\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classController_a860bfababf5e83e930e358feed221b7f}\label{classController_a860bfababf5e83e930e358feed221b7f}} 
+\index{Controller@{Controller}!listenTcpData@{listenTcpData}}
+\index{listenTcpData@{listenTcpData}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{listenTcpData}{listenTcpData}}
+{\footnotesize\ttfamily void Controller\+::listen\+Tcp\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{classController_a7a52c74e7c006335b8e52304c148e7d9}\label{classController_a7a52c74e7c006335b8e52304c148e7d9}} 
+\index{Controller@{Controller}!listenUdpData@{listenUdpData}}
+\index{listenUdpData@{listenUdpData}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{listenUdpData}{listenUdpData}}
+{\footnotesize\ttfamily void Controller\+::listen\+Udp\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{classController_af68c8ab6e09982d93f1a7bf88646d2ec}\label{classController_af68c8ab6e09982d93f1a7bf88646d2ec}} 
+\index{Controller@{Controller}!loginWidget@{loginWidget}}
+\index{loginWidget@{loginWidget}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{loginWidget}{loginWidget}}
+{\footnotesize\ttfamily void Controller\+::login\+Widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{classController_a089b114cd4e9e6cbf5c972dc50ead530}\label{classController_a089b114cd4e9e6cbf5c972dc50ead530}} 
+\index{Controller@{Controller}!refusedResponse@{refusedResponse}}
+\index{refusedResponse@{refusedResponse}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{refusedResponse}{refusedResponse}}
+{\footnotesize\ttfamily void Controller\+::refused\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{classController_a0156e1502789036ac8ab31a2f309fe19}\label{classController_a0156e1502789036ac8ab31a2f309fe19}} 
+\index{Controller@{Controller}!sendTcpLoginForm@{sendTcpLoginForm}}
+\index{sendTcpLoginForm@{sendTcpLoginForm}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{sendTcpLoginForm}{sendTcpLoginForm}}
+{\footnotesize\ttfamily void Controller\+::send\+Tcp\+Login\+Form (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{classController_aaee6fc089bd71645b400793cbdc8f18b}\label{classController_aaee6fc089bd71645b400793cbdc8f18b}} 
+\index{Controller@{Controller}!sendTcpSignUpForm@{sendTcpSignUpForm}}
+\index{sendTcpSignUpForm@{sendTcpSignUpForm}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{sendTcpSignUpForm}{sendTcpSignUpForm}}
+{\footnotesize\ttfamily void Controller\+::send\+Tcp\+Sign\+Up\+Form (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{classController_a349b17eb2f784ae63722c40d6503d761}\label{classController_a349b17eb2f784ae63722c40d6503d761}} 
+\index{Controller@{Controller}!sendUdpData@{sendUdpData}}
+\index{sendUdpData@{sendUdpData}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{sendUdpData()}{sendUdpData()}}
+{\footnotesize\ttfamily void Controller\+::send\+Udp\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessage}{Message}}}]{msg }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{classController_ae70620b038939e79ab4657f1a0728d84}\label{classController_ae70620b038939e79ab4657f1a0728d84}} 
+\index{Controller@{Controller}!signUpWidget@{signUpWidget}}
+\index{signUpWidget@{signUpWidget}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{signUpWidget}{signUpWidget}}
+{\footnotesize\ttfamily void Controller\+::sign\+Up\+Widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{classController_acff084ea54b3982435003fbe6da340ea}\label{classController_acff084ea54b3982435003fbe6da340ea}} 
+\index{Controller@{Controller}!startBabel@{startBabel}}
+\index{startBabel@{startBabel}!Controller@{Controller}}
+\doxysubsubsection{\texorpdfstring{startBabel()}{startBabel()}}
+{\footnotesize\ttfamily void Controller\+::start\+Babel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+% FIG 19
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/\mbox{\hyperlink{Controller_8hpp}{Controller.\+hpp}}\item 
+src/client/\mbox{\hyperlink{Controller_8cpp}{Controller.\+cpp}}\end{DoxyCompactItemize}

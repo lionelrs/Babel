@@ -1,0 +1,119 @@
+\hypertarget{classSocket}{}\doxysection{Socket Class Reference}
+\label{classSocket}\index{Socket@{Socket}}
+
+
+{\ttfamily \#include $<$Socket.\+hpp$>$}
+
+
+
+Inheritance diagram for Socket\+:
+% FIG 0
+
+
+Collaboration diagram for Socket\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSocket_a4573ddc076995862a6d7620eab38bf0e}{Socket}} (const std\+::string ip, const int port, \mbox{\hyperlink{classQObject}{QObject}} $\ast$parent=0)
+\item 
+\mbox{\hyperlink{classSocket_aeac4eb6379a543d38ed88977d3b6630a}{$\sim$\+Socket}} ()
+\item 
+int \mbox{\hyperlink{classSocket_a71c34daa6805c11046e423dcf613b183}{get\+Port}} () const
+\item 
+std\+::string \mbox{\hyperlink{classSocket_aef4e39539ce366def43d7778aeac05ea}{get\+Ip}} () const
+\item 
+virtual void \mbox{\hyperlink{classSocket_a56cacc3f6b7e677f941d5d1560fd382c}{write\+Data}} (\mbox{\hyperlink{classMessage}{Message}} msg)=0
+\item 
+virtual void \mbox{\hyperlink{classSocket_a2125d3fb22e6815088d7084e09333c80}{open\+Connection}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classSocket_aab0c30849dd273140139ece3a15a78e1}{read\+Data}} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classSocket_a7f6b0fb0ba5a2c9739f2bcd4fb0dbb98}{\+\_\+ip}}
+\item 
+int \mbox{\hyperlink{classSocket_a67c6c2e06bc37a44155a20aed324dd52}{\+\_\+port}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSocket_a4573ddc076995862a6d7620eab38bf0e}\label{classSocket_a4573ddc076995862a6d7620eab38bf0e}} 
+\index{Socket@{Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{Socket()}{Socket()}}
+{\footnotesize\ttfamily Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{const std\+::string}]{ip,  }\item[{const int}]{port,  }\item[{\mbox{\hyperlink{classQObject}{QObject}} $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classSocket_aeac4eb6379a543d38ed88977d3b6630a}\label{classSocket_aeac4eb6379a543d38ed88977d3b6630a}} 
+\index{Socket@{Socket}!````~Socket@{$\sim$Socket}}
+\index{````~Socket@{$\sim$Socket}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{$\sim$Socket()}{~Socket()}}
+{\footnotesize\ttfamily Socket\+::$\sim$\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSocket_aef4e39539ce366def43d7778aeac05ea}\label{classSocket_aef4e39539ce366def43d7778aeac05ea}} 
+\index{Socket@{Socket}!getIp@{getIp}}
+\index{getIp@{getIp}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{getIp()}{getIp()}}
+{\footnotesize\ttfamily std\+::string Socket\+::get\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classSocket_a71c34daa6805c11046e423dcf613b183}\label{classSocket_a71c34daa6805c11046e423dcf613b183}} 
+\index{Socket@{Socket}!getPort@{getPort}}
+\index{getPort@{getPort}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{getPort()}{getPort()}}
+{\footnotesize\ttfamily int Socket\+::get\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classSocket_a2125d3fb22e6815088d7084e09333c80}\label{classSocket_a2125d3fb22e6815088d7084e09333c80}} 
+\index{Socket@{Socket}!openConnection@{openConnection}}
+\index{openConnection@{openConnection}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{openConnection()}{openConnection()}}
+{\footnotesize\ttfamily virtual void Socket\+::open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classMyTCP_adcc8ab414a9996f659e421a471d85d95}{My\+TCP}}, and \mbox{\hyperlink{classMyUDP_a63dc381447995ba22aec7989d3be7338}{My\+UDP}}.
+
+\mbox{\Hypertarget{classSocket_aab0c30849dd273140139ece3a15a78e1}\label{classSocket_aab0c30849dd273140139ece3a15a78e1}} 
+\index{Socket@{Socket}!readData@{readData}}
+\index{readData@{readData}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily virtual void Socket\+::read\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classMyTCP_ad3ed427a0098b0ea955e29593928de7d}{My\+TCP}}, and \mbox{\hyperlink{classMyUDP_a668afeade4210b95725f3e71940e19fb}{My\+UDP}}.
+
+\mbox{\Hypertarget{classSocket_a56cacc3f6b7e677f941d5d1560fd382c}\label{classSocket_a56cacc3f6b7e677f941d5d1560fd382c}} 
+\index{Socket@{Socket}!writeData@{writeData}}
+\index{writeData@{writeData}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily virtual void Socket\+::write\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessage}{Message}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classMyTCP_a7b04a06771140f1a3cf94c8b6b36b572}{My\+TCP}}, and \mbox{\hyperlink{classMyUDP_a43e3d8b2daaf9d23198f40762bdb2196}{My\+UDP}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSocket_a7f6b0fb0ba5a2c9739f2bcd4fb0dbb98}\label{classSocket_a7f6b0fb0ba5a2c9739f2bcd4fb0dbb98}} 
+\index{Socket@{Socket}!\_ip@{\_ip}}
+\index{\_ip@{\_ip}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{\_ip}{\_ip}}
+{\footnotesize\ttfamily std\+::string Socket\+::\+\_\+ip\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classSocket_a67c6c2e06bc37a44155a20aed324dd52}\label{classSocket_a67c6c2e06bc37a44155a20aed324dd52}} 
+\index{Socket@{Socket}!\_port@{\_port}}
+\index{\_port@{\_port}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{\_port}{\_port}}
+{\footnotesize\ttfamily int Socket\+::\+\_\+port\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/\mbox{\hyperlink{Socket_8hpp}{Socket.\+hpp}}\item 
+src/client/\mbox{\hyperlink{Socket_8cpp}{Socket.\+cpp}}\end{DoxyCompactItemize}

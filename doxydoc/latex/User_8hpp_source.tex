@@ -1,0 +1,65 @@
+\hypertarget{User_8hpp_source}{}\doxysection{User.\+hpp}
+\label{User_8hpp_source}\index{src/server/User.hpp@{src/server/User.hpp}}
+\mbox{\hyperlink{User_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** User}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef USER\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define USER\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <asio.hpp>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{SEPProtocol_8hpp}{SEPProtocol.hpp}}"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <string.h>}   \textcolor{comment}{//strlen}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <errno.h>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <unistd.h>}   \textcolor{comment}{//close}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <arpa/inet.h>}    \textcolor{comment}{//close}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <sys/types.h>}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <netinet/in.h>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <sys/time.h>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}../common/BabelException.hpp"{}}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{class }\mbox{\hyperlink{classUser}{User}} \{}
+\DoxyCodeLine{32     \textcolor{keyword}{public}:}
+\DoxyCodeLine{33         \mbox{\hyperlink{classUser_a8f424e99a31e1ca640191dc6c8346c68}{User}}(std::string ip, \textcolor{keywordtype}{int} port, \textcolor{keywordtype}{int} fd);}
+\DoxyCodeLine{34         \mbox{\hyperlink{classUser_ac00b72ad64eb4149f7b21b9f5468c2b2}{\string~User}}();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUser_a49fe72b8210076c14c342085559052bd}{isConnected}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{37         \textcolor{keywordtype}{bool} \mbox{\hyperlink{classUser_a9406658d42bfd5069c89ad2451ebbfe3}{isInCall}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{38         \textcolor{keywordtype}{void} \mbox{\hyperlink{classUser_a0a785fe2326a41cc0d044c5a7d7ca1d4}{disconnect}}();}
+\DoxyCodeLine{39         \textcolor{keywordtype}{void} \mbox{\hyperlink{classUser_a42fc61851c865d8e9e0a02dd6d794553}{login}}();}
+\DoxyCodeLine{40         \textcolor{keywordtype}{int} \mbox{\hyperlink{classUser_af6ce795e546ccf7979a3b8fa4d1d1468}{getSocket}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{41         std::string \mbox{\hyperlink{classUser_ab454651d3eaf5f095004799fe167246b}{getCalling}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{42         std::string \mbox{\hyperlink{classUser_aa54d9d353dbc15fc9b64fd2a1be00796}{getIp}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{43         std::string \mbox{\hyperlink{classUser_a7eff012d6182f6829329620d8e21b124}{getUserName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{44         \textcolor{keywordtype}{void} \mbox{\hyperlink{classUser_af4038d8c0ea4448220c3b8b214042c1d}{setUserName}}(std::string \textcolor{keywordtype}{id});}
+\DoxyCodeLine{45         \textcolor{keywordtype}{void} \mbox{\hyperlink{classUser_a3c478ba8a9c8a84b1800c38a55e45273}{setIsInCall}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{classUser_a9406658d42bfd5069c89ad2451ebbfe3}{isInCall}});}
+\DoxyCodeLine{46         \textcolor{keywordtype}{void} \mbox{\hyperlink{classUser_a501107b5aa1f98950b28fc8935b1cab2}{setCalling}}(std::string name);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{49     \textcolor{keyword}{private}:}
+\DoxyCodeLine{50         \textcolor{keywordtype}{bool} \_isConnected;}
+\DoxyCodeLine{51         std::string \_ip;}
+\DoxyCodeLine{52         \textcolor{keywordtype}{int} \_port;}
+\DoxyCodeLine{53         \textcolor{keywordtype}{int} \_socket;}
+\DoxyCodeLine{54         \textcolor{keywordtype}{bool} \_isInCall;}
+\DoxyCodeLine{55         std::string \_calling;}
+\DoxyCodeLine{56         std::string \_username;}
+\DoxyCodeLine{57 \};}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !USER\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

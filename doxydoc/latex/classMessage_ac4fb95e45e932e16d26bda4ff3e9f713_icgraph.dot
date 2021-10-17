@@ -1,0 +1,41 @@
+digraph "Message::getBody"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="Message::getBody",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="MyTCP::writeData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMyTCP.html#a7b04a06771140f1a3cf94c8b6b36b572",tooltip=" "];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="Controller::acceptedResponse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a115e3e0977b504fe917c444895730514",tooltip=" "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Controller::callSelected",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a219a0adb1074b601555b5c518b7d1a3a",tooltip=" "];
+  Node2 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="Controller::hangUp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a65e832b2356281e8bdc644e50fda4d28",tooltip=" "];
+  Node2 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="Controller::refusedResponse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a089b114cd4e9e6cbf5c972dc50ead530",tooltip=" "];
+  Node2 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="Controller::sendTcpLoginForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a0156e1502789036ac8ab31a2f309fe19",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="Controller::loginWidget",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#af68c8ab6e09982d93f1a7bf88646d2ec",tooltip=" "];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="Controller::signUpWidget",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#ae70620b038939e79ab4657f1a0728d84",tooltip=" "];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="Controller::startBabel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#acff084ea54b3982435003fbe6da340ea",tooltip=" "];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$client_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+  Node8 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="Controller::sendTcpSignUpForm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#aaee6fc089bd71645b400793cbdc8f18b",tooltip=" "];
+  Node12 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="MyUDP::writeData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMyUDP.html#a43e3d8b2daaf9d23198f40762bdb2196",tooltip=" "];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="Controller::sendUdpData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classController.html#a349b17eb2f784ae63722c40d6503d761",tooltip=" "];
+  Node13 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}

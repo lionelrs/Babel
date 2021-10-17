@@ -1,0 +1,121 @@
+\hypertarget{classBabel_1_1Opus}{}\doxysection{Babel\+::Opus Class Reference}
+\label{classBabel_1_1Opus}\index{Babel::Opus@{Babel::Opus}}
+
+
+{\ttfamily \#include $<$Opus.\+hpp$>$}
+
+
+
+Inheritance diagram for Babel\+::Opus\+:
+% FIG 0
+
+
+Collaboration diagram for Babel\+::Opus\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBabel_1_1Opus_a8837abfae73018cd83a905dec1cb3a65}{Opus}} ()
+\item 
+\mbox{\hyperlink{classBabel_1_1Opus_a8ea1c4d777d89b375a666463b17a6cb3}{$\sim$\+Opus}} ()
+\item 
+\mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} \mbox{\hyperlink{classBabel_1_1Opus_a3830c6a796f29a8ac84f1df1c0980fa1}{encode\+Frame}} (const \mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} \&sound)
+\item 
+\mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} \mbox{\hyperlink{classBabel_1_1Opus_a688b5d538a17d9c790c54d69d5438e4e}{decode\+Frame}} (const \mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} \&compressed)
+\item 
+void \mbox{\hyperlink{classBabel_1_1Opus_aab55e30c867b2b02c7c61f08d271ff37}{set\+Sample\+Rate}} (int rate)
+\item 
+void \mbox{\hyperlink{classBabel_1_1Opus_a01d8ecd571d76fae398b84d98219d4b8}{set\+Number\+Channels}} (int nb)
+\item 
+int \mbox{\hyperlink{classBabel_1_1Opus_a811b4d213a13fda4dc149bf51986ab37}{get\+Sample\+Rate}} () const
+\item 
+int \mbox{\hyperlink{classBabel_1_1Opus_a452075e7b6e6be1f96b8f237a673dad0}{get\+Number\+Channels}} () const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBabel_1_1Opus_a8837abfae73018cd83a905dec1cb3a65}\label{classBabel_1_1Opus_a8837abfae73018cd83a905dec1cb3a65}} 
+\index{Babel::Opus@{Babel::Opus}!Opus@{Opus}}
+\index{Opus@{Opus}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{Opus()}{Opus()}}
+{\footnotesize\ttfamily Babel\+::\+Opus\+::\+Opus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBabel_1_1Opus_a8ea1c4d777d89b375a666463b17a6cb3}\label{classBabel_1_1Opus_a8ea1c4d777d89b375a666463b17a6cb3}} 
+\index{Babel::Opus@{Babel::Opus}!````~Opus@{$\sim$Opus}}
+\index{````~Opus@{$\sim$Opus}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{$\sim$Opus()}{~Opus()}}
+{\footnotesize\ttfamily Babel\+::\+Opus\+::$\sim$\+Opus (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBabel_1_1Opus_a688b5d538a17d9c790c54d69d5438e4e}\label{classBabel_1_1Opus_a688b5d538a17d9c790c54d69d5438e4e}} 
+\index{Babel::Opus@{Babel::Opus}!decodeFrame@{decodeFrame}}
+\index{decodeFrame@{decodeFrame}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{decodeFrame()}{decodeFrame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBabel_1_1Buffer}{Babel\+::\+Buffer}} Babel\+::\+Opus\+::decode\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} \&}]{compressed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_a67dfc497fe3a34645f89122e7b6bbde8}{Babel\+::\+ICompressor}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classBabel_1_1Opus_a3830c6a796f29a8ac84f1df1c0980fa1}\label{classBabel_1_1Opus_a3830c6a796f29a8ac84f1df1c0980fa1}} 
+\index{Babel::Opus@{Babel::Opus}!encodeFrame@{encodeFrame}}
+\index{encodeFrame@{encodeFrame}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{encodeFrame()}{encodeFrame()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBabel_1_1CBuffer}{Babel\+::\+CBuffer}} Babel\+::\+Opus\+::encode\+Frame (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} \&}]{sound }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_aec71da767b641700e60a4392af2aa30e}{Babel\+::\+ICompressor}}.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classBabel_1_1Opus_a452075e7b6e6be1f96b8f237a673dad0}\label{classBabel_1_1Opus_a452075e7b6e6be1f96b8f237a673dad0}} 
+\index{Babel::Opus@{Babel::Opus}!getNumberChannels@{getNumberChannels}}
+\index{getNumberChannels@{getNumberChannels}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{getNumberChannels()}{getNumberChannels()}}
+{\footnotesize\ttfamily int Babel\+::\+Opus\+::get\+Number\+Channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_aa5290acb42424a61aac6104ece96b7e4}{Babel\+::\+ICompressor}}.
+
+\mbox{\Hypertarget{classBabel_1_1Opus_a811b4d213a13fda4dc149bf51986ab37}\label{classBabel_1_1Opus_a811b4d213a13fda4dc149bf51986ab37}} 
+\index{Babel::Opus@{Babel::Opus}!getSampleRate@{getSampleRate}}
+\index{getSampleRate@{getSampleRate}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{getSampleRate()}{getSampleRate()}}
+{\footnotesize\ttfamily int Babel\+::\+Opus\+::get\+Sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_aa4a2abe0a3883830e45cf04fa3ef9368}{Babel\+::\+ICompressor}}.
+
+\mbox{\Hypertarget{classBabel_1_1Opus_a01d8ecd571d76fae398b84d98219d4b8}\label{classBabel_1_1Opus_a01d8ecd571d76fae398b84d98219d4b8}} 
+\index{Babel::Opus@{Babel::Opus}!setNumberChannels@{setNumberChannels}}
+\index{setNumberChannels@{setNumberChannels}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{setNumberChannels()}{setNumberChannels()}}
+{\footnotesize\ttfamily void Babel\+::\+Opus\+::set\+Number\+Channels (\begin{DoxyParamCaption}\item[{int}]{nb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_a2d0cbdfe39592260e559b87a659b64cc}{Babel\+::\+ICompressor}}.
+
+\mbox{\Hypertarget{classBabel_1_1Opus_aab55e30c867b2b02c7c61f08d271ff37}\label{classBabel_1_1Opus_aab55e30c867b2b02c7c61f08d271ff37}} 
+\index{Babel::Opus@{Babel::Opus}!setSampleRate@{setSampleRate}}
+\index{setSampleRate@{setSampleRate}!Babel::Opus@{Babel::Opus}}
+\doxysubsubsection{\texorpdfstring{setSampleRate()}{setSampleRate()}}
+{\footnotesize\ttfamily void Babel\+::\+Opus\+::set\+Sample\+Rate (\begin{DoxyParamCaption}\item[{int}]{rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBabel_1_1ICompressor_a0f341dd0ddf6f6e624c06bd1868c97ce}{Babel\+::\+ICompressor}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/common/\mbox{\hyperlink{Opus_8hpp}{Opus.\+hpp}}\item 
+src/common/\mbox{\hyperlink{Opus_8cpp}{Opus.\+cpp}}\end{DoxyCompactItemize}

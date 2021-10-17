@@ -1,0 +1,54 @@
+\hypertarget{SignUpWidget_8hpp_source}{}\doxysection{Sign\+Up\+Widget.\+hpp}
+\label{SignUpWidget_8hpp_source}\index{src/client/SignUpWidget.hpp@{src/client/SignUpWidget.hpp}}
+\mbox{\hyperlink{SignUpWidget_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** SignUpWidget}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SIGNUPWIDGET\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SIGNUPWIDGET\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <QGroupBox>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <QLabel>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <QVBoxLayout>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <QLineEdit>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Message_8hpp}{Message.hpp}}"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}../common/SEPCommands.hpp"{}}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classSignUpWidget}{SignUpWidget}} : \textcolor{keyword}{public} \mbox{\hyperlink{classQWidget}{QWidget}} \{}
+\DoxyCodeLine{22     \textcolor{keyword}{public}:}
+\DoxyCodeLine{23         Q\_OBJECT}
+\DoxyCodeLine{24     \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         \mbox{\hyperlink{classSignUpWidget_a1f5ae7f8bc7c5c50168d716d55ae2eb7}{SignUpWidget}}(\mbox{\hyperlink{classQWidget}{QWidget}} *parent = 0);}
+\DoxyCodeLine{26         \mbox{\hyperlink{classSignUpWidget_a0ff2e9156f35ec3c3d5a1a44797a5632}{\string~SignUpWidget}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \mbox{\hyperlink{classMessage}{Message}} \mbox{\hyperlink{classSignUpWidget_a85e2d6089c2a39726bc456fd610441b7}{getSignUpForm}}();}
+\DoxyCodeLine{29         QPushButton *\mbox{\hyperlink{classSignUpWidget_a7abce5937591d7439c293c809449ceb1}{getValidateButton}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{30         QPushButton *\mbox{\hyperlink{classSignUpWidget_a4441db40065f623443e75beae0792336}{getBackButton}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     signals:}
+\DoxyCodeLine{33     \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{34     \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{37     \textcolor{keyword}{private}:}
+\DoxyCodeLine{38         QLineEdit *\_editUsername;}
+\DoxyCodeLine{39         QLineEdit *\_editPassword;}
+\DoxyCodeLine{40         QLineEdit *\_editConfirmPassword;}
+\DoxyCodeLine{41         QPushButton *\_validateButton;}
+\DoxyCodeLine{42         QPushButton *\_backButton;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{45     \textcolor{keyword}{private}:}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SIGNUPWIDGET\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

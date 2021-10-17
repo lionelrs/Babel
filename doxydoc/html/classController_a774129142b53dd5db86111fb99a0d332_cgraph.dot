@@ -1,0 +1,12 @@
+digraph "Controller::Controller"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Controller::Controller",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Babel::IAudio::getBuffer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBabel_1_1IAudio.html#ad324d6afdf8105dc701a5e748bb23406",tooltip=" "];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Babel::Buffer::size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classBabel_1_1Buffer.html#ad16f52f9df6fc98b0c888180858830f0",tooltip=" "];
+}

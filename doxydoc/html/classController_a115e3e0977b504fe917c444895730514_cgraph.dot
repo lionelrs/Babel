@@ -1,0 +1,15 @@
+digraph "Controller::acceptedResponse"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Controller::acceptedResponse",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="MyTCP::writeData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMyTCP.html#a7b04a06771140f1a3cf94c8b6b36b572",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Message::getBody",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessage.html#ac4fb95e45e932e16d26bda4ff3e9f713",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Message::getHeader",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMessage.html#a09bc9df202329b6285a63e8b025ad7f8",tooltip=" "];
+  Node2 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

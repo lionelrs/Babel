@@ -1,0 +1,71 @@
+\hypertarget{SEPServer_8hpp_source}{}\doxysection{SEPServer.\+hpp}
+\label{SEPServer_8hpp_source}\index{src/server/SEPServer.hpp@{src/server/SEPServer.hpp}}
+\mbox{\hyperlink{SEPServer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** *}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** SEPServer}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SEPSERVER\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SEPSERVER\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{User_8hpp}{User.hpp}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classSEPServer}{SEPServer}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSEPProtocol}{SEPProtocol}} \{}
+\DoxyCodeLine{15     \textcolor{keyword}{public}:}
+\DoxyCodeLine{16         \mbox{\hyperlink{classSEPServer_a7c8fe66d93342d0e153e15d8fe05504b}{SEPServer}}(\textcolor{keywordtype}{int} port);}
+\DoxyCodeLine{17         \mbox{\hyperlink{classSEPServer_aa6e51fcb38880db042cf8c2c7a783fd6}{\string~SEPServer}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} \mbox{\hyperlink{classSEPServer_a4bdc22256d4ea80e29d13ef959b060c0}{initSepServer}}();}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{classSEPServer_a74d9e9994ee69a3fafec1b99d209a8e6}{listenOnPort}}();}
+\DoxyCodeLine{21         \textcolor{keyword}{typedef} std::string (\mbox{\hyperlink{classSEPServer}{SEPServer}}::*\mbox{\hyperlink{classSEPServer_adc190424f0464ec50f443fc5441e00e4}{factoryF}})(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{22     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{23     \textcolor{keyword}{private}:}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25         \textcolor{keywordtype}{bool} isLoggedIn(\textcolor{keywordtype}{char} *token);}
+\DoxyCodeLine{26         \textcolor{keywordtype}{int} parseLocalCommand(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *b);}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} handleResponse(\mbox{\hyperlink{classUser}{User}} *user);}
+\DoxyCodeLine{28         \textcolor{keywordtype}{void} handleConnection();}
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} handleClientResponse(\mbox{\hyperlink{classUser}{User}} *user);}
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} handleDisconnectionHangup(\mbox{\hyperlink{classUser}{User}} *user);}
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} cleanUserList();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} checkAlreadyInCall(\mbox{\hyperlink{classUser}{User}} *user, std::string name);}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         std::string cmdRefuseCall(\mbox{\hyperlink{classUser}{User}} *user, std::string response);}
+\DoxyCodeLine{37         std::string cmdAlreadyInCall(\mbox{\hyperlink{classUser}{User}} *user, std::string response);}
+\DoxyCodeLine{38         std::string cmdCallHangUp(\mbox{\hyperlink{classUser}{User}} *user, std::string response);}
+\DoxyCodeLine{39         std::string cmdListAllLoggedUsers(\mbox{\hyperlink{classUser}{User}} *\mbox{\hyperlink{classUser}{User}}, std::string);}
+\DoxyCodeLine{40         std::string cmdLoginSucces(\mbox{\hyperlink{classUser}{User}} *\mbox{\hyperlink{classUser}{User}}, std::string);}
+\DoxyCodeLine{41         std::string cmdLoginFailure(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{42         std::string cmdCall(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{43         std::string cmdUserAlreadyExist(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{44         std::string cmdUserCreated(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{45         std::string cmdUserCreateError(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{46         std::string cmdCallResponse(\mbox{\hyperlink{classUser}{User}} *user, std::string);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         \textcolor{keywordtype}{void} sendToUser(\textcolor{keywordtype}{int} userFd, std::string msg);}
+\DoxyCodeLine{49         \textcolor{keywordtype}{void} sendDisc(std::string name);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordtype}{int} \_port;}
+\DoxyCodeLine{52         \textcolor{keywordtype}{int} opt = \textcolor{keyword}{true};}
+\DoxyCodeLine{53         std::vector<User *> userList;}
+\DoxyCodeLine{54         \textcolor{keywordtype}{int} master\_socket, addrlen, new\_socket, client\_socket[30],}
+\DoxyCodeLine{55         max\_clients = 30, activity, i, valread, sd;}
+\DoxyCodeLine{56         \textcolor{keywordtype}{int} max\_sd;}
+\DoxyCodeLine{57         \textcolor{keyword}{struct }sockaddr\_in address;}
+\DoxyCodeLine{58         \textcolor{keywordtype}{char} buffer[1025];}
+\DoxyCodeLine{59         fd\_set readfds;}
+\DoxyCodeLine{60         std::map<int, factoryF> \_cmd;}
+\DoxyCodeLine{61         \textcolor{keywordtype}{bool} \_hasDisconnected;}
+\DoxyCodeLine{62         \mbox{\hyperlink{classUser}{User}} *\_currentUser;}
+\DoxyCodeLine{63 \};}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SEPSERVER\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

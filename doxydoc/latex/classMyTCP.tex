@@ -1,0 +1,118 @@
+\hypertarget{classMyTCP}{}\doxysection{My\+TCP Class Reference}
+\label{classMyTCP}\index{MyTCP@{MyTCP}}
+
+
+{\ttfamily \#include $<$My\+TCP.\+hpp$>$}
+
+
+
+Inheritance diagram for My\+TCP\+:
+% FIG 0
+
+
+Collaboration diagram for My\+TCP\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMyTCP_aeb3c813d5c4f49952e20f3e9ebd1a583}{My\+TCP}} (const std\+::string ip, const int port, \mbox{\hyperlink{classQObject}{QObject}} $\ast$parent=0)
+\item 
+\mbox{\hyperlink{classMyTCP_ac07e87d1607bdf0a39ca56527260af51}{$\sim$\+My\+TCP}} ()
+\item 
+QTcp\+Socket $\ast$ \mbox{\hyperlink{classMyTCP_a357c6eb09c61a36b573d38db4dc2b304}{get\+Socket}} () const
+\item 
+std\+::string \mbox{\hyperlink{classMyTCP_af8fc65697b9b91a32d8f25e715d5be26}{get\+Data}} () const
+\item 
+void \mbox{\hyperlink{classMyTCP_a7b04a06771140f1a3cf94c8b6b36b572}{write\+Data}} (\mbox{\hyperlink{classMessage}{Message}} msg)
+\item 
+void \mbox{\hyperlink{classMyTCP_adcc8ab414a9996f659e421a471d85d95}{open\+Connection}} ()
+\item 
+void \mbox{\hyperlink{classMyTCP_ad3ed427a0098b0ea955e29593928de7d}{read\+Data}} ()
+\item 
+\mbox{\hyperlink{structSEPCommands}{SEPCommands}} $\ast$ \mbox{\hyperlink{classMyTCP_a4b29b8d84c0a0ec69e99cc140c2e8083}{get\+SEPCommand}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMyTCP_aeb3c813d5c4f49952e20f3e9ebd1a583}\label{classMyTCP_aeb3c813d5c4f49952e20f3e9ebd1a583}} 
+\index{MyTCP@{MyTCP}!MyTCP@{MyTCP}}
+\index{MyTCP@{MyTCP}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{MyTCP()}{MyTCP()}}
+{\footnotesize\ttfamily My\+TCP\+::\+My\+TCP (\begin{DoxyParamCaption}\item[{const std\+::string}]{ip,  }\item[{const int}]{port,  }\item[{\mbox{\hyperlink{classQObject}{QObject}} $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classMyTCP_ac07e87d1607bdf0a39ca56527260af51}\label{classMyTCP_ac07e87d1607bdf0a39ca56527260af51}} 
+\index{MyTCP@{MyTCP}!````~MyTCP@{$\sim$MyTCP}}
+\index{````~MyTCP@{$\sim$MyTCP}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{$\sim$MyTCP()}{~MyTCP()}}
+{\footnotesize\ttfamily My\+TCP\+::$\sim$\+My\+TCP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMyTCP_af8fc65697b9b91a32d8f25e715d5be26}\label{classMyTCP_af8fc65697b9b91a32d8f25e715d5be26}} 
+\index{MyTCP@{MyTCP}!getData@{getData}}
+\index{getData@{getData}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{getData()}{getData()}}
+{\footnotesize\ttfamily std\+::string My\+TCP\+::get\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classMyTCP_a4b29b8d84c0a0ec69e99cc140c2e8083}\label{classMyTCP_a4b29b8d84c0a0ec69e99cc140c2e8083}} 
+\index{MyTCP@{MyTCP}!getSEPCommand@{getSEPCommand}}
+\index{getSEPCommand@{getSEPCommand}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{getSEPCommand()}{getSEPCommand()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSEPCommands}{SEPCommands}} $\ast$ My\+TCP\+::get\+SEPCommand (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classMyTCP_a357c6eb09c61a36b573d38db4dc2b304}\label{classMyTCP_a357c6eb09c61a36b573d38db4dc2b304}} 
+\index{MyTCP@{MyTCP}!getSocket@{getSocket}}
+\index{getSocket@{getSocket}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{getSocket()}{getSocket()}}
+{\footnotesize\ttfamily QTcp\+Socket $\ast$ My\+TCP\+::get\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classMyTCP_adcc8ab414a9996f659e421a471d85d95}\label{classMyTCP_adcc8ab414a9996f659e421a471d85d95}} 
+\index{MyTCP@{MyTCP}!openConnection@{openConnection}}
+\index{openConnection@{openConnection}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{openConnection()}{openConnection()}}
+{\footnotesize\ttfamily void My\+TCP\+::open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_a2125d3fb22e6815088d7084e09333c80}{Socket}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classMyTCP_ad3ed427a0098b0ea955e29593928de7d}\label{classMyTCP_ad3ed427a0098b0ea955e29593928de7d}} 
+\index{MyTCP@{MyTCP}!readData@{readData}}
+\index{readData@{readData}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily void My\+TCP\+::read\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_aab0c30849dd273140139ece3a15a78e1}{Socket}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classMyTCP_a7b04a06771140f1a3cf94c8b6b36b572}\label{classMyTCP_a7b04a06771140f1a3cf94c8b6b36b572}} 
+\index{MyTCP@{MyTCP}!writeData@{writeData}}
+\index{writeData@{writeData}!MyTCP@{MyTCP}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily void My\+TCP\+::write\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessage}{Message}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_a56cacc3f6b7e677f941d5d1560fd382c}{Socket}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/\mbox{\hyperlink{MyTCP_8hpp}{My\+TCP.\+hpp}}\item 
+src/client/\mbox{\hyperlink{MyTCP_8cpp}{My\+TCP.\+cpp}}\end{DoxyCompactItemize}

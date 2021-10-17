@@ -1,0 +1,51 @@
+\hypertarget{HubWidget_8hpp_source}{}\doxysection{Hub\+Widget.\+hpp}
+\label{HubWidget_8hpp_source}\index{src/client/HubWidget.hpp@{src/client/HubWidget.hpp}}
+\mbox{\hyperlink{HubWidget_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** HubWidget}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef HUBWIDGET\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define HUBWIDGET\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <QVBoxLayout>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <QLabel>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <QListWidget>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classHubWidget}{HubWidget}} : \textcolor{keyword}{public} \mbox{\hyperlink{classQWidget}{QWidget}} \{}
+\DoxyCodeLine{19     Q\_OBJECT}
+\DoxyCodeLine{20     \textcolor{keyword}{public}:}
+\DoxyCodeLine{21         \mbox{\hyperlink{classHubWidget_a05594adc51331eb5645392063f99edca}{HubWidget}}(\mbox{\hyperlink{classQWidget}{QWidget}} *parent = 0);}
+\DoxyCodeLine{22         \mbox{\hyperlink{classHubWidget_a122799b3216a33ae86c1fcc9da36c1cc}{\string~HubWidget}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         QPushButton *\mbox{\hyperlink{classHubWidget_a7ab84cb5940b2af20025bd1cf18cce9c}{getButton}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25         \textcolor{keywordtype}{int} \mbox{\hyperlink{classHubWidget_a576e4dc9958ba1c51d9b298d91e5dfa9}{getSelected}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{26         std::string \mbox{\hyperlink{classHubWidget_aeb7f310fb7fe51eed6d01e8b07c8a598}{getSelectedName}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{27         \textcolor{keywordtype}{void} \mbox{\hyperlink{classHubWidget_a2d777cac287d249939a3ec04e55ea442}{setUsername}}(\textcolor{keyword}{const} std::string username);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29         \textcolor{keywordtype}{void} \mbox{\hyperlink{classHubWidget_a03b511d3345077dc3763dfb652173a9c}{addUser}}(std::string username);}
+\DoxyCodeLine{30         \textcolor{keywordtype}{void} \mbox{\hyperlink{classHubWidget_a7db9d17a8f866195259f807ffc3322a9}{removeUser}}(std::string username);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     signals:}
+\DoxyCodeLine{33     \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{34     \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{35         \textcolor{keywordtype}{void} onListItemClicked(QListWidgetItem* item);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{38     \textcolor{keyword}{private}:}
+\DoxyCodeLine{39         QPushButton *\_callButton;}
+\DoxyCodeLine{40         QListWidget *\_userList;}
+\DoxyCodeLine{41         QLabel *\_labelUsername;}
+\DoxyCodeLine{42         \textcolor{keywordtype}{int} \_selected;}
+\DoxyCodeLine{43 \};}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !HUBWIDGET\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

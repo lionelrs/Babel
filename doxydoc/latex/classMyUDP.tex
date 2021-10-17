@@ -1,0 +1,98 @@
+\hypertarget{classMyUDP}{}\doxysection{My\+UDP Class Reference}
+\label{classMyUDP}\index{MyUDP@{MyUDP}}
+
+
+{\ttfamily \#include $<$My\+UDP.\+hpp$>$}
+
+
+
+Inheritance diagram for My\+UDP\+:
+% FIG 0
+
+
+Collaboration diagram for My\+UDP\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMyUDP_ac9b395b89c3faa64edbb8b7c1fa39549}{My\+UDP}} (const std\+::string ip, const int port, \mbox{\hyperlink{classQObject}{QObject}} $\ast$parent=0)
+\item 
+\mbox{\hyperlink{classMyUDP_a9ec252b0737f494677590d49c8083280}{$\sim$\+My\+UDP}} ()
+\item 
+QUdp\+Socket $\ast$ \mbox{\hyperlink{classMyUDP_ae090e71add2626f76a08847a39a50457}{get\+Socket}} () const
+\item 
+void \mbox{\hyperlink{classMyUDP_a63dc381447995ba22aec7989d3be7338}{open\+Connection}} ()
+\item 
+void \mbox{\hyperlink{classMyUDP_a43e3d8b2daaf9d23198f40762bdb2196}{write\+Data}} (\mbox{\hyperlink{classMessage}{Message}} msg)
+\item 
+void \mbox{\hyperlink{classMyUDP_a668afeade4210b95725f3e71940e19fb}{read\+Data}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMyUDP_ac9b395b89c3faa64edbb8b7c1fa39549}\label{classMyUDP_ac9b395b89c3faa64edbb8b7c1fa39549}} 
+\index{MyUDP@{MyUDP}!MyUDP@{MyUDP}}
+\index{MyUDP@{MyUDP}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{MyUDP()}{MyUDP()}}
+{\footnotesize\ttfamily My\+UDP\+::\+My\+UDP (\begin{DoxyParamCaption}\item[{const std\+::string}]{ip,  }\item[{const int}]{port,  }\item[{\mbox{\hyperlink{classQObject}{QObject}} $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classMyUDP_a9ec252b0737f494677590d49c8083280}\label{classMyUDP_a9ec252b0737f494677590d49c8083280}} 
+\index{MyUDP@{MyUDP}!````~MyUDP@{$\sim$MyUDP}}
+\index{````~MyUDP@{$\sim$MyUDP}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{$\sim$MyUDP()}{~MyUDP()}}
+{\footnotesize\ttfamily My\+UDP\+::$\sim$\+My\+UDP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMyUDP_ae090e71add2626f76a08847a39a50457}\label{classMyUDP_ae090e71add2626f76a08847a39a50457}} 
+\index{MyUDP@{MyUDP}!getSocket@{getSocket}}
+\index{getSocket@{getSocket}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{getSocket()}{getSocket()}}
+{\footnotesize\ttfamily QUdp\+Socket $\ast$ My\+UDP\+::get\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classMyUDP_a63dc381447995ba22aec7989d3be7338}\label{classMyUDP_a63dc381447995ba22aec7989d3be7338}} 
+\index{MyUDP@{MyUDP}!openConnection@{openConnection}}
+\index{openConnection@{openConnection}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{openConnection()}{openConnection()}}
+{\footnotesize\ttfamily void My\+UDP\+::open\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_a2125d3fb22e6815088d7084e09333c80}{Socket}}.
+
+\mbox{\Hypertarget{classMyUDP_a668afeade4210b95725f3e71940e19fb}\label{classMyUDP_a668afeade4210b95725f3e71940e19fb}} 
+\index{MyUDP@{MyUDP}!readData@{readData}}
+\index{readData@{readData}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily void My\+UDP\+::read\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_aab0c30849dd273140139ece3a15a78e1}{Socket}}.
+
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classMyUDP_a43e3d8b2daaf9d23198f40762bdb2196}\label{classMyUDP_a43e3d8b2daaf9d23198f40762bdb2196}} 
+\index{MyUDP@{MyUDP}!writeData@{writeData}}
+\index{writeData@{writeData}!MyUDP@{MyUDP}}
+\doxysubsubsection{\texorpdfstring{writeData()}{writeData()}}
+{\footnotesize\ttfamily void My\+UDP\+::write\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMessage}{Message}}}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classSocket_a56cacc3f6b7e677f941d5d1560fd382c}{Socket}}.
+
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/client/\mbox{\hyperlink{MyUDP_8hpp}{My\+UDP.\+hpp}}\item 
+src/client/\mbox{\hyperlink{MyUDP_8cpp}{My\+UDP.\+cpp}}\end{DoxyCompactItemize}

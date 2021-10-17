@@ -1,0 +1,50 @@
+\hypertarget{SEPProtocol_8hpp_source}{}\doxysection{SEPProtocol.\+hpp}
+\label{SEPProtocol_8hpp_source}\index{src/server/SEPProtocol.hpp@{src/server/SEPProtocol.hpp}}
+\mbox{\hyperlink{SEPProtocol_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** babel}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** protocol serveur}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef SEPProtocole}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define SEPProtocole}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}../common/SEPCommands.hpp"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{SqliteDataBase_8hpp}{SqliteDataBase.hpp}}"{}}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classSEPProtocol}{SEPProtocol}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{public}:}
+\DoxyCodeLine{19     \mbox{\hyperlink{classSEPProtocol_aaabfec9cf391bd078454f3f7406aa801}{SEPProtocol}}();}
+\DoxyCodeLine{20     \mbox{\hyperlink{classSEPProtocol_af630f116b488c7781cf33317d1a8b388}{\string~SEPProtocol}}();}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22     std::string     \mbox{\hyperlink{classSEPProtocol_ae533ce4682c33c566a314a05f9ca511f}{processCommand}}(\textcolor{keyword}{const} std::string \&cliInput);}
+\DoxyCodeLine{23     std::vector<std::string>    \mbox{\hyperlink{classSEPProtocol_af39870488d6da1cad97f2b860488673d}{getInfosCommand}}(std::string command) \textcolor{keyword}{const};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{26 \textcolor{keyword}{private}:}
+\DoxyCodeLine{27     \textcolor{keyword}{typedef} std::string (\mbox{\hyperlink{classSEPProtocol}{SEPProtocol}}::*factoryF)(\textcolor{keyword}{const} std::vector<std::string> \&arg);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30     std::map<int, factoryF>     \_allCommands;}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32     std::string     RequestConnection(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{33     std::string     RequestDisconnection(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{34     std::string requestUserList(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{35     std::string requestCall(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{36     std::string requestUserCreation(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{37     std::string requestCallConfirm(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{38     std::string requestRefuseCall(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{39     std::string requestCallHangUp(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{40     std::string requestAlreadyInCall(\textcolor{keyword}{const} std::vector<std::string> \&args);}
+\DoxyCodeLine{41     \mbox{\hyperlink{classSqliteDataBase}{SqliteDataBase}} *\_instance;}
+\DoxyCodeLine{42 \};}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !SEPProtocole */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

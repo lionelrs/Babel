@@ -1,0 +1,49 @@
+\hypertarget{Buffer_8hpp_source}{}\doxysection{Buffer.\+hpp}
+\label{Buffer_8hpp_source}\index{src/common/Buffer.hpp@{src/common/Buffer.hpp}}
+\mbox{\hyperlink{Buffer_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** Buffer}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef BUFFER\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define BUFFER\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{BabelException_8hpp}{BabelException.hpp}}"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{BabelDefines_8hpp}{BabelDefines.hpp}}"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceBabel}{Babel}} \{}
+\DoxyCodeLine{19     \textcolor{keyword}{class }\mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} \{}
+\DoxyCodeLine{20         \textcolor{keyword}{public}:}
+\DoxyCodeLine{21             \mbox{\hyperlink{classBabel_1_1Buffer_a99bf7673e0de925ce7fa19fadb13b443}{Buffer}}();}
+\DoxyCodeLine{22             \mbox{\hyperlink{classBabel_1_1Buffer_a99bf7673e0de925ce7fa19fadb13b443}{Buffer}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} *begin);}
+\DoxyCodeLine{23             \mbox{\hyperlink{classBabel_1_1Buffer_a3f4a79a5bf523caf66e303426ec5e6dc}{\string~Buffer}}();}
+\DoxyCodeLine{24             \mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}} *\mbox{\hyperlink{classBabel_1_1Buffer_af438f6c2d4cf531915cba000a7fd04b0}{data}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{25             \textcolor{keywordtype}{int} \mbox{\hyperlink{classBabel_1_1Buffer_aa25ebfd8115670bc717eda4e4fbe544d}{getFrameIndex}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{26             \textcolor{keywordtype}{int} \mbox{\hyperlink{classBabel_1_1Buffer_a1ea401856ebe109daaecd297dd64755b}{getMaxFrameIndex}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{27             \textcolor{keywordtype}{void} \mbox{\hyperlink{classBabel_1_1Buffer_aa5fe463f9b198a5f15b8d0b061b03fe8}{setFrameIndex}}(\textcolor{keywordtype}{int} idx);}
+\DoxyCodeLine{28             \textcolor{keywordtype}{void} \mbox{\hyperlink{classBabel_1_1Buffer_a14ca7feb6d400c57dc93a21c47cdb399}{setMaxFrameIndex}}(\textcolor{keywordtype}{int} idx);}
+\DoxyCodeLine{29             \textcolor{keywordtype}{void} \mbox{\hyperlink{classBabel_1_1Buffer_ac14caa0e15c3cf57c47e2b21f21a0eb5}{setBuffer}}(\mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}} *buffer);}
+\DoxyCodeLine{30             \textcolor{keywordtype}{void} \mbox{\hyperlink{classBabel_1_1Buffer_a2b6bbd8a6c17c29a416092ebb10b0233}{setSize}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0}{size}});}
+\DoxyCodeLine{31             \textcolor{keywordtype}{int} \mbox{\hyperlink{classBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0}{size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{32             std::array<float, ELEM\_PER\_BUFFER> \mbox{\hyperlink{classBabel_1_1Buffer_a9381631106000d504da7448a9b1f1c0b}{getArray}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{33         \textcolor{keyword}{private}:}
+\DoxyCodeLine{34             \textcolor{keywordtype}{int} numSamples;}
+\DoxyCodeLine{35             \textcolor{keywordtype}{int} \_frameIndex;}
+\DoxyCodeLine{36             \textcolor{keywordtype}{int} \_maxFrameIndex;}
+\DoxyCodeLine{37             std::array<float, ELEM\_PER\_BUFFER> \_samples;}
+\DoxyCodeLine{38             \mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}} *\_sampleBuffer;}
+\DoxyCodeLine{39     \};}
+\DoxyCodeLine{40 \}}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !BUFFER\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

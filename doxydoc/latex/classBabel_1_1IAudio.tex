@@ -1,0 +1,220 @@
+\hypertarget{classBabel_1_1IAudio}{}\doxysection{Babel\+::IAudio Class Reference}
+\label{classBabel_1_1IAudio}\index{Babel::IAudio@{Babel::IAudio}}
+
+
+{\ttfamily \#include $<$IAudio.\+hpp$>$}
+
+
+
+Inheritance diagram for Babel\+::IAudio\+:
+% FIG 0
+
+
+Collaboration diagram for Babel\+::IAudio\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classBabel_1_1IAudio_a97d6ec39f752e56617d1fbf9b01dec8e}{$\sim$\+IAudio}} ()=default
+\item 
+virtual \mbox{\hyperlink{classBabel_1_1ICompressor}{ICompressor}} \& \mbox{\hyperlink{classBabel_1_1IAudio_a4a7169da791a5a08dc293f66bb9edf9f}{get\+Compressor}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a36033a2cea8a476c0a96cadaedac516c}{init}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a7496afe4fed4d998a0999d13797b26cc}{terminate}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a94423431edcd536998d22563d80808ca}{open\+Input\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_ad9d39595a8ffa51a36ae877cda0fb797}{open\+Output\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a9812e88f2095473f5da4f8edb4c8d2a4}{start\+Input\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_ab994637d553e763c810477ed653b0425}{start\+Output\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a77d9985312a5713a64ebc8df1f9efbf2}{close\+Input\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_ae6f3eb153f1aaab34cbb2c63b0228181}{close\+Output\+Stream}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_ad9daa206e675a25b7edfee6f3601c01f}{record}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a98056cac81922042b24c44c8ec2baa60}{play}} ()=0
+\item 
+virtual \mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} \mbox{\hyperlink{classBabel_1_1IAudio_ad324d6afdf8105dc701a5e748bb23406}{get\+Buffer}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_abc988fbea405bbc9a4e2c9733dd02768}{set\+Buffer}} (\mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} buffer)=0
+\item 
+virtual \mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} \mbox{\hyperlink{classBabel_1_1IAudio_a4cd4982d3fb3357eeaf2873dc1b682af}{get\+Audio\+Data}} () const =0
+\item 
+virtual void \mbox{\hyperlink{classBabel_1_1IAudio_a2dbaa1ac2f630b04ffe916b676be069d}{set\+Audio\+Data}} (\mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} data)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBabel_1_1IAudio_a97d6ec39f752e56617d1fbf9b01dec8e}\label{classBabel_1_1IAudio_a97d6ec39f752e56617d1fbf9b01dec8e}} 
+\index{Babel::IAudio@{Babel::IAudio}!````~IAudio@{$\sim$IAudio}}
+\index{````~IAudio@{$\sim$IAudio}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{$\sim$IAudio()}{~IAudio()}}
+{\footnotesize\ttfamily virtual Babel\+::\+IAudio\+::$\sim$\+IAudio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBabel_1_1IAudio_a77d9985312a5713a64ebc8df1f9efbf2}\label{classBabel_1_1IAudio_a77d9985312a5713a64ebc8df1f9efbf2}} 
+\index{Babel::IAudio@{Babel::IAudio}!closeInputStream@{closeInputStream}}
+\index{closeInputStream@{closeInputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{closeInputStream()}{closeInputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::close\+Input\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_ab5566ca22ac5b6de1cb807f677a295b1}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_ae6f3eb153f1aaab34cbb2c63b0228181}\label{classBabel_1_1IAudio_ae6f3eb153f1aaab34cbb2c63b0228181}} 
+\index{Babel::IAudio@{Babel::IAudio}!closeOutputStream@{closeOutputStream}}
+\index{closeOutputStream@{closeOutputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{closeOutputStream()}{closeOutputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::close\+Output\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_ac089dd4a89235af9652b9d9b0204c451}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a4cd4982d3fb3357eeaf2873dc1b682af}\label{classBabel_1_1IAudio_a4cd4982d3fb3357eeaf2873dc1b682af}} 
+\index{Babel::IAudio@{Babel::IAudio}!getAudioData@{getAudioData}}
+\index{getAudioData@{getAudioData}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{getAudioData()}{getAudioData()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}} Babel\+::\+IAudio\+::get\+Audio\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a184662d1ab61fc4a89efab27f4d8ca37}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_ad324d6afdf8105dc701a5e748bb23406}\label{classBabel_1_1IAudio_ad324d6afdf8105dc701a5e748bb23406}} 
+\index{Babel::IAudio@{Babel::IAudio}!getBuffer@{getBuffer}}
+\index{getBuffer@{getBuffer}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{getBuffer()}{getBuffer()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}} Babel\+::\+IAudio\+::get\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a822606d3b8e55953e88973c0b690a7e4}{Babel\+::\+Port\+Audio}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classBabel_1_1IAudio_a4a7169da791a5a08dc293f66bb9edf9f}\label{classBabel_1_1IAudio_a4a7169da791a5a08dc293f66bb9edf9f}} 
+\index{Babel::IAudio@{Babel::IAudio}!getCompressor@{getCompressor}}
+\index{getCompressor@{getCompressor}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{getCompressor()}{getCompressor()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classBabel_1_1ICompressor}{ICompressor}} \& Babel\+::\+IAudio\+::get\+Compressor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a4e59d92be00f7b79f7f96063740b3baf}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a36033a2cea8a476c0a96cadaedac516c}\label{classBabel_1_1IAudio_a36033a2cea8a476c0a96cadaedac516c}} 
+\index{Babel::IAudio@{Babel::IAudio}!init@{init}}
+\index{init@{init}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a25a9d2ac28d707855950046d14a8216c}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a94423431edcd536998d22563d80808ca}\label{classBabel_1_1IAudio_a94423431edcd536998d22563d80808ca}} 
+\index{Babel::IAudio@{Babel::IAudio}!openInputStream@{openInputStream}}
+\index{openInputStream@{openInputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{openInputStream()}{openInputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::open\+Input\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_aec640f67e3161809e5dc94f19f0d5203}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_ad9d39595a8ffa51a36ae877cda0fb797}\label{classBabel_1_1IAudio_ad9d39595a8ffa51a36ae877cda0fb797}} 
+\index{Babel::IAudio@{Babel::IAudio}!openOutputStream@{openOutputStream}}
+\index{openOutputStream@{openOutputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{openOutputStream()}{openOutputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::open\+Output\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_af3fa453bbc8b1bb154763f84e2a6e6dc}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a98056cac81922042b24c44c8ec2baa60}\label{classBabel_1_1IAudio_a98056cac81922042b24c44c8ec2baa60}} 
+\index{Babel::IAudio@{Babel::IAudio}!play@{play}}
+\index{play@{play}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a197a7726250a942d1239f9317112b1cc}{Babel\+::\+Port\+Audio}}.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classBabel_1_1IAudio_ad9daa206e675a25b7edfee6f3601c01f}\label{classBabel_1_1IAudio_ad9daa206e675a25b7edfee6f3601c01f}} 
+\index{Babel::IAudio@{Babel::IAudio}!record@{record}}
+\index{record@{record}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{record()}{record()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a96a8c16622c9c82c567115c051b756eb}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a2dbaa1ac2f630b04ffe916b676be069d}\label{classBabel_1_1IAudio_a2dbaa1ac2f630b04ffe916b676be069d}} 
+\index{Babel::IAudio@{Babel::IAudio}!setAudioData@{setAudioData}}
+\index{setAudioData@{setAudioData}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{setAudioData()}{setAudioData()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::set\+Audio\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBabel_1_1CBuffer}{CBuffer}}}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_ac3cb745b2ea6db29413205cf58be0af0}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_abc988fbea405bbc9a4e2c9733dd02768}\label{classBabel_1_1IAudio_abc988fbea405bbc9a4e2c9733dd02768}} 
+\index{Babel::IAudio@{Babel::IAudio}!setBuffer@{setBuffer}}
+\index{setBuffer@{setBuffer}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{setBuffer()}{setBuffer()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::set\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBabel_1_1Buffer}{Buffer}}}]{buffer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_af5e5f9e440b1c818865f11e32f37cace}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a9812e88f2095473f5da4f8edb4c8d2a4}\label{classBabel_1_1IAudio_a9812e88f2095473f5da4f8edb4c8d2a4}} 
+\index{Babel::IAudio@{Babel::IAudio}!startInputStream@{startInputStream}}
+\index{startInputStream@{startInputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{startInputStream()}{startInputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::start\+Input\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_ab26219225c7f436ab6c7603c88838daf}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_ab994637d553e763c810477ed653b0425}\label{classBabel_1_1IAudio_ab994637d553e763c810477ed653b0425}} 
+\index{Babel::IAudio@{Babel::IAudio}!startOutputStream@{startOutputStream}}
+\index{startOutputStream@{startOutputStream}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{startOutputStream()}{startOutputStream()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::start\+Output\+Stream (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a87b20c63a7553426d68ab49b27ec1f3d}{Babel\+::\+Port\+Audio}}.
+
+\mbox{\Hypertarget{classBabel_1_1IAudio_a7496afe4fed4d998a0999d13797b26cc}\label{classBabel_1_1IAudio_a7496afe4fed4d998a0999d13797b26cc}} 
+\index{Babel::IAudio@{Babel::IAudio}!terminate@{terminate}}
+\index{terminate@{terminate}!Babel::IAudio@{Babel::IAudio}}
+\doxysubsubsection{\texorpdfstring{terminate()}{terminate()}}
+{\footnotesize\ttfamily virtual void Babel\+::\+IAudio\+::terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classBabel_1_1PortAudio_a107f8f20c29f63b89dac8272010bed2b}{Babel\+::\+Port\+Audio}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/common/\mbox{\hyperlink{IAudio_8hpp}{IAudio.\+hpp}}\end{DoxyCompactItemize}

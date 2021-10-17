@@ -1,0 +1,90 @@
+\hypertarget{BabelDefines_8hpp}{}\doxysection{src/common/\+Babel\+Defines.hpp File Reference}
+\label{BabelDefines_8hpp}\index{src/common/BabelDefines.hpp@{src/common/BabelDefines.hpp}}
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+Include dependency graph for Babel\+Defines.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBabel_1_1Sound}{Babel\+::\+Sound}}
+\item 
+struct \mbox{\hyperlink{structBabel_1_1Compressed}{Babel\+::\+Compressed}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceBabel}{Babel}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_a40d4ce5dac355662b3ee76bc605f1430}{NUM\+\_\+\+SECONDS}}~(5)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}{NUM\+\_\+\+CHANNELS}}~(2)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_a4b76a0c2859cfd819a343a780070ee2b}{SAMPLE\+\_\+\+RATE}}~(48000)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_a06e14a08d61a627aefbfe1f3ecd5db95}{PA\+\_\+\+SAMPLE\+\_\+\+TYPE}}~(pa\+Float32)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_aaa64e1de9b094f2505ee39f58f41d530}{SAMPLE\+\_\+\+SILENCE}}~(0.\+0f)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\+\_\+\+PER\+\_\+\+BUFFER}}~(480)
+\item 
+\#define \mbox{\hyperlink{BabelDefines_8hpp_a04c971a7f86897c069daa1d13c3984b0}{ELEM\+\_\+\+PER\+\_\+\+BUFFER}}~(\mbox{\hyperlink{BabelDefines_8hpp_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\+\_\+\+PER\+\_\+\+BUFFER}} $\ast$ \mbox{\hyperlink{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}{NUM\+\_\+\+CHANNELS}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structBabel_1_1Sound}{Babel\+::\+Sound}} \mbox{\hyperlink{namespaceBabel_a434d6dba9897a7c505780823d24079d2}{Babel\+::sound\+\_\+t}}
+\item 
+typedef struct \mbox{\hyperlink{structBabel_1_1Compressed}{Babel\+::\+Compressed}} \mbox{\hyperlink{namespaceBabel_a5671ec5e067286fee8a0525e4e7ae366}{Babel\+::compressed\+\_\+t}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{BabelDefines_8hpp_a04c971a7f86897c069daa1d13c3984b0}\label{BabelDefines_8hpp_a04c971a7f86897c069daa1d13c3984b0}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!ELEM\_PER\_BUFFER@{ELEM\_PER\_BUFFER}}
+\index{ELEM\_PER\_BUFFER@{ELEM\_PER\_BUFFER}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{ELEM\_PER\_BUFFER}{ELEM\_PER\_BUFFER}}
+{\footnotesize\ttfamily \#define ELEM\+\_\+\+PER\+\_\+\+BUFFER~(\mbox{\hyperlink{BabelDefines_8hpp_af4f62216aa14e0407faa6631e9ec4c62}{FRAMES\+\_\+\+PER\+\_\+\+BUFFER}} $\ast$ \mbox{\hyperlink{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}{NUM\+\_\+\+CHANNELS}})}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_af4f62216aa14e0407faa6631e9ec4c62}\label{BabelDefines_8hpp_af4f62216aa14e0407faa6631e9ec4c62}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!FRAMES\_PER\_BUFFER@{FRAMES\_PER\_BUFFER}}
+\index{FRAMES\_PER\_BUFFER@{FRAMES\_PER\_BUFFER}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{FRAMES\_PER\_BUFFER}{FRAMES\_PER\_BUFFER}}
+{\footnotesize\ttfamily \#define FRAMES\+\_\+\+PER\+\_\+\+BUFFER~(480)}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}\label{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!NUM\_CHANNELS@{NUM\_CHANNELS}}
+\index{NUM\_CHANNELS@{NUM\_CHANNELS}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{NUM\_CHANNELS}{NUM\_CHANNELS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+CHANNELS~(2)}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_a40d4ce5dac355662b3ee76bc605f1430}\label{BabelDefines_8hpp_a40d4ce5dac355662b3ee76bc605f1430}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!NUM\_SECONDS@{NUM\_SECONDS}}
+\index{NUM\_SECONDS@{NUM\_SECONDS}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{NUM\_SECONDS}{NUM\_SECONDS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+SECONDS~(5)}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_a06e14a08d61a627aefbfe1f3ecd5db95}\label{BabelDefines_8hpp_a06e14a08d61a627aefbfe1f3ecd5db95}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!PA\_SAMPLE\_TYPE@{PA\_SAMPLE\_TYPE}}
+\index{PA\_SAMPLE\_TYPE@{PA\_SAMPLE\_TYPE}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{PA\_SAMPLE\_TYPE}{PA\_SAMPLE\_TYPE}}
+{\footnotesize\ttfamily \#define PA\+\_\+\+SAMPLE\+\_\+\+TYPE~(pa\+Float32)}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_a4b76a0c2859cfd819a343a780070ee2b}\label{BabelDefines_8hpp_a4b76a0c2859cfd819a343a780070ee2b}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!SAMPLE\_RATE@{SAMPLE\_RATE}}
+\index{SAMPLE\_RATE@{SAMPLE\_RATE}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_RATE}{SAMPLE\_RATE}}
+{\footnotesize\ttfamily \#define SAMPLE\+\_\+\+RATE~(48000)}
+
+\mbox{\Hypertarget{BabelDefines_8hpp_aaa64e1de9b094f2505ee39f58f41d530}\label{BabelDefines_8hpp_aaa64e1de9b094f2505ee39f58f41d530}} 
+\index{BabelDefines.hpp@{BabelDefines.hpp}!SAMPLE\_SILENCE@{SAMPLE\_SILENCE}}
+\index{SAMPLE\_SILENCE@{SAMPLE\_SILENCE}!BabelDefines.hpp@{BabelDefines.hpp}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_SILENCE}{SAMPLE\_SILENCE}}
+{\footnotesize\ttfamily \#define SAMPLE\+\_\+\+SILENCE~(0.\+0f)}
+

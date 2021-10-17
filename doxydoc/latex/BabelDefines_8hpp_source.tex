@@ -1,0 +1,70 @@
+\hypertarget{BabelDefines_8hpp_source}{}\doxysection{Babel\+Defines.\+hpp}
+\label{BabelDefines_8hpp_source}\index{src/common/BabelDefines.hpp@{src/common/BabelDefines.hpp}}
+\mbox{\hyperlink{BabelDefines_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** BabelDefines}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef BABELDEFINES\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define BABELDEFINES\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceBabel}{Babel}} \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17 \textcolor{preprocessor}{    \#define NUM\_SECONDS (5)}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{    \#define NUM\_CHANNELS (2)}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{    \#define SAMPLE\_RATE (48000)}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{    \#define PA\_SAMPLE\_TYPE (paFloat32)}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{    \#define SAMPLE\_SILENCE (0.0f)}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{    \#define FRAMES\_PER\_BUFFER (480)}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{    \#define ELEM\_PER\_BUFFER (FRAMES\_PER\_BUFFER * NUM\_CHANNELS)}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structBabel_1_1Sound}{Sound}} \{}
+\DoxyCodeLine{26         std::array<float, ELEM\_PER\_BUFFER> \mbox{\hyperlink{structBabel_1_1Sound_aafd116b5298aeedee18b9d9d6ced2cef}{samples}};}
+\DoxyCodeLine{27         \textcolor{keywordtype}{int} \mbox{\hyperlink{structBabel_1_1Sound_ac92e7d95a30b657219532d31b647120c}{frameIndex}};}
+\DoxyCodeLine{28         \textcolor{keywordtype}{int} \mbox{\hyperlink{structBabel_1_1Sound_a6cffa47b6574165d0cf8d00edb39c750}{maxFrameIndex}};}
+\DoxyCodeLine{29         \textcolor{keywordtype}{int} \mbox{\hyperlink{structBabel_1_1Sound_aa2905a392e15c970af9595067154c0e9}{numSamples}};}
+\DoxyCodeLine{30         \mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}} *\mbox{\hyperlink{structBabel_1_1Sound_a5bbe86c3d20468bf7ea0212d29f6f8cd}{buffer}};}
+\DoxyCodeLine{31         \textcolor{keywordtype}{int} \mbox{\hyperlink{structBabel_1_1Sound_a7af47d79ae45d90b20b8a3f8bf883024}{size}};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \mbox{\hyperlink{structBabel_1_1Sound_ab57dc734b3bbfe911469a61b74e37c29}{Sound}}()}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             \mbox{\hyperlink{structBabel_1_1Sound_a6cffa47b6574165d0cf8d00edb39c750}{maxFrameIndex}} = \mbox{\hyperlink{BabelDefines_8hpp_a40d4ce5dac355662b3ee76bc605f1430}{NUM\_SECONDS}} * \mbox{\hyperlink{BabelDefines_8hpp_a4b76a0c2859cfd819a343a780070ee2b}{SAMPLE\_RATE}};}
+\DoxyCodeLine{36             \mbox{\hyperlink{structBabel_1_1Sound_ac92e7d95a30b657219532d31b647120c}{frameIndex}} = 0;}
+\DoxyCodeLine{37             \mbox{\hyperlink{structBabel_1_1Sound_aa2905a392e15c970af9595067154c0e9}{numSamples}} = \mbox{\hyperlink{BabelDefines_8hpp_a40d4ce5dac355662b3ee76bc605f1430}{NUM\_SECONDS}} * \mbox{\hyperlink{BabelDefines_8hpp_a4b76a0c2859cfd819a343a780070ee2b}{SAMPLE\_RATE}} * \mbox{\hyperlink{BabelDefines_8hpp_ae5597ce31d23d11493e6e674fe257d73}{NUM\_CHANNELS}};}
+\DoxyCodeLine{38             \mbox{\hyperlink{structBabel_1_1Sound_a7af47d79ae45d90b20b8a3f8bf883024}{size}} = \mbox{\hyperlink{structBabel_1_1Sound_aa2905a392e15c970af9595067154c0e9}{numSamples}} * \textcolor{keyword}{sizeof}(float);}
+\DoxyCodeLine{39             \mbox{\hyperlink{structBabel_1_1Sound_a5bbe86c3d20468bf7ea0212d29f6f8cd}{buffer}} = \textcolor{keyword}{new} \mbox{\hyperlink{namespaceBabel_ac1433d1e1659759ff9cfab63527adf85}{SAMPLE}}[\mbox{\hyperlink{structBabel_1_1Sound_a7af47d79ae45d90b20b8a3f8bf883024}{size}}];}
+\DoxyCodeLine{40             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{structBabel_1_1Sound_aa2905a392e15c970af9595067154c0e9}{numSamples}}; i++) \{}
+\DoxyCodeLine{41                 \mbox{\hyperlink{structBabel_1_1Sound_a5bbe86c3d20468bf7ea0212d29f6f8cd}{buffer}}[i] = 0;}
+\DoxyCodeLine{42             \}}
+\DoxyCodeLine{43             \mbox{\hyperlink{structBabel_1_1Sound_aafd116b5298aeedee18b9d9d6ced2cef}{samples}}.fill(0);}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46         \mbox{\hyperlink{structBabel_1_1Sound_a8841b448f709a54d0270e415fd4499fd}{Sound}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} *begin)}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48             std::memcpy(\mbox{\hyperlink{structBabel_1_1Sound_aafd116b5298aeedee18b9d9d6ced2cef}{samples}}.data(), begin, \mbox{\hyperlink{BabelDefines_8hpp_a04c971a7f86897c069daa1d13c3984b0}{ELEM\_PER\_BUFFER}} * \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{float}));}
+\DoxyCodeLine{49         \}}
+\DoxyCodeLine{50     \} \mbox{\hyperlink{namespaceBabel_a434d6dba9897a7c505780823d24079d2}{sound\_t}};}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structBabel_1_1Compressed}{Compressed}} \{}
+\DoxyCodeLine{53         std::vector<unsigned char> \mbox{\hyperlink{structBabel_1_1Compressed_a74b5467798838168ea8c7edf88f3398b}{samples}};}
+\DoxyCodeLine{54         int32\_t \mbox{\hyperlink{structBabel_1_1Compressed_ac1be0e58a23bf63960c425886c79e33e}{size}};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \mbox{\hyperlink{structBabel_1_1Compressed_a87b16cc88929d2c019dad3040d038d53}{Compressed}}()}
+\DoxyCodeLine{57         \{}
+\DoxyCodeLine{58             \mbox{\hyperlink{structBabel_1_1Compressed_a74b5467798838168ea8c7edf88f3398b}{samples}}.resize(\mbox{\hyperlink{BabelDefines_8hpp_a04c971a7f86897c069daa1d13c3984b0}{ELEM\_PER\_BUFFER}});}
+\DoxyCodeLine{59             std::fill(\mbox{\hyperlink{structBabel_1_1Compressed_a74b5467798838168ea8c7edf88f3398b}{samples}}.begin(), \mbox{\hyperlink{structBabel_1_1Compressed_a74b5467798838168ea8c7edf88f3398b}{samples}}.end(), 0);}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61     \} \mbox{\hyperlink{namespaceBabel_a5671ec5e067286fee8a0525e4e7ae366}{compressed\_t}};}
+\DoxyCodeLine{62 \}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !BABELDEFINES\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

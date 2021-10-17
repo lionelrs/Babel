@@ -1,0 +1,52 @@
+\hypertarget{MyTCP_8hpp_source}{}\doxysection{My\+TCP.\+hpp}
+\label{MyTCP_8hpp_source}\index{src/client/MyTCP.hpp@{src/client/MyTCP.hpp}}
+\mbox{\hyperlink{MyTCP_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{** EPITECH PROJECT, 2021}}
+\DoxyCodeLine{3 \textcolor{comment}{** B-\/CPP-\/500-\/NCE-\/5-\/1-\/babel-\/lionel.da-\/rocha-\/da-\/silva}}
+\DoxyCodeLine{4 \textcolor{comment}{** File description:}}
+\DoxyCodeLine{5 \textcolor{comment}{** MyTCP}}
+\DoxyCodeLine{6 \textcolor{comment}{*/}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#ifndef MYTCP\_HPP\_}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define MYTCP\_HPP\_}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <QTcpServer>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <QTcpSocket>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{Socket_8hpp}{Socket.hpp}}"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}../common/SEPCommands.hpp"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}../common/BabelException.hpp"{}}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classMyTCP}{MyTCP}} : \textcolor{keyword}{public} \mbox{\hyperlink{classSocket}{Socket}} \{}
+\DoxyCodeLine{23         Q\_OBJECT}
+\DoxyCodeLine{24     \textcolor{keyword}{public}:}
+\DoxyCodeLine{25         \mbox{\hyperlink{classMyTCP_aeb3c813d5c4f49952e20f3e9ebd1a583}{MyTCP}}(\textcolor{keyword}{const} std::string ip, \textcolor{keyword}{const} \textcolor{keywordtype}{int} port, \mbox{\hyperlink{classQObject}{QObject}} *parent = 0);}
+\DoxyCodeLine{26         \mbox{\hyperlink{classMyTCP_ac07e87d1607bdf0a39ca56527260af51}{\string~MyTCP}}();}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         QTcpSocket *\mbox{\hyperlink{classMyTCP_a357c6eb09c61a36b573d38db4dc2b304}{getSocket}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{29         std::string \mbox{\hyperlink{classMyTCP_af8fc65697b9b91a32d8f25e715d5be26}{getData}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMyTCP_a7b04a06771140f1a3cf94c8b6b36b572}{writeData}}(\mbox{\hyperlink{classMessage}{Message}} msg);}
+\DoxyCodeLine{32         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMyTCP_adcc8ab414a9996f659e421a471d85d95}{openConnection}}();}
+\DoxyCodeLine{33         \textcolor{keywordtype}{void} \mbox{\hyperlink{classMyTCP_ad3ed427a0098b0ea955e29593928de7d}{readData}}();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35         \mbox{\hyperlink{structSEPCommands}{SEPCommands}} *\mbox{\hyperlink{classMyTCP_a4b29b8d84c0a0ec69e99cc140c2e8083}{getSEPCommand}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     signals:}
+\DoxyCodeLine{38     \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keyword}{private}:}
+\DoxyCodeLine{41         \mbox{\hyperlink{structSEPCommands}{SEPCommands}} *\_command;}
+\DoxyCodeLine{42         QTcpSocket *\_socket;}
+\DoxyCodeLine{43         std::string \_data;}
+\DoxyCodeLine{44 \};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* !MYTCP\_HPP\_ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
