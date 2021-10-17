@@ -7,6 +7,14 @@
 
 #include "MyTCP.hpp"
 
+/**
+ * Creates an instance of MyTCP that is used to establish the connection with the server.
+ * Herit from the Socket class.
+ *
+ * @param ip Specifies the ip of the server that you want to connect to.
+ * @param port Specifies the port of the server that you want to connect to.
+ * @param parent Parent widget to herit from.
+ */
 MyTCP::MyTCP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
     _command = NULL;
@@ -16,6 +24,10 @@ MyTCP::~MyTCP()
 {
 }
 
+
+/**
+ * Open the TCP connection with the server.
+ */
 void MyTCP::openConnection()
 {
     _socket = new QTcpSocket();
@@ -24,6 +36,11 @@ void MyTCP::openConnection()
         throw Babel::BabelException("Cannot connect to TCP host with ip " + _ip + " and port " + std::to_string(_port) + ".");
 }
 
+/**
+ * Send a data to the server.
+ *
+ * @param data Data to be sent.
+ */
 void MyTCP::writeData(Message data)
 {
     QByteArray writeData;
@@ -34,16 +51,17 @@ void MyTCP::writeData(Message data)
     writeData.clear();
 }
 
-SEPCommands *MyTCP::getSEPCommand() const
-{
-    return _command;
-}
-
+/**
+ * Getter of the readed data from the server.
+ */
 std::string MyTCP::getData() const
 {
     return _data;
 }
 
+/**
+ * Read the data sent by the server.
+ */
 void MyTCP::readData()
 {
     QByteArray readBuffer = {0};
@@ -52,6 +70,9 @@ void MyTCP::readData()
     _data = readBuffer.data();
 }
 
+/**
+ * Getter of the TCP socket.
+ */
 QTcpSocket *MyTCP::getSocket() const
 {
     return _socket;

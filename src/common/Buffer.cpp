@@ -54,7 +54,7 @@ void Babel::Buffer::setMaxFrameIndex(int idx)
 }
 
 void Babel::Buffer::setBuffer(SAMPLE *buffer)
-{   
+{
     std::cout << numSamples << std::endl;
     for (size_t i = 0; i < numSamples; i++) {
         _sampleBuffer[i] = buffer[i];

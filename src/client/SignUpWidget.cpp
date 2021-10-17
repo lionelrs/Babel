@@ -7,6 +7,11 @@
 
 #include "SignUpWidget.hpp"
 
+/**
+ * Creates an instance of SignUpWidget that display the sign up form.
+ *
+ * @param parent Parent widget to herit from.
+ */
 SignUpWidget::SignUpWidget(QWidget *parent)
 {
     QGroupBox *groupBox = new QGroupBox("Sign Up", parent);
@@ -51,6 +56,9 @@ SignUpWidget::~SignUpWidget()
 {
 }
 
+/**
+ * Getter of the filled sign up form.
+ */
 Message SignUpWidget::getSignUpForm()
 {
     if (_editUsername->text().toStdString().find(' ') != std::string::npos)
@@ -67,11 +75,17 @@ Message SignUpWidget::getSignUpForm()
     return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(SIGN_UP).c_str());
 }
 
+/**
+ * Getter of validate button.
+ */
 QPushButton *SignUpWidget::getValidateButton() const
 {
     return _validateButton;
 }
 
+/**
+ * Getter of the back button.
+ */
 QPushButton *SignUpWidget::getBackButton() const
 {
     return _backButton;

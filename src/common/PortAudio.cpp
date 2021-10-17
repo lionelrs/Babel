@@ -173,11 +173,11 @@ int Babel::PortAudio::recordCallback(const void *inputBuffer, void *outputBuffer
     long framesToCalc;
     long i;
     int finished;
-    unsigned long framesLeft = data->getMaxFrameIndex() - data->getFrameIndex();  
+    unsigned long framesLeft = data->getMaxFrameIndex() - data->getFrameIndex();
     (void)outputBuffer;
     (void)timeInfo;
     (void)statusFlags;
-    (void)userData;    
+    (void)userData;
     if (framesLeft < framesPerBuffer) {
         framesToCalc = framesLeft;
         finished = paComplete;
@@ -213,11 +213,11 @@ int Babel::PortAudio::playCallback(const void *inputBuffer, void *outputBuffer,
     SAMPLE *wptr = (SAMPLE*)outputBuffer;
     unsigned int i;
     int finished;
-    unsigned int framesLeft = data->getMaxFrameIndex() - data->getFrameIndex();   
+    unsigned int framesLeft = data->getMaxFrameIndex() - data->getFrameIndex();
     (void)inputBuffer; /* Prevent unused variable warnings. */
     (void)timeInfo;
     (void)statusFlags;
-    (void)userData;    
+    (void)userData;
     if (framesLeft < framesPerBuffer) {
         /* final buffer... */
         for (i = 0; i < framesLeft; i++) {

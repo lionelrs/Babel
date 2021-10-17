@@ -33,14 +33,6 @@ std::string SEPServer::cmdUserCreateError(User *user, std::string response)
     return ("501");
 }
 
-/**
- * A brief history of JavaDoc-style (C-style) comments.
- *
- * Function that returns 505 to user.
- *
- * @param user Current user.
- * @param response Response to user.
- */
 std::string SEPServer::cmdUserAlreadyExist(User *user, std::string response)
 {
     (void)response;

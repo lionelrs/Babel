@@ -7,6 +7,11 @@
 
 #include "LoginWidget.hpp"
 
+/**
+ * Creates an instance of LoginWidget that display the login form.
+ *
+ * @param parent Parent widget to herit from.
+ */
 LoginWidget::LoginWidget(QWidget *parent)
 {
     QGroupBox *groupBox = new QGroupBox("Sign In", parent);
@@ -46,6 +51,9 @@ LoginWidget::~LoginWidget()
 {
 }
 
+/**
+ * Getter of the filled form.
+ */
 Message LoginWidget::getLoginForm()
 {
     if (_editUsername->text().toStdString().find(' ') != std::string::npos)
@@ -55,11 +63,17 @@ Message LoginWidget::getLoginForm()
     return Message(_editUsername->text() + " " + _editPassword->text(), std::to_string(REQUEST_CO).c_str());
 }
 
+/**
+ * Getter of the login button.
+ */
 QPushButton *LoginWidget::getLoginButton() const
 {
     return _loginButton;
 }
 
+/**
+ * Getter of the sign up button.
+ */
 QPushButton *LoginWidget::getSignUpButton() const
 {
     return _signUpButton;

@@ -7,6 +7,14 @@
 
 #include "MyUDP.hpp"
 
+/**
+ * Creates an instance of MyUDP that is used to establish the connection with another client.
+ * Herit from the Socket class.
+ *
+ * @param ip Specifies the ip of the client that you want to connect to.
+ * @param port Specifies the port of the client that you want to connect to.
+ * @param parent Parent widget to herit from.
+ */
 MyUDP::MyUDP(const std::string ip, const int port, QObject *parent) : Socket(ip, port, parent)
 {
     _player = new Babel::PortAudio();
@@ -16,12 +24,20 @@ MyUDP::~MyUDP()
 {
 }
 
+/**
+ * Bind the UDP client.
+ */
 void MyUDP::openConnection()
 {
     _socket = new QUdpSocket();
     _socket->bind(QHostAddress(_ip.c_str()), _port);
 }
 
+/**
+ * Send a data to the other client.
+ *
+ * @param data Data to be sent.
+ */
 void MyUDP::writeData(Message data)
 {
     QByteArray writeData;
@@ -30,6 +46,9 @@ void MyUDP::writeData(Message data)
     writeData.clear();
 }
 
+/**
+ * Read the data sent by the other client.
+ */
 void MyUDP::readData()
 {
     static int64_t timeSort = 0;
@@ -54,15 +73,14 @@ void MyUDP::readData()
     my_string.erase(0, pos + delimiter.length());
 
     if (timeSort > std::strtoll(header.c_str(), NULL, 10)) {
-        std::cout << "BOOOOMMM ---------------------------------------------------------------------------------------------------------------------\n";
+        std::cout << "---------------- Packet ignored ----------------\n";
         return;
     }
     timeSort = std::strtoll(header.c_str(), NULL, 10);
     array = parser.rebuildSoundFromString(my_string);
-    pid_t child = fork();
     _player->getBuffer().setBuffer(array);
+    pid_t child = fork();
     if (child == 0) {
-        
         _player->play();
         exit(0);
     }
@@ -72,6 +90,9 @@ void MyUDP::readData()
     // qDebug() << "Message: " << readBuffer;
 }
 
+/**
+ * Getter of the UDP socket.
+ */
 QUdpSocket *MyUDP::getSocket() const
 {
     return _socket;

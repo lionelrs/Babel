@@ -10,8 +10,10 @@
 
 #include <QMainWindow>
 #include <chrono>
-
+#include <sys/mman.h>
+#include <signal.h>
 #include <unistd.h>
+
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
 #include "LoginWidget.hpp"
@@ -28,10 +30,9 @@ class Controller : public QObject {
         ~Controller();
 
         void startBabel();
-        void sendUdpData(Message msg);
 
     signals:
-    public slots:
+    private slots:
         void listenTcpData();
         void listenUdpData();
         void sendTcpLoginForm();
@@ -76,9 +77,12 @@ class Controller : public QObject {
 
         std::string _myUsername;
         std::string _callUsername;
+        pid_t _fork;
+        int *_sharedMemory;
 
+        void sendUdpData(Message msg);
         void responseSelector(std::string response);
-
+        void callHandling();
 };
 
 #endif /* !CONTROLLER_HPP_ */

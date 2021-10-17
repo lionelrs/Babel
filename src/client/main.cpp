@@ -28,14 +28,6 @@ int arg_check(int ac, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    // Babel::IAudio *recorder = new Babel::PortAudio();   
-    // Babel::IAudio *player = new Babel::PortAudio();   
-    
-    // recorder->record();
-    // player->setBuffer(recorder->getBuffer());
-    // player->play();
-    // recorder->terminate();
-    // player->terminate();
     try
     {
         arg_check(argc, argv);

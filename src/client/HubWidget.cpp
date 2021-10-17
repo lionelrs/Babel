@@ -7,6 +7,11 @@
 
 #include "HubWidget.hpp"
 
+/**
+ * Creates an instance of HubWidget that display the connected users.
+ *
+ * @param parent Parent widget to herit from.
+ */
 HubWidget::HubWidget(QWidget *parent)
 {
     _userList = new QListWidget(parent);
@@ -45,11 +50,21 @@ void HubWidget::onListItemClicked(QListWidgetItem* item)
     _selected = _userList->row(item);
 }
 
+/**
+ * Add an user to the list of connected users.
+ *
+ * @param username Username of the user to be added.
+ */
 void HubWidget::addUser(std::string username)
 {
     _userList->addItem(username.c_str());
 }
 
+/**
+ * Remove an user to the list of connected users.
+ *
+ * @param username Username of the user to be removed.
+ */
 void HubWidget::removeUser(std::string username)
 {
     int i = 0;
@@ -61,16 +76,25 @@ void HubWidget::removeUser(std::string username)
     }
 }
 
+/**
+ * Getter of the call button.
+ */
 QPushButton *HubWidget::getButton() const
 {
     return _callButton;
 }
 
+/**
+ * Getter of the selected state.
+ */
 int HubWidget::getSelected() const
 {
     return _selected;
 }
 
+/**
+ * Getter of the selected user.
+ */
 std::string HubWidget::getSelectedName() const
 {
     if (_selected == -1)
@@ -78,6 +102,11 @@ std::string HubWidget::getSelectedName() const
     return _userList->item(_selected)->text().toStdString();
 }
 
+/**
+ * Setter of the client username on the top right.
+ *
+ * @param username Username to be set.
+ */
 void HubWidget::setUsername(const std::string username)
 {
     _labelUsername->setText(username.c_str());

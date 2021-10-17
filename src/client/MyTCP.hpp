@@ -32,8 +32,6 @@ class MyTCP : public Socket {
         void openConnection();
         void readData();
 
-        SEPCommands *getSEPCommand() const;
-
     signals:
     public slots:
 

@@ -7,6 +7,13 @@
 
 #include "ErrorWidget.hpp"
 
+/**
+ * Creates an instance of ErrorWidget.
+ *
+ * @param msg Error message to be displayed.
+ * @param title Title to be dislayed.
+ * @param parent Parent widget to herit from.
+ */
 ErrorWidget::ErrorWidget(std::string msg, std::string title, QWidget *parent)
 {
     _msgBox = new QMessageBox(parent);
@@ -22,11 +29,17 @@ ErrorWidget::~ErrorWidget()
 {
 }
 
+/**
+ * Show the ErrorWidget.
+ */
 void ErrorWidget::show()
 {
     _msgBox->show();
 }
 
+/**
+ * Hide the ErrorWidget.
+ */
 void ErrorWidget::hide()
 {
     _msgBox->hide();

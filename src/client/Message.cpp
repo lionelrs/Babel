@@ -7,6 +7,9 @@
 
 #include "Message.hpp"
 
+/**
+ * Creates an instance of Message.
+ */
 Message::Message()
 {
 }
@@ -27,11 +30,17 @@ Message::Message(const QString &body, const QString &header)
     _header = header;
 }
 
+/**
+ * Getter of message body.
+ */
 QString Message::getBody() const
 {
     return _body;
 }
 
+/**
+ * Getter of the message header.
+ */
 QString Message::getHeader() const
 {
     return _header;
