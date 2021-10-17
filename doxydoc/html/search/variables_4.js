@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ip_0',['ip',['../structSEPCommands.html#ab9181006f4a62444061dd852b2b2058d',1,'SEPCommands']]]
+  ['ss_0',['ss',['../SqliteDataBase_8cpp.html#a8fc3524f4e679a41dcc8d0f302d637ed',1,'SqliteDataBase.cpp']]]
 ];

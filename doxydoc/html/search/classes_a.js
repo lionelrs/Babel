@@ -5,6 +5,5 @@ var searchData=
   ['sepserver_2',['SEPServer',['../classSEPServer.html',1,'']]],
   ['signupwidget_3',['SignUpWidget',['../classSignUpWidget.html',1,'']]],
   ['socket_4',['Socket',['../classSocket.html',1,'']]],
-  ['sound_5',['Sound',['../structBabel_1_1Sound.html',1,'Babel']]],
-  ['sqlitedatabase_6',['SqliteDataBase',['../classSqliteDataBase.html',1,'']]]
+  ['sqlitedatabase_5',['SqliteDataBase',['../classSqliteDataBase.html',1,'']]]
 ];

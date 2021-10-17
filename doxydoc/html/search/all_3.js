@@ -12,11 +12,9 @@ var searchData=
   ['closeoutputstream_9',['closeOutputStream',['../classBabel_1_1IAudio.html#ae6f3eb153f1aaab34cbb2c63b0228181',1,'Babel::IAudio::closeOutputStream()'],['../classBabel_1_1PortAudio.html#ac089dd4a89235af9652b9d9b0204c451',1,'Babel::PortAudio::closeOutputStream()']]],
   ['co_5ferror_10',['CO_ERROR',['../SEPCommands_8hpp.html#ae4bf7ef72caafaf059a83bfd1d67a362a07f90233b897d6d54a7d5fc2e3ff1ef4',1,'SEPCommands.hpp']]],
   ['code_11',['code',['../structSEPCommands.html#a7dbc943452f569036944a062ee74d006',1,'SEPCommands']]],
-  ['compressed_12',['Compressed',['../structBabel_1_1Compressed.html',1,'Babel::Compressed'],['../structBabel_1_1Compressed.html#a87b16cc88929d2c019dad3040d038d53',1,'Babel::Compressed::Compressed()']]],
-  ['compressed_5ft_13',['compressed_t',['../namespaceBabel.html#a5671ec5e067286fee8a0525e4e7ae366',1,'Babel']]],
-  ['connection_5fok_14',['CONNECTION_OK',['../SEPCommands_8hpp.html#ae4bf7ef72caafaf059a83bfd1d67a362ab8811f3a367f582c9071275be5319914',1,'SEPCommands.hpp']]],
-  ['controller_15',['Controller',['../classController.html#a774129142b53dd5db86111fb99a0d332',1,'Controller::Controller()'],['../classController.html',1,'Controller']]],
-  ['controller_2ecpp_16',['Controller.cpp',['../Controller_8cpp.html',1,'']]],
-  ['controller_2ehpp_17',['Controller.hpp',['../Controller_8hpp.html',1,'']]],
-  ['createuser_18',['createUser',['../classSqliteDataBase.html#a02ce8a3f4ba552cd2ae1d8fa2120b865',1,'SqliteDataBase']]]
+  ['connection_5fok_12',['CONNECTION_OK',['../SEPCommands_8hpp.html#ae4bf7ef72caafaf059a83bfd1d67a362ab8811f3a367f582c9071275be5319914',1,'SEPCommands.hpp']]],
+  ['controller_13',['Controller',['../classController.html#a774129142b53dd5db86111fb99a0d332',1,'Controller::Controller()'],['../classController.html',1,'Controller']]],
+  ['controller_2ecpp_14',['Controller.cpp',['../Controller_8cpp.html',1,'']]],
+  ['controller_2ehpp_15',['Controller.hpp',['../Controller_8hpp.html',1,'']]],
+  ['createuser_16',['createUser',['../classSqliteDataBase.html#a02ce8a3f4ba552cd2ae1d8fa2120b865',1,'SqliteDataBase']]]
 ];

@@ -10,15 +10,14 @@ var searchData=
   ['setframeindex_7',['setFrameIndex',['../classBabel_1_1Buffer.html#aa5fe463f9b198a5f15b8d0b061b03fe8',1,'Babel::Buffer']]],
   ['setisincall_8',['setIsInCall',['../classUser.html#a3c478ba8a9c8a84b1800c38a55e45273',1,'User']]],
   ['setmaxframeindex_9',['setMaxFrameIndex',['../classBabel_1_1Buffer.html#a14ca7feb6d400c57dc93a21c47cdb399',1,'Babel::Buffer']]],
-  ['setsize_10',['setSize',['../classBabel_1_1CBuffer.html#a9a8d08f7463d5e293ffcb9a55dd463ff',1,'Babel::CBuffer::setSize()'],['../classBabel_1_1Buffer.html#a2b6bbd8a6c17c29a416092ebb10b0233',1,'Babel::Buffer::setSize()']]],
-  ['setusername_11',['setUsername',['../classHubWidget.html#a2d777cac287d249939a3ec04e55ea442',1,'HubWidget']]],
-  ['setusername_12',['setUserName',['../classUser.html#af4038d8c0ea4448220c3b8b214042c1d',1,'User']]],
+  ['setsize_10',['setSize',['../classBabel_1_1Buffer.html#a2b6bbd8a6c17c29a416092ebb10b0233',1,'Babel::Buffer::setSize()'],['../classBabel_1_1CBuffer.html#a9a8d08f7463d5e293ffcb9a55dd463ff',1,'Babel::CBuffer::setSize()']]],
+  ['setusername_11',['setUserName',['../classUser.html#af4038d8c0ea4448220c3b8b214042c1d',1,'User']]],
+  ['setusername_12',['setUsername',['../classHubWidget.html#a2d777cac287d249939a3ec04e55ea442',1,'HubWidget']]],
   ['show_13',['show',['../classErrorWidget.html#a123bca7a63b51d2bb1eeeb0553b70428',1,'ErrorWidget']]],
   ['signupwidget_14',['SignUpWidget',['../classSignUpWidget.html#a1f5ae7f8bc7c5c50168d716d55ae2eb7',1,'SignUpWidget']]],
   ['size_15',['size',['../classBabel_1_1Buffer.html#ad16f52f9df6fc98b0c888180858830f0',1,'Babel::Buffer::size()'],['../classBabel_1_1CBuffer.html#a6d41ec488da9deeba54355fa038ec092',1,'Babel::CBuffer::size()']]],
   ['socket_16',['Socket',['../classSocket.html#a4573ddc076995862a6d7620eab38bf0e',1,'Socket']]],
-  ['sound_17',['Sound',['../structBabel_1_1Sound.html#ab57dc734b3bbfe911469a61b74e37c29',1,'Babel::Sound::Sound()'],['../structBabel_1_1Sound.html#a8841b448f709a54d0270e415fd4499fd',1,'Babel::Sound::Sound(const float *begin)']]],
-  ['startbabel_18',['startBabel',['../classController.html#acff084ea54b3982435003fbe6da340ea',1,'Controller']]],
-  ['startinputstream_19',['startInputStream',['../classBabel_1_1IAudio.html#a9812e88f2095473f5da4f8edb4c8d2a4',1,'Babel::IAudio::startInputStream()'],['../classBabel_1_1PortAudio.html#ab26219225c7f436ab6c7603c88838daf',1,'Babel::PortAudio::startInputStream()']]],
-  ['startoutputstream_20',['startOutputStream',['../classBabel_1_1IAudio.html#ab994637d553e763c810477ed653b0425',1,'Babel::IAudio::startOutputStream()'],['../classBabel_1_1PortAudio.html#a87b20c63a7553426d68ab49b27ec1f3d',1,'Babel::PortAudio::startOutputStream()']]]
+  ['startbabel_17',['startBabel',['../classController.html#acff084ea54b3982435003fbe6da340ea',1,'Controller']]],
+  ['startinputstream_18',['startInputStream',['../classBabel_1_1IAudio.html#a9812e88f2095473f5da4f8edb4c8d2a4',1,'Babel::IAudio::startInputStream()'],['../classBabel_1_1PortAudio.html#ab26219225c7f436ab6c7603c88838daf',1,'Babel::PortAudio::startInputStream()']]],
+  ['startoutputstream_19',['startOutputStream',['../classBabel_1_1IAudio.html#ab994637d553e763c810477ed653b0425',1,'Babel::IAudio::startOutputStream()'],['../classBabel_1_1PortAudio.html#a87b20c63a7553426d68ab49b27ec1f3d',1,'Babel::PortAudio::startOutputStream()']]]
 ];
