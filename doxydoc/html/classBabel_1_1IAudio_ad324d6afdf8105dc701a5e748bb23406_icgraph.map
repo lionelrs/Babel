@@ -1,6 +1,5 @@
 <map id="Babel::IAudio::getBuffer" name="Babel::IAudio::getBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="447,31,623,57"/>
-<area shape="rect" id="node2" href="$classController.html#a774129142b53dd5db86111fb99a0d332" title=" " alt="" coords="240,5,399,32"/>
-<area shape="rect" id="node3" href="$classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="250,56,389,83"/>
-<area shape="rect" id="node4" href="$classController.html#a7a52c74e7c006335b8e52304c148e7d9" title=" " alt="" coords="5,56,192,83"/>
+<area shape="rect" id="node1" title=" " alt="" coords="212,31,388,57"/>
+<area shape="rect" id="node2" href="$classController.html#a774129142b53dd5db86111fb99a0d332" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node3" href="$classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="15,56,154,83"/>
 </map>

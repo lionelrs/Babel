@@ -1,5 +1,5 @@
 <map id="MyTCP" name="MyTCP">
-<area shape="rect" id="node1" title=" " alt="" coords="69,501,227,681"/>
+<area shape="rect" id="node1" title=" " alt="" coords="72,501,224,667"/>
 <area shape="rect" id="node2" href="$classSocket.html" title=" " alt="" coords="72,287,224,452"/>
 <area shape="rect" id="node3" href="$classQObject.html" title=" " alt="" coords="5,147,80,224"/>
 <area shape="rect" id="node4" title=" " alt="" coords="105,147,191,224"/>

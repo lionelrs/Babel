@@ -79,7 +79,7 @@ Collaboration diagram for Babel::Buffer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1Buffer__coll__graph.png" border="0" usemap="#aBabel_1_1Buffer_coll__map" alt="Collaboration graph"/></div>
 <map name="aBabel_1_1Buffer_coll__map" id="aBabel_1_1Buffer_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,179,244"/>
+<area shape="rect" title=" " alt="" coords="5,5,179,215"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -87,8 +87,6 @@ Collaboration diagram for Babel::Buffer:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a99bf7673e0de925ce7fa19fadb13b443"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#a99bf7673e0de925ce7fa19fadb13b443">Buffer</a> ()</td></tr>
 <tr class="separator:a99bf7673e0de925ce7fa19fadb13b443"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43b2e3b42f6de010d990844adb32be9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#ab43b2e3b42f6de010d990844adb32be9">Buffer</a> (const float *begin)</td></tr>
-<tr class="separator:ab43b2e3b42f6de010d990844adb32be9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f4a79a5bf523caf66e303426ec5e6dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#a3f4a79a5bf523caf66e303426ec5e6dc">~Buffer</a> ()</td></tr>
 <tr class="separator:a3f4a79a5bf523caf66e303426ec5e6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af438f6c2d4cf531915cba000a7fd04b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceBabel.html#ac1433d1e1659759ff9cfab63527adf85">SAMPLE</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#af438f6c2d4cf531915cba000a7fd04b0">data</a> () const</td></tr>
@@ -107,12 +105,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2b6bbd8a6c17c29a416092ebb10b0233"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16f52f9df6fc98b0c888180858830f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#ad16f52f9df6fc98b0c888180858830f0">size</a> () const</td></tr>
 <tr class="separator:ad16f52f9df6fc98b0c888180858830f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9381631106000d504da7448a9b1f1c0b"><td class="memItemLeft" align="right" valign="top">std::array&lt; float, <a class="el" href="BabelDefines_8hpp.html#a04c971a7f86897c069daa1d13c3984b0">ELEM_PER_BUFFER</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1Buffer.html#a9381631106000d504da7448a9b1f1c0b">getArray</a> () const</td></tr>
-<tr class="separator:a9381631106000d504da7448a9b1f1c0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a99bf7673e0de925ce7fa19fadb13b443" name="a99bf7673e0de925ce7fa19fadb13b443"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99bf7673e0de925ce7fa19fadb13b443">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a99bf7673e0de925ce7fa19fadb13b443">&#9670;&nbsp;</a></span>Buffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,24 +121,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-</div>
-</div>
-<a id="ab43b2e3b42f6de010d990844adb32be9" name="ab43b2e3b42f6de010d990844adb32be9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab43b2e3b42f6de010d990844adb32be9">&#9670;&nbsp;</a></span>Buffer() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Babel::Buffer::Buffer </td>
-          <td>(</td>
-          <td class="paramtype">const float *&#160;</td>
-          <td class="paramname"><em>begin</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p >Creates an instance of <a class="el" href="classBabel_1_1Buffer.html">Buffer</a> </p>
 
 </div>
 </div>
@@ -178,39 +157,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Gets the raw audio buffer Returns a SAMPLE* </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1Buffer_af438f6c2d4cf531915cba000a7fd04b0_icgraph.png" border="0" usemap="#aclassBabel_1_1Buffer_af438f6c2d4cf531915cba000a7fd04b0_icgraph" alt=""/></div>
 <map name="aclassBabel_1_1Buffer_af438f6c2d4cf531915cba000a7fd04b0_icgraph" id="aclassBabel_1_1Buffer_af438f6c2d4cf531915cba000a7fd04b0_icgraph">
-<area shape="rect" title=" " alt="" coords="249,5,392,32"/>
-<area shape="rect" href="classBabel_1_1Opus.html#a3830c6a796f29a8ac84f1df1c0980fa1" title=" " alt="" coords="5,5,201,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a9381631106000d504da7448a9b1f1c0b" name="a9381631106000d504da7448a9b1f1c0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9381631106000d504da7448a9b1f1c0b">&#9670;&nbsp;</a></span>getArray()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::array&lt; float, <a class="el" href="BabelDefines_8hpp.html#a04c971a7f86897c069daa1d13c3984b0">ELEM_PER_BUFFER</a> &gt; Babel::Buffer::getArray </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBabel_1_1Buffer_a9381631106000d504da7448a9b1f1c0b_icgraph.png" border="0" usemap="#aclassBabel_1_1Buffer_a9381631106000d504da7448a9b1f1c0b_icgraph" alt=""/></div>
-<map name="aclassBabel_1_1Buffer_a9381631106000d504da7448a9b1f1c0b_icgraph" id="aclassBabel_1_1Buffer_a9381631106000d504da7448a9b1f1c0b_icgraph">
-<area shape="rect" title=" " alt="" coords="249,5,420,32"/>
+<area shape="rect" title=" " alt="" coords="249,31,392,57"/>
 <area shape="rect" href="classBabel_1_1Opus.html#a688b5d538a17d9c790c54d69d5438e4e" title=" " alt="" coords="5,5,201,32"/>
+<area shape="rect" href="classBabel_1_1Opus.html#a3830c6a796f29a8ac84f1df1c0980fa1" title=" " alt="" coords="5,56,201,83"/>
 </map>
 </div>
 
@@ -230,6 +185,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Gets the actual frame index Returns an integer </p>
 
 </div>
 </div>
@@ -247,6 +203,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Gets the maximum frame index Returns an integer </p>
 
 </div>
 </div>
@@ -265,14 +222,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Sets the raw audio buffer to the value of</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1Buffer_ac14caa0e15c3cf57c47e2b21f21a0eb5_icgraph.png" border="0" usemap="#aclassBabel_1_1Buffer_ac14caa0e15c3cf57c47e2b21f21a0eb5_icgraph" alt=""/></div>
 <map name="aclassBabel_1_1Buffer_ac14caa0e15c3cf57c47e2b21f21a0eb5_icgraph" id="aclassBabel_1_1Buffer_ac14caa0e15c3cf57c47e2b21f21a0eb5_icgraph">
-<area shape="rect" title=" " alt="" coords="427,5,600,32"/>
-<area shape="rect" href="classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="240,5,379,32"/>
-<area shape="rect" href="classController.html#a7a52c74e7c006335b8e52304c148e7d9" title=" " alt="" coords="5,5,192,32"/>
+<area shape="rect" title=" " alt="" coords="192,5,365,32"/>
+<area shape="rect" href="classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="5,5,144,32"/>
 </map>
 </div>
 
@@ -293,6 +255,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Sets the actual frame index to the value of</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -311,6 +279,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Sets the maximum frame index to the value of</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -329,6 +303,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Sets the buffer size to the value of</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -346,15 +326,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Gets the size of the audio buffer Returns an integer </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0_icgraph.png" border="0" usemap="#aclassBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0_icgraph" alt=""/></div>
 <map name="aclassBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0_icgraph" id="aclassBabel_1_1Buffer_ad16f52f9df6fc98b0c888180858830f0_icgraph">
-<area shape="rect" title=" " alt="" coords="447,31,587,57"/>
-<area shape="rect" href="classController.html#a774129142b53dd5db86111fb99a0d332" title=" " alt="" coords="240,5,399,32"/>
-<area shape="rect" href="classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="250,56,389,83"/>
-<area shape="rect" href="classController.html#a7a52c74e7c006335b8e52304c148e7d9" title=" " alt="" coords="5,56,192,83"/>
+<area shape="rect" title=" " alt="" coords="212,31,352,57"/>
+<area shape="rect" href="classController.html#a774129142b53dd5db86111fb99a0d332" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" href="classMyUDP.html#a668afeade4210b95725f3e71940e19fb" title=" " alt="" coords="15,56,154,83"/>
 </map>
 </div>
 

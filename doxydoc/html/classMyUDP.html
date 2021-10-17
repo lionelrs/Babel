@@ -166,6 +166,15 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Creates an instance of <a class="el" href="classMyUDP.html">MyUDP</a> that is used to establish the connection with another client. Herit from the <a class="el" href="classSocket.html">Socket</a> class.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ip</td><td>Specifies the ip of the client that you want to connect to. </td></tr>
+    <tr><td class="paramname">port</td><td>Specifies the port of the client that you want to connect to. </td></tr>
+    <tr><td class="paramname">parent</td><td>Parent widget to herit from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -201,6 +210,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p >Getter of the UDP socket. </p>
 
 </div>
 </div>
@@ -226,6 +236,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Bind the UDP client. </p>
 
 <p>Implements <a class="el" href="classSocket.html#a2125d3fb22e6815088d7084e09333c80">Socket</a>.</p>
 
@@ -253,6 +264,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Read the data sent by the other client. </p>
 
 <p>Implements <a class="el" href="classSocket.html#aab0c30849dd273140139ece3a15a78e1">Socket</a>.</p>
 <div class="dynheader">
@@ -266,15 +278,6 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classParser.html#aa170d9a63b0d7fbc52324cc45fd05297" title=" " alt="" coords="192,107,380,149"/>
 <area shape="rect" href="classBabel_1_1Buffer.html#ac14caa0e15c3cf57c47e2b21f21a0eb5" title=" " alt="" coords="199,173,373,200"/>
 <area shape="rect" href="classBabel_1_1Buffer.html#ad16f52f9df6fc98b0c888180858830f0" title=" " alt="" coords="216,224,356,251"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classMyUDP_a668afeade4210b95725f3e71940e19fb_icgraph.png" border="0" usemap="#aclassMyUDP_a668afeade4210b95725f3e71940e19fb_icgraph" alt=""/></div>
-<map name="aclassMyUDP_a668afeade4210b95725f3e71940e19fb_icgraph" id="aclassMyUDP_a668afeade4210b95725f3e71940e19fb_icgraph">
-<area shape="rect" title=" " alt="" coords="240,5,379,32"/>
-<area shape="rect" href="classController.html#a7a52c74e7c006335b8e52304c148e7d9" title=" " alt="" coords="5,5,192,32"/>
 </map>
 </div>
 
@@ -293,7 +296,7 @@ Here is the caller graph for this function:</div>
           <td class="memname">void MyUDP::writeData </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classMessage.html">Message</a>&#160;</td>
-          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -303,6 +306,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Send a data to the other client.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Data to be sent. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implements <a class="el" href="classSocket.html#a56cacc3f6b7e677f941d5d1560fd382c">Socket</a>.</p>
 <div class="dynheader">
@@ -320,8 +330,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMyUDP_a43e3d8b2daaf9d23198f40762bdb2196_icgraph.png" border="0" usemap="#aclassMyUDP_a43e3d8b2daaf9d23198f40762bdb2196_icgraph" alt=""/></div>
 <map name="aclassMyUDP_a43e3d8b2daaf9d23198f40762bdb2196_icgraph" id="aclassMyUDP_a43e3d8b2daaf9d23198f40762bdb2196_icgraph">
-<area shape="rect" title=" " alt="" coords="236,29,379,56"/>
-<area shape="rect" href="classController.html#a349b17eb2f784ae63722c40d6503d761" title=" " alt="" coords="5,29,188,56"/>
+<area shape="rect" title=" " alt="" coords="5,29,148,56"/>
 </map>
 </div>
 

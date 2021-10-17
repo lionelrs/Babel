@@ -103,29 +103,26 @@ $(function() {
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classMyTCP.html#adcc8ab414a9996f659e421a471d85d95">openConnection</a>();</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classMyTCP.html#ad3ed427a0098b0ea955e29593928de7d">readData</a>();</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_struct" href="structSEPCommands.html">SEPCommands</a> *<a class="code hl_function" href="classMyTCP.html#a4b29b8d84c0a0ec69e99cc140c2e8083">getSEPCommand</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    signals:</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">public</span> slots:</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <a class="code hl_struct" href="structSEPCommands.html">SEPCommands</a> *_command;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        QTcpSocket *_socket;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        std::string _data;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">/* !MYTCP_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    signals:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_struct" href="structSEPCommands.html">SEPCommands</a> *_command;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        QTcpSocket *_socket;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::string _data;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">/* !MYTCP_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aSocket_8hpp_html"><div class="ttname"><a href="Socket_8hpp.html">Socket.hpp</a></div></div>
 <div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdef"><b>Definition:</b> Message.hpp:15</div></div>
 <div class="ttc" id="aclassMyTCP_html"><div class="ttname"><a href="classMyTCP.html">MyTCP</a></div><div class="ttdef"><b>Definition:</b> MyTCP.hpp:22</div></div>
-<div class="ttc" id="aclassMyTCP_html_a357c6eb09c61a36b573d38db4dc2b304"><div class="ttname"><a href="classMyTCP.html#a357c6eb09c61a36b573d38db4dc2b304">MyTCP::getSocket</a></div><div class="ttdeci">QTcpSocket * getSocket() const</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:55</div></div>
-<div class="ttc" id="aclassMyTCP_html_a4b29b8d84c0a0ec69e99cc140c2e8083"><div class="ttname"><a href="classMyTCP.html#a4b29b8d84c0a0ec69e99cc140c2e8083">MyTCP::getSEPCommand</a></div><div class="ttdeci">SEPCommands * getSEPCommand() const</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:37</div></div>
-<div class="ttc" id="aclassMyTCP_html_a7b04a06771140f1a3cf94c8b6b36b572"><div class="ttname"><a href="classMyTCP.html#a7b04a06771140f1a3cf94c8b6b36b572">MyTCP::writeData</a></div><div class="ttdeci">void writeData(Message msg)</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:27</div></div>
-<div class="ttc" id="aclassMyTCP_html_ac07e87d1607bdf0a39ca56527260af51"><div class="ttname"><a href="classMyTCP.html#ac07e87d1607bdf0a39ca56527260af51">MyTCP::~MyTCP</a></div><div class="ttdeci">~MyTCP()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:15</div></div>
-<div class="ttc" id="aclassMyTCP_html_ad3ed427a0098b0ea955e29593928de7d"><div class="ttname"><a href="classMyTCP.html#ad3ed427a0098b0ea955e29593928de7d">MyTCP::readData</a></div><div class="ttdeci">void readData()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:47</div></div>
-<div class="ttc" id="aclassMyTCP_html_adcc8ab414a9996f659e421a471d85d95"><div class="ttname"><a href="classMyTCP.html#adcc8ab414a9996f659e421a471d85d95">MyTCP::openConnection</a></div><div class="ttdeci">void openConnection()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:19</div></div>
-<div class="ttc" id="aclassMyTCP_html_aeb3c813d5c4f49952e20f3e9ebd1a583"><div class="ttname"><a href="classMyTCP.html#aeb3c813d5c4f49952e20f3e9ebd1a583">MyTCP::MyTCP</a></div><div class="ttdeci">MyTCP(const std::string ip, const int port, QObject *parent=0)</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:10</div></div>
-<div class="ttc" id="aclassMyTCP_html_af8fc65697b9b91a32d8f25e715d5be26"><div class="ttname"><a href="classMyTCP.html#af8fc65697b9b91a32d8f25e715d5be26">MyTCP::getData</a></div><div class="ttdeci">std::string getData() const</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:42</div></div>
+<div class="ttc" id="aclassMyTCP_html_a357c6eb09c61a36b573d38db4dc2b304"><div class="ttname"><a href="classMyTCP.html#a357c6eb09c61a36b573d38db4dc2b304">MyTCP::getSocket</a></div><div class="ttdeci">QTcpSocket * getSocket() const</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:76</div></div>
+<div class="ttc" id="aclassMyTCP_html_a7b04a06771140f1a3cf94c8b6b36b572"><div class="ttname"><a href="classMyTCP.html#a7b04a06771140f1a3cf94c8b6b36b572">MyTCP::writeData</a></div><div class="ttdeci">void writeData(Message msg)</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:44</div></div>
+<div class="ttc" id="aclassMyTCP_html_ac07e87d1607bdf0a39ca56527260af51"><div class="ttname"><a href="classMyTCP.html#ac07e87d1607bdf0a39ca56527260af51">MyTCP::~MyTCP</a></div><div class="ttdeci">~MyTCP()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:23</div></div>
+<div class="ttc" id="aclassMyTCP_html_ad3ed427a0098b0ea955e29593928de7d"><div class="ttname"><a href="classMyTCP.html#ad3ed427a0098b0ea955e29593928de7d">MyTCP::readData</a></div><div class="ttdeci">void readData()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:65</div></div>
+<div class="ttc" id="aclassMyTCP_html_adcc8ab414a9996f659e421a471d85d95"><div class="ttname"><a href="classMyTCP.html#adcc8ab414a9996f659e421a471d85d95">MyTCP::openConnection</a></div><div class="ttdeci">void openConnection()</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:31</div></div>
+<div class="ttc" id="aclassMyTCP_html_aeb3c813d5c4f49952e20f3e9ebd1a583"><div class="ttname"><a href="classMyTCP.html#aeb3c813d5c4f49952e20f3e9ebd1a583">MyTCP::MyTCP</a></div><div class="ttdeci">MyTCP(const std::string ip, const int port, QObject *parent=0)</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:18</div></div>
+<div class="ttc" id="aclassMyTCP_html_af8fc65697b9b91a32d8f25e715d5be26"><div class="ttname"><a href="classMyTCP.html#af8fc65697b9b91a32d8f25e715d5be26">MyTCP::getData</a></div><div class="ttdeci">std::string getData() const</div><div class="ttdef"><b>Definition:</b> MyTCP.cpp:57</div></div>
 <div class="ttc" id="aclassQObject_html"><div class="ttname"><a href="classQObject.html">QObject</a></div></div>
 <div class="ttc" id="aclassSocket_html"><div class="ttname"><a href="classSocket.html">Socket</a></div><div class="ttdef"><b>Definition:</b> Socket.hpp:16</div></div>
 <div class="ttc" id="astructSEPCommands_html"><div class="ttname"><a href="structSEPCommands.html">SEPCommands</a></div><div class="ttdef"><b>Definition:</b> SEPCommands.hpp:14</div></div>

@@ -79,8 +79,8 @@ Inheritance diagram for Babel::ICompressor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1ICompressor__inherit__graph.png" border="0" usemap="#aBabel_1_1ICompressor_inherit__map" alt="Inheritance graph"/></div>
 <map name="aBabel_1_1ICompressor_inherit__map" id="aBabel_1_1ICompressor_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,5,185,171"/>
-<area shape="rect" href="classBabel_1_1Opus.html" title=" " alt="" coords="5,219,185,399"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,112"/>
+<area shape="rect" href="classBabel_1_1Opus.html" title=" " alt="" coords="13,160,147,281"/>
 </map>
 </div>
 <div class="dynheader">
@@ -88,7 +88,7 @@ Collaboration diagram for Babel::ICompressor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBabel_1_1ICompressor__coll__graph.png" border="0" usemap="#aBabel_1_1ICompressor_coll__map" alt="Collaboration graph"/></div>
 <map name="aBabel_1_1ICompressor_coll__map" id="aBabel_1_1ICompressor_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,185,171"/>
+<area shape="rect" title=" " alt="" coords="5,5,155,112"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -100,14 +100,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aec71da767b641700e60a4392af2aa30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67dfc497fe3a34645f89122e7b6bbde8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classBabel_1_1Buffer.html">Buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1ICompressor.html#a67dfc497fe3a34645f89122e7b6bbde8">decodeFrame</a> (const <a class="el" href="classBabel_1_1CBuffer.html">CBuffer</a> &amp;compressed)=0</td></tr>
 <tr class="separator:a67dfc497fe3a34645f89122e7b6bbde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f341dd0ddf6f6e624c06bd1868c97ce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1ICompressor.html#a0f341dd0ddf6f6e624c06bd1868c97ce">setSampleRate</a> (int rate)=0</td></tr>
-<tr class="separator:a0f341dd0ddf6f6e624c06bd1868c97ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d0cbdfe39592260e559b87a659b64cc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1ICompressor.html#a2d0cbdfe39592260e559b87a659b64cc">setNumberChannels</a> (int nb)=0</td></tr>
-<tr class="separator:a2d0cbdfe39592260e559b87a659b64cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4a2abe0a3883830e45cf04fa3ef9368"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1ICompressor.html#aa4a2abe0a3883830e45cf04fa3ef9368">getSampleRate</a> () const =0</td></tr>
-<tr class="separator:aa4a2abe0a3883830e45cf04fa3ef9368"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5290acb42424a61aac6104ece96b7e4"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBabel_1_1ICompressor.html#aa5290acb42424a61aac6104ece96b7e4">getNumberChannels</a> () const =0</td></tr>
-<tr class="separator:aa5290acb42424a61aac6104ece96b7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9c16b78cd619db21a863bda52d459cff" name="a9c16b78cd619db21a863bda52d459cff"></a>
@@ -159,6 +151,12 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Takes a <a class="el" href="classBabel_1_1CBuffer.html">CBuffer</a> class</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">compressed</td><td>to decompress the compressed audio data Returns a <a class="el" href="classBabel_1_1Buffer.html">Buffer</a> class with the raw audio data </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classBabel_1_1Opus.html#a688b5d538a17d9c790c54d69d5438e4e">Babel::Opus</a>.</p>
 
@@ -187,118 +185,14 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p >Takes a <a class="el" href="classBabel_1_1Buffer.html">Buffer</a> class</p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sound</td><td>to compress the raw audio data Returns a <a class="el" href="classBabel_1_1CBuffer.html">CBuffer</a> class with the compressed audio data </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="classBabel_1_1Opus.html#a3830c6a796f29a8ac84f1df1c0980fa1">Babel::Opus</a>.</p>
-
-</div>
-</div>
-<a id="aa5290acb42424a61aac6104ece96b7e4" name="aa5290acb42424a61aac6104ece96b7e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5290acb42424a61aac6104ece96b7e4">&#9670;&nbsp;</a></span>getNumberChannels()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual int Babel::ICompressor::getNumberChannels </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classBabel_1_1Opus.html#a452075e7b6e6be1f96b8f237a673dad0">Babel::Opus</a>.</p>
-
-</div>
-</div>
-<a id="aa4a2abe0a3883830e45cf04fa3ef9368" name="aa4a2abe0a3883830e45cf04fa3ef9368"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4a2abe0a3883830e45cf04fa3ef9368">&#9670;&nbsp;</a></span>getSampleRate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual int Babel::ICompressor::getSampleRate </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classBabel_1_1Opus.html#a811b4d213a13fda4dc149bf51986ab37">Babel::Opus</a>.</p>
-
-</div>
-</div>
-<a id="a2d0cbdfe39592260e559b87a659b64cc" name="a2d0cbdfe39592260e559b87a659b64cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d0cbdfe39592260e559b87a659b64cc">&#9670;&nbsp;</a></span>setNumberChannels()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Babel::ICompressor::setNumberChannels </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nb</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classBabel_1_1Opus.html#a01d8ecd571d76fae398b84d98219d4b8">Babel::Opus</a>.</p>
-
-</div>
-</div>
-<a id="a0f341dd0ddf6f6e624c06bd1868c97ce" name="a0f341dd0ddf6f6e624c06bd1868c97ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f341dd0ddf6f6e624c06bd1868c97ce">&#9670;&nbsp;</a></span>setSampleRate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Babel::ICompressor::setSampleRate </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rate</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classBabel_1_1Opus.html#aab55e30c867b2b02c7c61f08d271ff37">Babel::Opus</a>.</p>
 
 </div>
 </div>
