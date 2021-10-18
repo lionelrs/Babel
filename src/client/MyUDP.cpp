@@ -51,38 +51,38 @@ void MyUDP::writeData(Message data)
  */
 void MyUDP::readData()
 {
-    static int64_t timeSort = 0;
-    std::string header = "";
-    Parser parser(_player->getBuffer().size());
-    float *array;
-    QByteArray readBuffer;
-    readBuffer.resize(_socket->pendingDatagramSize());
-
-    QHostAddress sender;
-    quint16 senderPort;
-    _socket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
-
-    size_t pos = 0;
-    std::string token;
-    std::string delimiter = "/";
-    std::string my_string = readBuffer.toStdString();
-
-    pos = my_string.find(delimiter);
-    header = my_string.substr(0, pos);
-
-    my_string.erase(0, pos + delimiter.length());
-
-    if (timeSort > std::strtoll(header.c_str(), NULL, 10)) {
-        std::cout << "---------------- Packet ignored ----------------\n";
-        return;
-    }
-    timeSort = std::strtoll(header.c_str(), NULL, 10);
-    array = parser.rebuildSoundFromString(my_string);
-    _player->getBuffer().setBuffer(array);
     pid_t child = fork();
     if (child == 0) {
+        static int64_t timeSort = 0;
+        std::string header = "";
+        Parser parser(_player->getBuffer().size());
+        float *array;
+        QByteArray readBuffer;
+        readBuffer.resize(_socket->pendingDatagramSize());
+
+        QHostAddress sender;
+        quint16 senderPort;
+        _socket->readDatagram(readBuffer.data(), readBuffer.size(), &sender, &senderPort);
+
+        size_t pos = 0;
+        std::string token;
+        std::string delimiter = "/";
+        std::string my_string = readBuffer.toStdString();
+
+        pos = my_string.find(delimiter);
+        header = my_string.substr(0, pos);
+
+        my_string.erase(0, pos + delimiter.length());
+
+        if (timeSort > std::strtoll(header.c_str(), NULL, 10)) {
+            std::cout << "---------------- Packet ignored ----------------\n";
+            return;
+        }
+        timeSort = std::strtoll(header.c_str(), NULL, 10);
+        array = parser.rebuildSoundFromString(my_string);
+        _player->getBuffer().setBuffer(array);
         _player->play();
-        exit(0);
+        exit(child);
     }
 
     // qDebug() << "Message from: " << sender.toString();

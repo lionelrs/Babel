@@ -27,6 +27,7 @@ Controller::Controller(int port, char *ip)
     _inCall = false;
     _sharedMemory = (int *)mmap(NULL, sizeof(int), PROT_READ|PROT_WRITE, MAP_SHARED|MAP_ANONYMOUS, -1, 0);
     *_sharedMemory = 0;
+    signal(SIGCHLD, SIG_IGN);
 
     _recorder = new Babel::PortAudio();
     _parser = new Parser(_recorder->getBuffer().size());
