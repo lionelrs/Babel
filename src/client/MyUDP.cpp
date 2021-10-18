@@ -77,11 +77,12 @@ void MyUDP::readData()
         return;
     }
     timeSort = std::strtoll(header.c_str(), NULL, 10);
-    array = parser.rebuildSoundFromString(my_string);
-    _player->getBuffer().setBuffer(array);
     pid_t child = fork();
     if (child == 0) {
+        array = parser.rebuildSoundFromString(my_string);
+        _player->getBuffer().setBuffer(array);
         _player->play();
+        delete[] array;
         exit(child);
     }
 
