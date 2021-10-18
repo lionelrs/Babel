@@ -13,6 +13,7 @@
 #include <sys/mman.h>
 #include <signal.h>
 #include <unistd.h>
+#include<sys/wait.h>
 
 #include "MyUDP.hpp"
 #include "MyTCP.hpp"
@@ -84,5 +85,7 @@ class Controller : public QObject {
         void responseSelector(std::string response);
         void callHandling();
 };
+
+void signalHandler(int signum);
 
 #endif /* !CONTROLLER_HPP_ */
