@@ -127,8 +127,6 @@ void Controller::callHandling()
     _inCall = true;
     _fork = fork();
     if (_fork == 0) {
-        _recorder = new Babel::PortAudio();
-        _parser = new Parser(_recorder->getBuffer().size());
         while (1) {
             if (*_sharedMemory == 1) {
                 *_sharedMemory = 0;
