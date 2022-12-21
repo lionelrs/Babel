@@ -1,7 +1,0 @@
-<map id="QObject" name="QObject">
-<area shape="rect" id="node1" title=" " alt="" coords="109,5,184,83"/>
-<area shape="rect" id="node2" href="$classController.html" title=" " alt="" coords="5,167,128,274"/>
-<area shape="rect" id="node3" href="$classSocket.html" title=" " alt="" coords="152,131,304,311"/>
-<area shape="rect" id="node4" href="$classMyTCP.html" title=" " alt="" coords="64,359,216,524"/>
-<area shape="rect" id="node5" href="$classMyUDP.html" title=" " alt="" coords="240,366,392,517"/>
-</map>
